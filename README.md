@@ -15,14 +15,18 @@ space, 'observations', representing the observation of the species (1 for seen, 
 To solve the POMDP problem of: When to stop managing or surveying cryptic threatened species ?
 
 ## Sumatran tiger example
+### Parameters
 ``` r
-pen = 0.1 #local probability of extinction (survey or nothing)
-p0 = 1-pen #local probabili
-pem = 0.05816
-pm = 1 - pem
-V = 175.133
-Cm = 18.784
-Cs = 10.840
-d0 = 0.01
-d = 0.78193
+pen = 0.1 #local probability of extinction P(extinct/extant, survey or nothing)
+p0 = 1-pen #local probability of persitance P(extant/extant, manage)
+pem = 0.05816 #local probability of extinction if managed P(extinct/extant, manage)
+pm = 1 - pem #local probability of persistance if managed P(extant/extant, manage)
+d0 = 0.01 #local probability of detection P(present/extant, manage or nothing)
+d = 0.78193 #local probability of detection if surveyed P(present/extant, survey)
+V = 175.133 #Estimated economic value of the species ($/yr)
+Cm = 18.784 #Estimated cost of managing ($/yr)
+Cs = 10.840 #Estimated cost of surveying ($/yr)
+
 ```
+
+#
