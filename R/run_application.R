@@ -45,7 +45,7 @@ run_application = function(){
         R = rew(p0(), pm(), d0(), d(), V(), Cm(), Cs())
         T = tr(p0(), pm(), d0(), d(), V(), Cm(), Cs())
         O = obs(p0(), pm(), d0(), d(), V(), Cm(), Cs())
-        S = sim(T, O, R,0.95, state_prior(), Tmax(), a0())
+        S = sim(T, O, R, state_prior(), Tmax(), a0())
         output$sim_plot = renderPlot(S)
       })
 
