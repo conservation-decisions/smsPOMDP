@@ -1,13 +1,14 @@
 Package: TigerTest
-Title: What the Package Does (One Line, Title Case)
+Title: POMDP problem solver: When to stop managing or surveying cryptic threatened species ? 
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Luz",
+           family = "Pascal",
            role = c("aut", "cre"),
-           email = "first.last@example.com")
-Description: What the package does (one paragraph).
-License: What license it uses
+           email = "luz.pascal@csiro.au")
+Description: This package provides a set of functions helping to solve the ecological problem: When to stop managing or surveying cryptic threatened species ?
+Version: 0.0.0.9000
+License:TigerTest is licensed under a Creative Commons Attribution 4.0 International License. https://creativecommons.org/licenses/by/4.0/legalcode
 Encoding: UTF-8
 LazyData: true
 Imports: 
