@@ -1,5 +1,5 @@
 #' @export
-sim = function(t, o, r, discount=0.95, state_prior, Tmax, a){
+sim = function(t, o, r, state_prior, Tmax, a, discount=0.95){
   list.of.packages <- c("sarsop")
   new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
   if(length(new.packages)>0) {
