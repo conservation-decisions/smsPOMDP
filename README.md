@@ -1,31 +1,14 @@
 # TigerTest
 R package : solving POMDP problem When to stop managing or surveying cryptic threatened species ?
 
-[![Build
-Status](https://travis-ci.org/boettiger-lab/sarsop.svg?branch=master)](https://travis-ci.org/boettiger-lab/sarsop)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/boettiger-lab/sarsop?branch=master&svg=true)](https://ci.appveyor.com/project/cboettig/sarsop)
-[![Coverage
-Status](https://img.shields.io/codecov/c/github/boettiger-lab/sarsop/master.svg)](https://codecov.io/github/boettiger-lab/sarsop?branch=master)
-[![Project Status: Active – The project has reached a stable, usable
-state and is being actively
-developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/sarsop)](https://cran.r-project.org/package=sarsop)
-[![DOI](https://zenodo.org/badge/56890962.svg)](https://zenodo.org/badge/latestdoi/56890962)
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# SARSOP for R
-
 ``` r
-library(sarsop)
-library(tidyverse) # for plotting
+library(TigerTest)
 ```
 
 ## Problem definition
 
-Our problem is defined by a state space, `states`, representing the true
-fish stock size (in arbitrary units), and an action space, `actions`
+Our problem is defined by a state space, `states`, representing the 
+current state of the species (1 for extant, 2 for extinct), and an action space, `actions`
 representing the number of fish that will be harvested (or attempted to
 harvest). For simplicitly, we will permit any action from 0 harvest to
 the maximum possible state size.
