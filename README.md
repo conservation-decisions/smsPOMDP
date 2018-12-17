@@ -48,9 +48,9 @@ A few more parameters to set and call the 'sim' function
 #Initial belief state
 b0 = c(0.9,0.1) #extant : 0.9, extinct : 0.1
 #Horizon of the simulation
-T = 20
+Tmax = 20
 #prior action
 a0 = 1 #manage
 
-sim(Tr, Ob, Re, 0.95,b0, T, a0)
+sim(Tr, Ob, Re, 0.95,b0, Tmax, a0)
 ```
