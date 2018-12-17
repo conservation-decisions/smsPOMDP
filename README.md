@@ -2,6 +2,7 @@
 R package : solving POMDP problem When to stop managing or surveying cryptic threatened species ?
 
 ``` r
+devtools::install_github("lvpascal/TigerTest")
 library(TigerTest)
 ```
 
@@ -53,4 +54,9 @@ Tmax = 20
 a0 = 1 #manage
 
 sim(Tr, Ob, Re, b0, Tmax, a0)
+```
+### Running the app
+This package provides a function which lanches an app, which eases the resolution of the problem for the users.
+``` r
+run_application()
 ```
