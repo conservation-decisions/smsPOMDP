@@ -28,11 +28,16 @@ V = 175.133 #Estimated economic value of the species ($/yr)
 Cm = 18.784 #Estimated cost of managing ($/yr)
 Cs = 10.840 #Estimated cost of surveying ($/yr)
 ```
-###Buildind transition, observation and reward matrices calling TigerTest functions
+### Buildind transition, observation and reward matrices calling TigerTest functions
 The TigerTest package provides a set of functions which compute transition, observation and reward matrices
 ``` r
 #transition, observation and reward matrices
 Tr = tr(p0, pm, d0, d, V, Cm, Cs)
 Ob = obs(p0, pm, d0, d, V, Cm, Cs)
 Re = rew(p0, pm, d0, d, V, Cm, Cs)
+```
+### Resolution of POMDP
+You only need to call the 'graph' function, which will provide a decisions diagram
+``` r
+graph(Tr, Ob, Re) 
 ```
