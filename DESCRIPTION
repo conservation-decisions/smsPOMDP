@@ -6,16 +6,5 @@ Description: This package provides a set of functions helping to solve the ecolo
 License:TigerTest is licensed under a Creative Commons Attribution 4.0 International License. https://creativecommons.org/licenses/by/4.0/legalcode
 Encoding: UTF-8
 LazyData: true
-Imports: 
-    shiny,
-    ggpubr,
-    BiocGenerics,
-    Rgraphviz,
-    stringr,
-    sarsop,
-    readr,
-    graph,
-    methods,
-    ggplot2,
-    tidyr
+Imports: shiny, ggpubr, BiocGenerics, Rgraphviz, stringr, sarsop, readr, graph, methods, ggplot2
 RoxygenNote: 6.1.0.9000
