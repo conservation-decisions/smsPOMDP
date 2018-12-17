@@ -1,20 +1,10 @@
 Package: TigerTest
-Version: 0.5-1
-Date: 2015-01-01
-Title: My First Collection of Functions
-Authors@R: c(person("Joe", "Developer", role = c("aut", "cre"),
-                     email = "Joe.Developer@some.domain.net"),
-              person("Pat", "Developer", role = "aut"),
-              person("A.", "User", role = "ctb",
-                     email = "A.User@whereever.net"))
-Author: Joe Developer [aut, cre],
-  Pat Developer [aut],
-  A. User [ctb]
-Maintainer: Joe Developer <Joe.Developer@some.domain.net>
-Depends: R (>= 3.1.0), nlme
-Suggests: MASS
-Description: A (one paragraph) description of what
-  the package does and why it may be useful.
-License: GPL (>= 2)
-URL: https://www.r-project.org, http://www.another.url
-BugReports: https://pkgname.bugtracker.url
+Title: POMDP problem solver: When to stop managing or surveying cryptic threatened species ? 
+Version: 0.0.0.9000
+Authors@R: person("Luz", "Pascal", email = "luz.pascal@csiro.au", role = c("aut", "cre"))
+Description: This package provides a set of functions helping to solve the ecological problem: When to stop managing or surveying cryptic threatened species ?
+License:TigerTest is licensed under a Creative Commons Attribution 4.0 International License. https://creativecommons.org/licenses/by/4.0/legalcode
+Encoding: UTF-8
+LazyData: true
+Imports: shiny, ggpubr, BiocGenerics, Rgraphviz, stringr, sarsop, readr, graph, methods, ggplot2
+RoxygenNote: 6.1.0.9000
