@@ -10,12 +10,13 @@ library(TigerTest)
 Our problem is defined by a state space, `states`, representing the 
 current state of the species (1 for extant, 2 for extinct), an action space, `actions`
 representing the lead action (1 for manage, 2 for survey, 3 for nothing), and an observation 
-space, 'observations', representing the observation of the species (1 for seen, 2 for not seen)
+space, `observations`, representing the observation of the species (1 for seen, 2 for not seen)
 
 To solve the POMDP problem of: When to stop managing or surveying cryptic threatened species ?
 
 ## Sumatran tiger example
 ### Parameters
+We need to fix the POMDP parameters
 ``` r
 pen = 0.1 #local probability of extinction P(extinct/extant, survey or nothing)
 p0 = 1-pen #local probability of persitance P(extant/extant, manage)
@@ -26,7 +27,12 @@ d = 0.78193 #local probability of detection if surveyed P(present/extant, survey
 V = 175.133 #Estimated economic value of the species ($/yr)
 Cm = 18.784 #Estimated cost of managing ($/yr)
 Cs = 10.840 #Estimated cost of surveying ($/yr)
-
 ```
-
-#
+###Buildind transition, observation and reward matrices calling TigerTest functions
+The TigerTest package provides a set of functions which compute transition, observation and reward matrices
+``` r
+#transition, observation and reward matrices
+Tr = tr(p0, pm, d0, d, V, Cm, Cs)
+Ob = obs(p0, pm, d0, d, V, Cm, Cs)
+Re = rew(p0, pm, d0, d, V, Cm, Cs)
+```
