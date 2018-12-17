@@ -52,5 +52,5 @@ Tmax = 20
 #prior action
 a0 = 1 #manage
 
-sim(Tr, Ob, Re, 0.95,b0, Tmax, a0)
+sim(Tr, Ob, Re, b0, Tmax, a0)
 ```
