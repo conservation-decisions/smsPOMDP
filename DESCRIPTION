@@ -3,8 +3,19 @@ Title: POMDP problem solver: When to stop managing or surveying cryptic threaten
 Version: 0.0.0.9000
 Authors@R: person("Luz", "Pascal", email = "luz.pascal@csiro.au", role = c("aut", "cre"))
 Description: This package provides a set of functions helping to solve the ecological problem: When to stop managing or surveying cryptic threatened species ?
-License:TigerTest is licensed under a Creative Commons Attribution 4.0 International License. https://creativecommons.org/licenses/by/4.0/legalcode
+License: TigerTest is licensed under a Creative Commons Attribution 4.0 International License. https://creativecommons.org/licenses/by/4.0/legalcode
 Encoding: UTF-8
 LazyData: true
-Imports: shiny, ggpubr, BiocGenerics, Rgraphviz, stringr, sarsop, readr, graph, methods, ggplot2
+Imports: 
+    shiny,
+    ggpubr,
+    BiocGenerics,
+    Rgraphviz,
+    stringr,
+    sarsop,
+    readr,
+    graph,
+    methods,
+    ggplot2,
+    imager
 RoxygenNote: 6.1.0.9000

@@ -45,15 +45,14 @@ run_application = function(){
         R = rew(p0(), pm(), d0(), d(), V(), Cm(), Cs())
         T = tr(p0(), pm(), d0(), d(), V(), Cm(), Cs())
         O = obs(p0(), pm(), d0(), d(), V(), Cm(), Cs())
-        S = sim(T, O, R, state_prior(), Tmax(), a0())
-        output$sim_plot = renderPlot(S)
+        output$sim_plot = renderPlot(sim(T, O, R, state_prior(), Tmax(), a0(), size = 2))
       })
 
       observeEvent(input$graph, {
         R = rew(p0(), pm(), d0(), d(), V(), Cm(), Cs())
         T = tr(p0(), pm(), d0(), d(), V(), Cm(), Cs())
         O = obs(p0(), pm(), d0(), d(), V(), Cm(), Cs())
-        output$sim_plot = renderPlot({graph(T, O, R)})
+        output$sim_plot = renderPlot({graph(T, O, R, size = 2)})
       })
     }
   )

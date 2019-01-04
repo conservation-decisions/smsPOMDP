@@ -1,5 +1,5 @@
 #' @export
-graph = function(transition, observation, reward, discount=0.95, state_prior = c(1,0), verbose = TRUE, log_dir = tempdir(), log_data = NULL, cache = TRUE, ...){
+graph = function(transition, observation, reward, size = 1, discount=0.95, state_prior = c(1,0), verbose = TRUE, log_dir = tempdir(), log_data = NULL, cache = TRUE, ...){
   list.of.packages <- c("sarsop")
   new.packages <- list.of.packages[!(list.of.packages %in% utils::installed.packages()[,"Package"])]
   if(length(new.packages)>0) {
@@ -53,5 +53,5 @@ graph = function(transition, observation, reward, discount=0.95, state_prior = c
     act = as.character(nodes[which(nodes$name == node),]$action)
     compt2 = compt2+1
   }
-  return(minigraph(compt, compt2))
+  return(minigraph(compt, compt2, size))
 }
