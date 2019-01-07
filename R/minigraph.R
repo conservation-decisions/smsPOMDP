@@ -11,7 +11,7 @@ minigraph = function(man, sur, size = 1){
     text(200, 250, m, cex = size)
     text(500,400, 'Seen', cex = size)
     text(600,700, 'Not seen for', cex = size)
-    text(600,750, '2 years', cex = size)
+    text(600,750, s, cex = size)
     text(1000,200,'Seen', cex = size)
   } else {
     par(mfrow = c(1,1))
