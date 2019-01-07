@@ -24,7 +24,7 @@ sim = function(t, o, r, state_prior, Tmax, a, discount=0.95, size = 1){
   legend('bottomleft',legend = 'Extant',  bty = "n", cex = size)
   
   plot2 =plot(sim$df$time, sim$df$action, yaxt='n', 
-              pch = 19, xlab = 'Time (years)',ylab = 'nnnnn ', 
+              pch = 19, xlab = 'Time (years)',ylab = 'qwertyuiopasdfghjklzxcvbnm ', 
               ylim = c(0.9,3.1), xlim = c(-1,Tmax))
   legend('topleft',legend = 'Nothing',  bty = "n", cex = size)
   legend('left',legend = 'Survey',  bty = "n", cex = size)
