@@ -23,8 +23,8 @@ sim = function(t, o, r, state_prior, Tmax, a, discount=0.95, size = 1){
   legend('topleft',legend = 'Extinct', bty = "n", cex = size)
   legend('bottomleft',legend = 'Extant',  bty = "n", cex = size)
   
-  plot2 =plot(sim$df$time, sim$df$action, yaxt='n', 
-              pch = 19, xlab = 'Time (years)',ylab = 'ACTION', 
+  plot2 =plot(c(0,sim$df$time), c(a0, sim$df$action), yaxt='n', 
+              pch = 19, xlab = 'Time (years)',ylab = 'Action', 
               ylim = c(0.9,3.1), xlim = c(-1,Tmax))
   legend('topleft',legend = 'Nothing',  bty = "n", cex = size)
   legend('left',legend = 'Survey',  bty = "n", cex = size)
