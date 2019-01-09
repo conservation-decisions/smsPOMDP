@@ -2,7 +2,7 @@
 \alias{minigraph}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Plots decision graph given the number of years of management and survey
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
