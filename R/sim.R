@@ -1,3 +1,4 @@
+#' @export
 function (t, o, r, state_prior, Tmax, a, discount = 0.95, size = 1) 
 {
   list.of.packages <- c("sarsop")
