@@ -57,7 +57,8 @@ Luz Pascal
 }
 
 \examples{
-#values for Sumatran tigers
+ \dontrun{
+ #values for Sumatran tigers
 pen = 0.1
 p0 = 1-pen
 pem = 0.05816
@@ -78,4 +79,6 @@ Tmax = 20
 a0 = 'Manage'
 
 sim(p0, pm, d0, d, V, Cm, Cs, state_prior, Tmax, a0)
+ }
+
 }

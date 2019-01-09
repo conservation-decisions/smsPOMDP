@@ -21,5 +21,7 @@ Shiny R app
 Luz Pascal
 }
 \examples{
+\dontrun{
 run_application()
+}
 }

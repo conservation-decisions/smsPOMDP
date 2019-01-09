@@ -46,6 +46,7 @@ For each matrix : rows = states, cols = observations
 Luz Pascal
 }
 \examples{
+\dontrun{
 #values for Sumatran tigers
 pen = 0.1
 p0 = 1-pen
@@ -57,5 +58,5 @@ Cs = 10.840
 d0 = 0.01
 d = 0.78193
 
-obs(p0, pm, d0, d, V, Cm, Cs)
+obs(p0, pm, d0, d, V, Cm, Cs)}
 }

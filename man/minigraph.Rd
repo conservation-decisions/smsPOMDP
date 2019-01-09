@@ -32,6 +32,7 @@ Plot.
 Luz Pascal
 }
 \examples{
+\dontrun{
 #values of number of years of management and survey found for Sumatran tiger
-minigraph(10,2)
+minigraph(10,2)}
 }
