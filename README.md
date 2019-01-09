@@ -40,24 +40,23 @@ Re = rew(p0, pm, d0, d, V, Cm, Cs)
 ### Resolution of POMDP
 You only need to call the 'graph' function, which will provide a decisions diagram
 ``` r
-graph(Tr, Ob, Re) 
+graph(p0, pm, d0, d, V, Cm, Cs)
 ```
 
 ### Simulation
 A few more parameters to set and call the 'sim' function
 ``` r
 #Initial belief state
-b0 = c(0.9,0.1) #extant : 0.9, extinct : 0.1
+state_prior = c(0.9,0.1) #extant : 0.9, extinct : 0.1
 #Horizon of the simulation
 Tmax = 20
 #prior action
-a0 = 1 #manage
+a0 = 'Manage' #manage
 
-sim(Tr, Ob, Re, b0, Tmax, a0)
+sim(p0, pm, d0, d, V, Cm, Cs, state_prior, Tmax, a0)
 ```
 ### Running the app
 This package provides a function which lanches an app, which eases the resolution of the problem for the users.
 ``` r
 run_application()
 ```
-A line I wrote on my local computer
