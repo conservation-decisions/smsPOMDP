@@ -9,9 +9,9 @@ library(TigerTest)
 ## Problem definition
 
 Our problem is defined by a state space, `states`, representing the 
-current state of the species (1 for extant, 2 for extinct), an action space, `actions`
-representing the lead action (1 for manage, 2 for survey, 3 for nothing), and an observation 
-space, `observations`, representing the observation of the species (1 for seen, 2 for not seen)
+current state of the species (extant and extinct), an action space, `actions`
+representing the lead action (manage, survey and nothing), and an observation 
+space, `observations`, representing the observation of the species (seen and not seen)
 
 To solve the POMDP problem of: When to stop managing or surveying cryptic threatened species ?
 
@@ -52,7 +52,7 @@ state_prior = c(0.9,0.1) #extant : 0.9, extinct : 0.1
 #Horizon of the simulation
 Tmax = 20
 #prior action
-a0 = 'Manage' #manage
+a0 = 'Manage'
 
 sim(p0, pm, d0, d, V, Cm, Cs, state_prior, Tmax, a0)
 ```
