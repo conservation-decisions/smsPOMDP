@@ -1,5 +1,5 @@
 #' @export
-graph = function(p0, pm, d0, d, V, Cm, Cs, discount=0.95, size = 1){
+graph = function(p0, pm, d0, d, V, Cm, Cs, disc=0.95, size = 1){
   #checking presence of sarsop package
   list.of.packages <- c("sarsop")
   new.packages <- list.of.packages[!(list.of.packages %in% utils::installed.packages()[,"Package"])]
@@ -13,7 +13,7 @@ graph = function(p0, pm, d0, d, V, Cm, Cs, discount=0.95, size = 1){
   stopifnot(d0>=0,d0<=1) #checks if d0 is a probability
   stopifnot(d>=0,d<=1) #checks if d is a probability
   stopifnot(V>=0, Cm >= 0, Cs >= 0) #checks if values and costs are positif
-  stopifnot(discount>=0, discount <= 1) #checks if values and costs are positif
+  stopifnot(disc>=0, disc <= 1) #checks if values and costs are positif
 
   #buiding the matrices of the problem
   t = TigerTest::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
@@ -28,7 +28,7 @@ graph = function(p0, pm, d0, d, V, Cm, Cs, discount=0.95, size = 1){
   stdout <- paste0(log_dir, "/", id, ".log")
   graphout <- paste0(log_dir, "/", id, ".dot")
 
-  sarsop::write_pomdpx(t, o, r, discount, state_prior, file = infile)
+  sarsop::write_pomdpx(t, o, r, disc, state_prior, file = infile)
   status <- sarsop::pomdpsol(infile, outfile, stdout = stdout)
   g = sarsop::polgraph(infile, outfile, max_depth = 100, min_prob = 0.0001,
                max_branches = 100, output = graphout)

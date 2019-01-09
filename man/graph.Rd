@@ -9,7 +9,7 @@ Plot decision graph
 Plots decision graph of the solution to the problem : When to stop managing or surveying cryptic threatened species ?
 }
 \usage{
-graph(p0, pm, d0, d, V, Cm, Cs, discount=0.95, size = 1)
+graph(p0, pm, d0, d, V, Cm, Cs, disc=0.95, size = 1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -34,8 +34,8 @@ Estimated cost of managing ($/yr).
   \item{Cs}{
 Estimated cost of survey ($/yr).
 }
-  \item{discount}{
-Discount used to compute the value (default 0.95)
+  \item{disc}{
+disc used to compute the value (default 0.95)
 }
   \item{size}{
 Size of the text on the graph (default 1)

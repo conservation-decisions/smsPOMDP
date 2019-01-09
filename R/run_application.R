@@ -41,11 +41,11 @@ run_application = function(){
       a0 = shiny::reactive(input$a0)
 
       shiny::observeEvent(input$sim, {
-        output$plot = shiny::renderPlot({TigerTest::sim(p0(), pm(), d0(), d(), V(), Cm(), Cs(), state_prior(), Tmax(), a0(), discount = 0.95, size = 2)})
+        output$plot = shiny::renderPlot({TigerTest::sim(p0(), pm(), d0(), d(), V(), Cm(), Cs(), state_prior(), Tmax(), a0(), disc = 0.95, size = 2)})
       })
 
       shiny::observeEvent(input$graph, {
-        output$plot = shiny::renderPlot({TigerTest::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), discount = 0.95, size = 2)})
+        output$plot = shiny::renderPlot({TigerTest::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), disc = 0.95, size = 2)})
       })
     }
   )
