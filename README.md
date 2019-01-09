@@ -60,3 +60,4 @@ This package provides a function which lanches an app, which eases the resolutio
 ``` r
 run_application()
 ```
+A line I wrote on my local computer
