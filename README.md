@@ -42,6 +42,7 @@ You only need to call the 'graph' function, which will provide a decisions diagr
 ``` r
 graph(p0, pm, d0, d, V, Cm, Cs)
 ```
+![](decision-graph.png)<!-- -->
 
 ### Simulation
 A few more parameters to set and call the 'sim' function
@@ -55,8 +56,10 @@ a0 = 'Manage' #manage
 
 sim(p0, pm, d0, d, V, Cm, Cs, state_prior, Tmax, a0)
 ```
+![](simulation.png)<!-- -->
 ### Running the app
 This package provides a function which lanches an app, which eases the resolution of the problem for the users.
 ``` r
 run_application()
 ```
+![](interface.png)<!-- -->
