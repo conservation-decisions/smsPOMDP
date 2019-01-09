@@ -1,5 +1,5 @@
 #' @export
-function(p0, pm, d0, d, V, Cm, Cs, state_prior, Tmax, a = c('Manage', 'Survey', 'Nothing'), discount = 0.95, size = 1)
+sim=function(p0, pm, d0, d, V, Cm, Cs, state_prior, Tmax, a = c('Manage', 'Survey', 'Nothing'), discount = 0.95, size = 1)
 {
   #checking presence of sarsop package
   list.of.packages <- c("sarsop")

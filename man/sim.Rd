@@ -6,7 +6,6 @@ Simulation function
 }
 \description{
 Generates (plot) a simulation for a given belief state : actions lead, observations, current state, posterior belief state
-
 }
 \usage{
 sim(p0, pm, d0, d, V, Cm, Cs, state_prior, Tmax, a = c('Manage', 'Survey', 'Nothing'), discount = 0.95, size = 1)
@@ -55,7 +54,7 @@ Size of the text on the graph (default 1)
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-plot of the simulation
+Plot.
 }
 \references{
 %% ~put references to the literature/web site here ~
