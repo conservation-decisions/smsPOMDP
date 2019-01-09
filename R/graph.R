@@ -1,23 +1,36 @@
 #' @export
-graph = function(transition, observation, reward, size = 1, discount=0.95, state_prior = c(1,0), verbose = TRUE, log_dir = tempdir(), log_data = NULL, cache = TRUE, ...){
+graph = function(p0, pm, d0, d, V, Cm, Cs, discount=0.95, size = 1){
+  #checking presence of sarsop package
   list.of.packages <- c("sarsop")
   new.packages <- list.of.packages[!(list.of.packages %in% utils::installed.packages()[,"Package"])]
   if(length(new.packages)>0) {
     devtools::install_github("boettiger-lab/sarsop")
   }
-  library(sarsop)
-  library(stringr)
-  library(graph)
+
+  #tests the inputs
+  stopifnot(p0>=0,p0<=1) #checks if p0 is a probability
+  stopifnot(pm>=0,pm<=1) #checks if pm is a probability
+  stopifnot(d0>=0,d0<=1) #checks if d0 is a probability
+  stopifnot(d>=0,d<=1) #checks if d is a probability
+  stopifnot(V>=0, Cm >= 0, Cs >= 0) #checks if values and costs are positif
+  stopifnot(discount>=0, discount <= 1) #checks if values and costs are positif
+
+  #buiding the matrices of the problem
+  t = TigerTest::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
+  o = TigerTest::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
+  r = TigerTest::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
+
+  state_prior = c(1,0) #initial belief state
+  log_dir = tempdir()
   id <- digest::digest(match.call())
   infile <- paste0(log_dir, "/", id, ".pomdpx")
   outfile <- paste0(log_dir, "/", id, ".policyx")
   stdout <- paste0(log_dir, "/", id, ".log")
   graphout <- paste0(log_dir, "/", id, ".dot")
-  #initial = normalize(state_prior)
-  write_pomdpx(transition, observation, reward, discount,
-               state_prior, file = infile)
-  status <- pomdpsol(infile, outfile, stdout = stdout)
-  g = polgraph(infile, outfile, max_depth = 100, min_prob = 0.0001,
+
+  sarsop::write_pomdpx(t, o, r, discount, state_prior, file = infile)
+  status <- sarsop::pomdpsol(infile, outfile, stdout = stdout)
+  g = sarsop::polgraph(infile, outfile, max_depth = 100, min_prob = 0.0001,
                max_branches = 100, output = graphout)
   g = readChar(graphout, file.info(graphout)$size)
   g = stringr::str_replace(g, 'shape=doublecircle', '')
@@ -53,5 +66,5 @@ graph = function(transition, observation, reward, size = 1, discount=0.95, state
     act = as.character(nodes[which(nodes$name == node),]$action)
     compt2 = compt2+1
   }
-  return(minigraph(compt, compt2, size))
+  return(TigerTest::minigraph(compt, compt2, size))
 }

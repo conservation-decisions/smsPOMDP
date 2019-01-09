@@ -9,50 +9,43 @@ Plot decision graph
 Plots decision graph of the solution to the problem : When to stop managing or surveying cryptic threatened species ?
 }
 \usage{
-graph(transition, observation, reward, discount = 0.95, state_prior = c(1,0), verbose = TRUE, log_dir = tempdir(), log_data = NULL, cache = TRUE, ...)
+graph(p0, pm, d0, d, V, Cm, Cs, discount=0.95, size = 1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{transition}{
-  Transition matrix between states for each action : manage, survey and nothing. State 1 : extant, state 2 : extinct. Can be computed using \code{\link{tr}}
+  \item{p0}{
+Local probability of persitance : P(extant/extant, survey or nothing). Number between 0 and 1
 }
-  \item{observation}{
-   observation matrix for each action : manage, survey and nothing.
-State 1 : extant, state 2 : extinct.
-Observation 1 : seen, observation 2 : not seen.
-Can be computed using \code{\link{obs}}
+  \item{pm}{
+Local probability of persitance if managed : P(extant/extant, manage). Number between 0 and 1
 }
-  \item{reward}{
-  Reward matrix of the problem (rows for actions and cols for states). Can be computed using \code{\link{rew}}
+  \item{d0}{
+Local probability of detection : P(present/extant, nothing or manage). Number between 0 and 1
+}
+  \item{d}{
+Local probability of detection if surveyed : P(present/extant, survey). Number between 0 and 1
+}
+  \item{V}{
+Estimated economic value of the species ($/yr).
+}
+  \item{Cm}{
+Estimated cost of managing ($/yr).
+}
+  \item{Cs}{
+Estimated cost of survey ($/yr).
 }
   \item{discount}{
-  Discount used to compute the value (default 0.95)
+Discount used to compute the value (default 0.95)
 }
-  \item{state_prior}{
-  Initial belief state, vector of 2 values (belief state extant and extinct), between 0 and 1.
-}
-  \item{verbose}{
-  logical, should the function include a message with pomdp diagnostics (timings, final precision, end condition)
-}
-\item{log_dir}{
-pomdpx and policyx files will be saved here, along with a metadata file
-}
-\item{log_data}{
-a data.frame of additional columns to include in the log, such as model parameters. A unique id value for each run can be provided as one of the columns, otherwise, a globally unique id will be generated.
-}
-\item{cache}{
-should results from the log directory be cached? Default TRUE. Identical functional calls will quickly return previously cached alpha vectors from file rather than re-running.
+  \item{size}{
+Size of the text on the graph (default 1)
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+This function starts computing the transition, observation and reward matrices of the problem. Calls the sarsop solver for POMDP.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Plot.
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -81,13 +74,7 @@ Cs = 10.840
 d0 = 0.01
 d = 0.78193
 
-#transition, observation and reward matrices
-Tr = tr(p0, pm, d0, d, V, Cm, Cs)
-Ob = obs(p0, pm, d0, d, V, Cm, Cs)
-Re = rew(p0, pm, d0, d, V, Cm, Cs)
-
-
-graph(Tr, Ob, Re)
+graph(p0, pm, d0, d, V, Cm, Cs)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

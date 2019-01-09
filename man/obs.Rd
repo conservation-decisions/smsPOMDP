@@ -16,31 +16,24 @@ obs(p0, pm, d0, d, V, Cm, Cs)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{p0}{
-%%     ~~Describe \code{x} here~~
 Local probability of persitance : P(extant/extant, survey or nothing). Number between 0 and 1
 }
   \item{pm}{
-%%     ~~Describe \code{x} here~~
 Local probability of persitance if managed : P(extant/extant, manage). Number between 0 and 1
 }
   \item{d0}{
-%%     ~~Describe \code{x} here~~
 Local probability of detection : P(present/extant, nothing or manage). Number between 0 and 1
 }
   \item{d}{
-%%     ~~Describe \code{x} here~~
 Local probability of detection if surveyed : P(present/extant, survey). Number between 0 and 1
 }
   \item{V}{
-%%     ~~Describe \code{x} here~~
 Estimated economic value of the species ($/yr).
 }
   \item{Cm}{
-%%     ~~Describe \code{x} here~~
 Estimated cost of managing ($/yr).
 }
   \item{Cs}{
-%%     ~~Describe \code{x} here~~
 Estimated cost of survey ($/yr).
 }
 }
