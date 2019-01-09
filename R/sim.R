@@ -19,18 +19,18 @@ function (t, o, r, state_prior, Tmax, a, discount = 0.95, size = 1)
   par(mfrow = c(4, 1), mai = c(0.7, 0.6, 0.1, 0.1), cex.lab = size)
   plot1 = plot(sim$df$time, sim$df$state, yaxt = "n", pch = 19, 
     xlab = "Time (years)", ylab = "State", ylim = c(0.9, 
-      2.1), xlim = c(-2, Tmax), cex = 1.5)
+      2.1), xlim = c(-2, Tmax), cex = 2)
   legend("topleft", legend = "Extinct", bty = "n", cex = size)
   legend("bottomleft", legend = "Extant", bty = "n", cex = size)
   plot2 = plot(c(0, sim$df$time), c(a0, sim$df$action), yaxt = "n", 
     pch = 19, xlab = "Time (years)", ylab = "Action", ylim = c(0.9, 
-      3.1), xlim = c(-2, Tmax), cex = 1.5)
+      3.1), xlim = c(-2, Tmax), cex = 2)
   legend("topleft", legend = "Nothing", bty = "n", cex = size)
   legend("left", legend = "Survey", bty = "n", cex = size)
   legend("bottomleft", legend = "Manage", bty = "n", cex = size)
   plot3 = plot(sim$df$time, sim$df$obs, yaxt = "n", pch = 19, 
     xlab = "Time (years)", ylab = "Observation", ylim = c(0.9, 
-      2.1), xlim = c(-2, Tmax), cex = 1.5)
+      2.1), xlim = c(-2, Tmax), cex = 2)
   legend("topleft", legend = "Not seen", bty = "n", cex = size)
   legend("bottomleft", legend = "Seen", bty = "n", cex = size)
   sim$state_posterior = as.data.frame(sim$state_posterior)
