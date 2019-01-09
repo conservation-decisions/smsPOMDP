@@ -47,20 +47,8 @@ This function solves the main problem by calling the sarsop solver for POMDP.
 \value{
 Plot.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Luz Pascal
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
 #values for Sumatran tigers
@@ -75,9 +63,4 @@ d0 = 0.01
 d = 0.78193
 
 graph(p0, pm, d0, d, V, Cm, Cs)
-
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

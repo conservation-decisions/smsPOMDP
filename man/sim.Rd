@@ -49,28 +49,13 @@ Discount used to compute the value (default 0.95)
 Size of the text on the graph (default 1)
 }
 }
-
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
 Plot.
-}
-\references{
-%% ~put references to the literature/web site here ~
 }
 \author{
 Luz Pascal
 }
-\note{
-%%  ~~further notes~~
-}
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
 #values for Sumatran tigers
 pen = 0.1
@@ -94,7 +79,3 @@ a0 = 'Manage'
 
 sim(p0, pm, d0, d, V, Cm, Cs, state_prior, Tmax, a0)
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

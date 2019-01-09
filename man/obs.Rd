@@ -45,20 +45,8 @@ Estimated cost of survey ($/yr).
 Array, dimensions = [2,2,3], one matrix of dimensions 2,2 per action (manage, survey, nothing, in that order).
 For each matrix : rows = states, cols = observations
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Luz Pascal
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
 #values for Sumatran tigers
@@ -74,7 +62,3 @@ d = 0.78193
 
 obs(p0, pm, d0, d, V, Cm, Cs)
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
