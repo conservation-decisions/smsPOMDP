@@ -84,22 +84,16 @@ Cs = 10.840
 d0 = 0.01
 d = 0.78193
 
-#transition, observation and reward matrices
-Tr = tr(p0, pm, d0, d, V, Cm, Cs)
-Ob = obs(p0, pm, d0, d, V, Cm, Cs)
-Re = rew(p0, pm, d0, d, V, Cm, Cs)
-
 #Initial belief state
-b0 = c(0.9,0.1) #extant : 0.9, extinct : 0.1
+state_prior = c(0.9,0.1) #extant : 0.9, extinct : 0.1
 
 #Horizon of the simulation
-T = 20
+Tmax = 20
 
 #prior action
-a0 = 1 #manage
+a0 = 'Manage'
 
-sim(Tr, Ob, Re, state_prior = b0, T, a0)
-
+sim(p0, pm, d0, d, V, Cm, Cs, state_prior, Tmax, a0)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
