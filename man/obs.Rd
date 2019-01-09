@@ -37,9 +37,6 @@ Estimated cost of managing ($/yr).
 Estimated cost of survey ($/yr).
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
 %%  ~Describe the value returned
 Array, dimensions = [2,2,3], one matrix of dimensions 2,2 per action (manage, survey, nothing, in that order).

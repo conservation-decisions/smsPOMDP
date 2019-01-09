@@ -1,5 +1,5 @@
 #' @export
-sim=function(p0, pm, d0, d, V, Cm, Cs, s, T, a = c('Manage', 'Survey', 'Nothing'), dics = 0.95, size = 1)
+sim=function(p0, pm, d0, d, V, Cm, Cs, s, T, a = c('Manage', 'Survey', 'Nothing'), disc = 0.95, size = 1)
 {
   #checking presence of sarsop package
   list.of.packages <- c("sarsop")
@@ -14,7 +14,7 @@ sim=function(p0, pm, d0, d, V, Cm, Cs, s, T, a = c('Manage', 'Survey', 'Nothing'
   stopifnot(d0>=0,d0<=1) #checks if d0 is a probability
   stopifnot(d>=0,d<=1) #checks if d is a probability
   stopifnot(V>=0, Cm >= 0, Cs >= 0) #checks if values and costs are positif
-  stopifnot(dics>=0, dics <= 1) #checks if values and costs are positif
+  stopifnot(disc>=0, disc <= 1) #checks if values and costs are positif
   stopifnot(T >0) #positive horizon
 
   #buiding the matrices of the problem
@@ -22,10 +22,10 @@ sim=function(p0, pm, d0, d, V, Cm, Cs, s, T, a = c('Manage', 'Survey', 'Nothing'
   o = TigerTest::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
   r = TigerTest::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
 
-  alpha = sarsop::sarsop(t, o, r, dics, s)
+  alpha = sarsop::sarsop(t, o, r, disc, s)
   x0 = 1
   a0 = switch(a, Manage = 1, Survey = 2, Nothing = 3)
-  sim <- sarsop::sim_pomdp(t, o, r, dics, s = s,
+  sim <- sarsop::sim_pomdp(t, o, r, disc, s = s,
     x0 = x0, a0 = a0, T = T, alpha = alpha)
   graphics::par(mfrow = c(4, 1), mai = c(0.7, 0.6, 0.1, 0.1), cex.lab = size)
   plot1 = graphics::plot(sim$df$time, sim$df$state, yaxt = "n", pch = 19,
