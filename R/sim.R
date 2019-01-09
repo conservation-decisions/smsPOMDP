@@ -1,14 +1,28 @@
 #' @export
-function(tr, obs, rew, state_prior, Tmax, a, discount = 0.95, size = 1)
+function(p0, pm, d0, d, V, Cm, Cs, state_prior, Tmax, a = c('Manage', 'Survey', 'Nothing'), discount = 0.95, size = 1)
 {
+  #checking presence of sarsop package
   list.of.packages <- c("sarsop")
-  new.packages <- list.of.packages[!(list.of.packages %in%
-    installed.packages()[, "Package"])]
-  if (length(new.packages) > 0) {
+  new.packages <- list.of.packages[!(list.of.packages %in% utils::installed.packages()[,"Package"])]
+  if(length(new.packages)>0) {
     devtools::install_github("boettiger-lab/sarsop")
   }
 
-  alpha = sarsop::sarsop(tr, obs, rew, discount, state_prior)
+  #tests the inputs
+  stopifnot(p0>=0,p0<=1) #checks if p0 is a probability
+  stopifnot(pm>=0,pm<=1) #checks if pm is a probability
+  stopifnot(d0>=0,d0<=1) #checks if d0 is a probability
+  stopifnot(d>=0,d<=1) #checks if d is a probability
+  stopifnot(V>=0, Cm >= 0, Cs >= 0) #checks if values and costs are positif
+  stopifnot(discount>=0, discount <= 1) #checks if values and costs are positif
+  stopifnot(Tmax >0) #positive horizon
+
+  #buiding the matrices of the problem
+  t = TigerTest::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
+  o = TigerTest::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
+  r = TigerTest::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
+
+  alpha = sarsop::sarsop(t, o, r, discount, state_prior)
   x0 = 1
   a0 = switch(a, Manage = 1, Survey = 2, Nothing = 3)
   sim <- sarsop::sim_pomdp(t, o, r, discount, state_prior = state_prior,

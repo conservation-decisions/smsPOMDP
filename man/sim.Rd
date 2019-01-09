@@ -3,43 +3,54 @@
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Simulation function
-%%  ~~function to do ... ~~
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
 Generates (plot) a simulation for a given belief state : actions lead, observations, current state, posterior belief state
 
 }
 \usage{
-sim(tr, obs, rew, discount, state_prior, Tmax, a)
+sim(p0, pm, d0, d, V, Cm, Cs, state_prior, Tmax, a = c('Manage', 'Survey', 'Nothing'), discount = 0.95, size = 1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{tr}{
-  Transition matrix between states for each action : manage, survey and nothing. State 1 : extant, state 2 : extinct. Can be computed using  \code{\link{tr}}
+  \item{p0}{
+Local probability of persitance : P(extant/extant, survey or nothing). Number between 0 and 1
 }
-  \item{obs}{
-   observation matrix for each action : manage, survey and nothing.
-State 1 : extant, state 2 : extinct.
-Observation 1 : seen, observation 2 : not seen.
-Can be computed using  \code{\link{obs}}
+  \item{pm}{
+Local probability of persitance if managed : P(extant/extant, manage). Number between 0 and 1
 }
-  \item{rew}{
-  Reward matrix of the problem (rows for actions and cols for states). Can be computed using  \code{\link{rew}}
+  \item{d0}{
+Local probability of detection : P(present/extant, nothing or manage). Number between 0 and 1
 }
-  \item{discount}{
-  Discount used to compute the value (default 0.95)
+  \item{d}{
+Local probability of detection if surveyed : P(present/extant, survey). Number between 0 and 1
+}
+  \item{V}{
+Estimated economic value of the species ($/yr).
+}
+  \item{Cm}{
+Estimated cost of managing ($/yr).
+}
+  \item{Cs}{
+Estimated cost of survey ($/yr).
 }
   \item{state_prior}{
-  Initial belief state, vector of 2 values (belief state extant and extinct), between 0 and 1.
+Initial belief state, vector of 2 values (belief state extant and extinct), between 0 and 1.
 }
   \item{Tmax}{
   Horizon of the simulation. Integer
 }
   \item{a}{
-  prior action : 1 = manage, 2 = survey, 3 = nothing
+  prior action : 'Manage','Survey' or 'Nothing'
+}
+  \item{discount}{
+Discount used to compute the value (default 0.95)
+}
+  \item{size}{
+Size of the text on the graph (default 1)
 }
 }
+
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }

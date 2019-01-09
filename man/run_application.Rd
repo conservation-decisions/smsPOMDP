@@ -5,7 +5,7 @@
 Run application
 }
 \description{
-Runs the application which solves the POMDP problem : When to stop managing or surveying cryptic threatened species ? 
+Runs the application which solves the POMDP problem : When to stop managing or surveying cryptic threatened species ?
 }
 \usage{
 run_application()
@@ -20,11 +20,7 @@ run_application()
 Set your parameters, run a simulation or solve the problem
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Shiny R app
 }
 \references{
 %% ~put references to the literature/web site here ~

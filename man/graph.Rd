@@ -42,7 +42,7 @@ Size of the text on the graph (default 1)
 }
 }
 \details{
-This function starts computing the transition, observation and reward matrices of the problem. Calls the sarsop solver for POMDP.
+This function solves the main problem by calling the sarsop solver for POMDP.
 }
 \value{
 Plot.
