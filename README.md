@@ -1,9 +1,9 @@
-# TigerTest
+# TigerPOMDP
 R package : solving POMDP problem When to stop managing or surveying cryptic threatened species ?
 
 ``` r
-devtools::install_github("lvpascal/TigerTest")
-library(TigerTest)
+devtools::install_github("lvpascal/TigerPOMDP")
+library(TigerPOMDP)
 ```
 
 ## Problem definition
@@ -29,8 +29,8 @@ V = 175.133 #Estimated economic value of the species ($/yr)
 Cm = 18.784 #Estimated cost of managing ($/yr)
 Cs = 10.840 #Estimated cost of surveying ($/yr)
 ```
-### Buildind transition, observation and reward matrices calling TigerTest functions
-The TigerTest package provides a set of functions which compute transition, observation and reward matrices
+### Buildind transition, observation and reward matrices calling TigerPOMDP functions
+The TigerPOMDP package provides a set of functions which compute transition, observation and reward matrices
 ``` r
 #transition, observation and reward matrices
 Tr = tr(p0, pm, d0, d, V, Cm, Cs)
