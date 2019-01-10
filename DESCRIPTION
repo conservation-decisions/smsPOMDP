@@ -1,4 +1,4 @@
-Package: TigerTest
+Package: TigerPOMDP
 Title: POMDP problem solver: When to stop managing or surveying cryptic threatened species ? 
 Version: 1.1
 Authors@R: person("Luz", "Pascal", email = "luz.pascal96@gmail.com", role = c("aut", "cre"))
