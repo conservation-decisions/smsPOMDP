@@ -18,9 +18,9 @@ sim=function(p0, pm, d0, d, V, Cm, Cs, s, T, a = c('Manage', 'Survey', 'Nothing'
   stopifnot(T >0) #positive horizon
 
   #buiding the matrices of the problem
-  t = TigerTest::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
-  o = TigerTest::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
-  r = TigerTest::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
+  t = TigerPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
+  o = TigerPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
+  r = TigerPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
 
   alpha = sarsop::sarsop(t, o, r, disc, s)
   x0 = 1
