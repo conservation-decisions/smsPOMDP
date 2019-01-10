@@ -66,5 +66,5 @@ graph = function(p0, pm, d0, d, V, Cm, Cs, disc=0.95, size = 1){
     act = as.character(nodes[which(nodes$name == node),]$action)
     compt2 = compt2+1
   }
-  return(TigerTest::minigraph(compt, compt2, size))
+  return(TigerPOMDP::minigraph(compt, compt2, size))
 }
