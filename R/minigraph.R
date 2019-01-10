@@ -4,7 +4,7 @@ minigraph = function(man, sur, size = 1){
     graphics::par(mfrow = c(1,1))
     m = paste0(man,' years')
     s = paste0(sur,' years')
-    t = imager::load.image(file=paste(path.package("TigerTest"),"/extdata/im1.jpg",sep=""))
+    t = imager::load.image(file=paste(path.package("TigerPOMDP"),"/extdata/im1.jpg",sep=""))
     graphics::plot(t,axes = F)
     graphics::text(200,200,'Not seen for', cex = size)
     graphics::text(200, 250, m, cex = size)
@@ -15,7 +15,7 @@ minigraph = function(man, sur, size = 1){
   } else {
     graphics::par(mfrow = c(1,1))
     m = paste0(man,' years')
-    t = imager::load.image(file=paste(path.package("TigerTest"),"/extdata/im2.jpg",sep=""))
+    t = imager::load.image(file=paste(path.package("TigerPOMDP"),"/extdata/im2.jpg",sep=""))
     graphics::plot(t, axes = F)
     graphics::text(550,400,'Not seen for', cex = size)
     graphics::text(550, 450, m, cex = size)
