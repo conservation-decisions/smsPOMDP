@@ -50,7 +50,7 @@ A few more parameters to set and call the 'sim' function
 #Initial belief state
 state_prior = c(1,0) #extant :1, extinct : 0
 #Horizon of the simulation
-Tmax = 20
+Tmax = 15
 #prior action
 a0 = 'Manage'
 
