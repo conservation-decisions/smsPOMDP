@@ -16,9 +16,9 @@ graph = function(p0, pm, d0, d, V, Cm, Cs, disc=0.95, size = 1){
   stopifnot(disc>=0, disc <= 1) #checks if values and costs are positif
 
   #buiding the matrices of the problem
-  t = TigerTest::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
-  o = TigerTest::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
-  r = TigerTest::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
+  t = TigerPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
+  o = TigerPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
+  r = TigerPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
 
   state_prior = c(1,0) #initial belief state
   log_dir = tempdir()
