@@ -2,7 +2,14 @@
 R package : solving POMDP problem When to stop managing or surveying cryptic threatened species ?
 
 ``` r
-devtools::install_github("lvpascal/TigerPOMDP")
+#TigerPOMDP requires the previous intall of the package 'sarsop', available on github
+list.of.packages <- c("sarsop")
+new.packages <- list.of.packages[!(list.of.packages %in% utils::installed.packages()[,"Package"])]
+if(length(new.packages)>0) {
+  devtools::install_github("boettiger-lab/sarsop", host = "https://api.github.com")
+}
+
+devtools::install_github("lvpascal/TigerPOMDP", host = "https://api.github.com")
 library(TigerPOMDP)
 ```
 
