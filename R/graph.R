@@ -7,7 +7,7 @@ graph = function(p0, pm, d0, d, V, Cm, Cs, disc=0.95, size = 1){
   stopifnot(d0>=0,d0<=1) #checks if d0 is a probability
   stopifnot(d>=0,d<=1) #checks if d is a probability
   stopifnot(V>=0, Cm >= 0, Cs >= 0) #checks if values and costs are positif
-  stopifnot(disc>=0, disc <= 1) #checks if values and costs are positif
+  stopifnot(disc>=0, disc <= 1) #checks if the discount factor is between 0 and 1
 
   #buiding the matrices of the problem
   t = TigerPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
@@ -25,18 +25,23 @@ graph = function(p0, pm, d0, d, V, Cm, Cs, disc=0.95, size = 1){
   sarsop::write_pomdpx(t, o, r, disc, state_prior, file = infile)
   status <- sarsop::pomdpsol(infile, outfile, stdout = stdout)
   g = sarsop::polgraph(infile, outfile, max_depth = 100, min_prob = 0.0001,
-               max_branches = 100, output = graphout)
+                       max_branches = 100, output = graphout)
+  #analysing the graph and removing useless information
   g = readChar(graphout, file.info(graphout)$size)
   g = stringr::str_replace(g, 'shape=doublecircle', '')
+  g = stringr::str_replace(g, '  labeljust=\"l\"', '')
   g = strsplit(g, split = '\r\n')
   g = unlist(g)
+
+  #limit between nodes and edges in the file
   i = which(grepl('root -> root', g))
+
   s = function(char){return(strsplit(char, split = ' '))}
-  nodes = g[4:(i-1)]
+  nodes = g[3:(i-1)]
   nodes = unlist(lapply(nodes,s))
   nodes = matrix(nodes, ncol = 5, byrow = T)
   action = substr(nodes[,5], 2, 3)
-  nodes = data.frame(name = c('root',nodes[,1]), action = c('a1',action))
+  nodes = data.frame(name = nodes[,1], action = action)
   edges = g[i:(length(g)-1)]
   edges = unlist(lapply(edges,s))
   edges = matrix(edges, ncol = 6, byrow = T)
