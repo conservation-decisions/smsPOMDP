@@ -13,7 +13,7 @@ run_application = function(){
                      , shiny::numericInput('Cm', 'Estimated cost of managing ($/yr)', value = 18.784)
                      , shiny::numericInput('Cs', 'Estimated cost of surveying ($/yr)', min = 0, max = 1, value = 10.840)
                      , shiny::numericInput('disc', 'Discount factor', value = 0.95, max = 1, min = 0)
-                     , helpText('Parameters only for the simulation')
+                     , shiny::helpText('Parameters only for the simulation')
                      , shiny::numericInput('Tmax', 'Duration of simulation', value = 10)
                      , shiny::numericInput('b', 'Initial belief state (extant)', value = 1)
                      , shiny::selectInput('a0', 'Previous action', choices = c('Manage','Survey','Nothing'), selected = 'Manage')
