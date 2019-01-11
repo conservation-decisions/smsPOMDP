@@ -1,12 +1,6 @@
 #' @export
 sim=function(p0, pm, d0, d, V, Cm, Cs, s, T, a = c('Manage', 'Survey', 'Nothing'), disc = 0.95, size = 1)
 {
-  #checking presence of sarsop package
-  list.of.packages <- c("sarsop")
-  new.packages <- list.of.packages[!(list.of.packages %in% utils::installed.packages()[,"Package"])]
-  if(length(new.packages)>0) {
-    devtools::install_github("boettiger-lab/sarsop")
-  }
 
   #tests the inputs
   stopifnot(p0>=0,p0<=1) #checks if p0 is a probability
