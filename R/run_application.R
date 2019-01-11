@@ -2,7 +2,7 @@
 run_application = function(){
   app <- shiny::shinyApp(
     ui <- shiny::fluidPage(
-      shiny::titlePanel("POMDP problem solver: When to stop managing or surveying cryptic threatened species ?"),
+      shiny::titlePanel("POMDP solver: When to stop managing or surveying cryptic threatened species ?"),
       shiny::sidebarLayout(
         shiny::sidebarPanel("POMDP parameters"
                      , shiny::numericInput('p0', 'Local probability of persistence (if survey or nothing)', min = 0, max = 1, value = 0.9)
