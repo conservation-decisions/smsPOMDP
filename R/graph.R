@@ -34,7 +34,7 @@ graph = function(p0, pm, d0, d, V, Cm, Cs, disc=0.95, size = 1){
   g = unlist(g)
 
   #limit between nodes and edges in the file
-  i = which(grepl('root -> root', g))
+  i = min(which(grepl('->', g)))
 
   s = function(char){return(strsplit(char, split = ' '))}
   nodes = g[3:(i-1)]
@@ -49,21 +49,42 @@ graph = function(p0, pm, d0, d, V, Cm, Cs, disc=0.95, size = 1){
   edges = data.frame(from = edges[,1], dest = edges[,3], obs =obs)
 
   #looking for the number of years of management before survey
-  act = as.character(nodes$action[1])
-  node = as.character(nodes$name[1])
-  compt = 0
-  while(act == 'a1'){
-    q = edges[which(edges$from == node),]
-    node = as.character(q[which(q$obs == 'o1'),]$dest)
-    act = as.character(nodes[which(nodes$name == node),]$action)
-    compt = compt+1
+  current_action = as.character(nodes$action[1])
+  list_actions = current_action
+  current_node = as.character(nodes$name[1])
+  list_nodes = current_node
+  N = min(100, nrow(nodes))
+  while(length(list_nodes) <N){
+    q = edges[which(edges$from == current_node),]
+    next_node = as.character(q[which(q$obs == 'o1'),]$dest)
+    if (is.null(next_node)){break}
+    next_action = as.character(nodes[which(nodes$name == next_node),]$action)
+
+    if (next_node %in% list_nodes){
+      break
+    } else {
+      list_nodes = c(list_nodes, next_node)
+      list_actions = c(list_actions, next_action)
+      current_node = next_node
+    }
   }
-  compt2 = 0
-  while(act == 'a2'){
-    q = edges[which(edges$from == node),]
-    node = as.character(q[which(q$obs == 'o1'),]$dest)
-    act = as.character(nodes[which(nodes$name == node),]$action)
-    compt2 = compt2+1
+
+  a = list_actions[1]
+  act = a
+  years = numeric()
+  while(sum(years) < length(list_actions)){
+    if (length(unique(list_actions))==1){
+      i = length(list_actions)
+      years = c(years, i)
+      break
+    } else {
+      i = min(which(list_actions!= a))-1
+      list_actions = list_actions[-c(1:i)]
+      a = list_actions[1]
+      act = c(act,a)
+      years = c(years, i)
+    }
   }
-  return(TigerPOMDP::minigraph(compt, compt2, size))
+  tab = data.frame(action = act, years = years)
+  return(TigerPOMDP::minigraph(tab, size))
 }
