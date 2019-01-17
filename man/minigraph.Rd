@@ -8,15 +8,12 @@ Plots decision graph
 Plots decision graph given the number of years of management and survey
 }
 \usage{
-minigraph(man, sur, size = 1)
+minigraph(tab, size = 1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{man}{
-Number of years of management
-}
-  \item{sur}{
-Number of years of survey
+  \item{tab}{
+data.frame resuming the actions to be lead, the order and the number of years, in which they should be lead if the species is not seen
 }
   \item{size}{
 Size of the text on the graph
@@ -34,5 +31,6 @@ Luz Pascal
 \examples{
 \dontrun{
 #values of number of years of management and survey found for Sumatran tiger
-minigraph(10,2)}
+tab=data.frame(action = c('a1','a2','a3'), years = c(10,2,88))
+minigraph(tab)}
 }
