@@ -29,7 +29,7 @@ minigraph = function(tab, size = 1){
     graphics::text(550, 450, y1, cex = size)
     graphics::text(1000,200,'Seen', cex = size)
     graphics::text(620, 100, a1, cex = size)
-    graphics::text(1050, 575, a3, cex = size)
+    graphics::text(1050, 575, a2, cex = size)
   } else if (n ==1){
     a1 = switch (as.character(tab[1,1]), a1 = 'MANAGE',a2 = 'SURVEY',a3 = 'NOTHING')
     t = imager::load.image(file=paste(path.package("TigerPOMDP"),"/extdata/im1.jpg",sep=""))
