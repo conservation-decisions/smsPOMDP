@@ -19,31 +19,101 @@ sim=function(p0, pm, d0, d, V, Cm, Cs, s, T, a = c('Manage', 'Survey', 'Nothing'
   alpha = sarsop::sarsop(t, o, r, disc, s)
   x0 = 1
   a0 = switch(a, Manage = 1, Survey = 2, Nothing = 3)
-  sim <- sarsop::sim_pomdp(t, o, r, disc, s = s,
-    x0 = x0, a0 = a0, T = T, alpha = alpha)
+
+  log_dir = tempdir()
+  id <- digest::digest(match.call())
+  infile <- paste0(log_dir, "/", id, ".pomdpx")
+  outfile <- paste0(log_dir, "/", id, ".policyx")
+  stdout <- paste0(log_dir, "/", id, ".log")
+  simout <- paste0(log_dir, "/", id, ".sim")
+
+  sarsop::write_pomdpx(t, o, r, disc, s, file = infile)
+  status <- sarsop::pomdpsol(infile, outfile, stdout = stdout)
+  g = sarsop::pomdpsim(infile, outfile, simout, steps = T,
+                       simulations = 1, stdout = stdout, spinner = TRUE)
+
+  g = readChar(simout, file.info(simout)$size)
+  g = strsplit(g, split = '\r\n')
+  g = unlist(g)
+  i = min(which(grepl('R', g)))+1
+  j = which(grepl('terminated', g))-1
+  st = function(c){
+    char = c
+    char = stringr::str_replace(char, "Y   :\\(", '')
+    char = stringr::str_replace(char, 'O   :\\(', '')
+    char = stringr::str_replace(char, 'ML Y:\\(', '')
+    char = stringr::str_replace(char, 'A   :\\(', '')
+    char = stringr::str_replace(char, 'R   :', '')
+    char = stringr::str_replace(char, '\\)', '')
+    return(char)
+  }
+  sim = unlist(lapply(g[i:j], st))
+  sim=matrix(sim, ncol = 5, byrow = T)
+  colnames(sim) = c('Y', 'O', 'ML Y', 'A', 'R')
+
+  init = unlist(lapply(g[2:(i-1)], st))
+
+  state = c(init[1], sim[,1])
+  conv_state = function(asdf){
+    switch (asdf, a1 = 1, a2 = 2)
+  }
+  state = unlist(lapply(state, conv_state))
+
+  action = c(init[3], sim[,4])
+  conv_action = function(asdf){
+    switch (asdf, a1 = 1, a2 = 2, a3 = 3)
+  }
+  action = unlist(lapply(action, conv_action))
+
+  obs = c(sim[,2])
+  conv_obs = function(asdf){
+    switch (asdf, o0 = 1, o1 = 2)
+  }
+  obs = unlist(lapply(obs, conv_obs))
+
+  #calcul of belief states, extant
+  state_posterior = matrix(s, ncol = 2)
+  update_belief <- function(state_prior, transition, observation, z0, a0){
+    belief <-
+      vapply(1:length(state_prior), function(i){
+        state_prior %*% transition[, i, a0] * observation[i, z0, a0]
+      }, numeric(1))
+    belief / sum(belief)
+  }
+  for (i in c(1:(T-1))){
+    a1 = action[i]
+    o1 = obs[i]
+    s_p <- update_belief(state_posterior[i,], t, o, o1, a1)
+    state_posterior = rbind(state_posterior,s_p)
+  }
+
   graphics::par(mfrow = c(4, 1), mai = c(0.7, 0.6, 0.1, 0.1), cex.lab = size)
-  plot1 = graphics::plot(sim$df$time, sim$df$state, yaxt = "n", pch = 19,
+
+  #States
+  plot1 = graphics::plot(c(0:(T-1)), state, yaxt = "n", pch = 19,
     xlab = "Time (years)", ylab = "State", ylim = c(0.9,
       2.1), xlim = c(-2, T), cex = 2)
   graphics::legend("topleft", legend = "Extinct", bty = "n", cex = size)
   graphics::legend("bottomleft", legend = "Extant", bty = "n", cex = size)
-  plot2 = graphics::plot(c(0, sim$df$time), c(a0, sim$df$action), yaxt = "n",
+  #Actions
+  plot2 = graphics::plot(c(0:(T-1)),action, yaxt = "n",
     pch = 19, xlab = "Time (years)", ylab = "Action", ylim = c(0.9,
       3.1), xlim = c(-2, T), cex = 2)
   graphics::legend("topleft", legend = "Nothing", bty = "n", cex = size)
   graphics::legend("left", legend = "Survey", bty = "n", cex = size)
   graphics::legend("bottomleft", legend = "Manage", bty = "n", cex = size)
-  plot3 = graphics::plot(sim$df$time, sim$df$obs, yaxt = "n", pch = 19,
+  #Observation
+  plot3 = graphics::plot(c(1:(T-1)), obs, yaxt = "n", pch = 19,
     xlab = "Time (years)", ylab = "Observation", ylim = c(0.9,
       2.1), xlim = c(-2, T), cex = 2)
   graphics::legend("topleft", legend = "Not seen", bty = "n", cex = size)
   graphics::legend("bottomleft", legend = "Seen", bty = "n", cex = size)
-  sim$state_posterior = as.data.frame(sim$state_posterior)
-  names(sim$state_posterior) = c("extant", "extinct")
-  plot4 = graphics::plot(c(0:(T - 1)), sim$state_posterior$extant,
+
+
+  plot4 = graphics::plot(c(0:(T - 1)), state_posterior[,1],
     type = "l", xlab = "Time (years)", ylab = "Probabilities",
     ylim = c(0, 1), xlim = c(-2, T) )
-  graphics::lines(c(0:(T - 1)), sim$state_posterior$extinct, col = "red",
+  graphics::lines(c(0:(T - 1)), state_posterior[,2], col = "red",
     cex = size)
   graphics::legend("bottomleft", legend = c("Extant", "Extinct"), col = c("black",
     "red"), lty = 1, bty = "n", cex = size)
