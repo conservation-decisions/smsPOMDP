@@ -16,7 +16,6 @@ run_application = function(){
                      , shiny::helpText('Parameters only for the simulation')
                      , shiny::numericInput('Tmax', 'Duration of simulation', value = 10)
                      , shiny::numericInput('b', 'Initial belief state (extant)', value = 1)
-                     , shiny::selectInput('a0', 'Previous action', choices = c('Manage','Survey','Nothing'), selected = 'Manage')
                      , shiny::actionButton('sim', 'View simulation')
                      , shiny::actionButton('graph', 'View graphical solution')
         )
@@ -41,10 +40,9 @@ run_application = function(){
       b = shiny::reactive(input$b)
       state_prior = shiny::reactive({c(b(), 1-b())})
       Tmax = shiny::reactive(input$Tmax)
-      a0 = shiny::reactive(input$a0)
 
       shiny::observeEvent(input$sim, {
-        output$plot = shiny::renderPlot({TigerPOMDP::sim(p0(), pm(), d0(), d(), V(), Cm(), Cs(), state_prior(), Tmax(), a0(), disc(), size = 2)})
+        output$plot = shiny::renderPlot({TigerPOMDP::sim(p0(), pm(), d0(), d(), V(), Cm(), Cs(), state_prior(), Tmax(), disc(), size = 2)})
       })
 
       shiny::observeEvent(input$graph, {

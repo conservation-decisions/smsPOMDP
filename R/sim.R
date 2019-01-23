@@ -1,5 +1,5 @@
 #' @export
-sim=function(p0, pm, d0, d, V, Cm, Cs, s, T, a = c('Manage', 'Survey', 'Nothing'), disc = 0.95, size = 1)
+sim=function(p0, pm, d0, d, V, Cm, Cs, s, T, disc = 0.95, size = 1)
 {
 
   #tests the inputs
@@ -17,8 +17,6 @@ sim=function(p0, pm, d0, d, V, Cm, Cs, s, T, a = c('Manage', 'Survey', 'Nothing'
   r = TigerPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
 
   alpha = sarsop::sarsop(t, o, r, disc, s)
-  x0 = 1
-  a0 = switch(a, Manage = 1, Survey = 2, Nothing = 3)
 
   log_dir = tempdir()
   id <- digest::digest(match.call())
