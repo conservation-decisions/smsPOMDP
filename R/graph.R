@@ -20,7 +20,6 @@ graph = function(p0, pm, d0, d, V, Cm, Cs, disc=0.95, size = 1){
   infile <- paste0(log_dir, "/", id, ".pomdpx")
   outfile <- paste0(log_dir, "/", id, ".policyx")
   stdout <- paste0(log_dir, "/", id, ".log")
-  graphout <- paste0(log_dir, "/", id, ".dot")
 
   sarsop::write_pomdpx(t, o, r, disc, state_prior, file = infile)
   status <- sarsop::pomdpsol(infile, outfile, stdout = stdout)
