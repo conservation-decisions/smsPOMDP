@@ -26,22 +26,13 @@ graph = function(p0, pm, d0, d, V, Cm, Cs, disc=0.95, size = 1){
   policy <- sarsop::read_policyx(file = outfile)
   output <- TigerPOMDP::Interp_policy(state_prior,policy$vectors,policy$action)
 
-  update_belief <- function(state_prior, transition, observation,
-                            z0, a0) {
-    belief <- vapply(1:length(state_prior), function(i) {
-      state_prior %*% transition[, i, a0] * observation[i,
-                                                        z0, a0]
-    }, numeric(1))
-    belief/sum(belief)
-  }
-
   state_posterior = matrix(state_prior, ncol = 2)
   optimal_action = output[[2]]
   Tmax = 100
   for (i in c(1:(Tmax))) {
     a1 = optimal_action[i]
     o1 = 2 #we treat the case when the species is not seen
-    s_p <- update_belief(state_posterior[i, ], t, o, o1,
+    s_p <- TigerPOMDP::update_belief(state_posterior[i, ], t, o, o1,
                          a1)
     state_posterior = rbind(state_posterior, s_p)
     output <- Interp_policy(s_p,policy$vectors,policy$action)

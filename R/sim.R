@@ -71,17 +71,11 @@ sim=function(p0, pm, d0, d, V, Cm, Cs, s, T, disc = 0.95, size = 1)
 
   #calcul of belief states, extant
   state_posterior = matrix(s, ncol = 2)
-  update_belief <- function(state_prior, transition, observation, z0, a0){
-    belief <-
-      vapply(1:length(state_prior), function(i){
-        state_prior %*% transition[, i, a0] * observation[i, z0, a0]
-      }, numeric(1))
-    belief / sum(belief)
-  }
+
   for (i in c(1:(T-1))){
     a1 = action[i]
     o1 = obs[i]
-    s_p <- update_belief(state_posterior[i,], t, o, o1, a1)
+    s_p <- TigerPOMDP::update_belief(state_posterior[i,], t, o, o1, a1)
     state_posterior = rbind(state_posterior,s_p)
   }
 
