@@ -24,63 +24,45 @@ graph = function(p0, pm, d0, d, V, Cm, Cs, disc=0.95, size = 1){
 
   sarsop::write_pomdpx(t, o, r, disc, state_prior, file = infile)
   status <- sarsop::pomdpsol(infile, outfile, stdout = stdout)
-  g = sarsop::polgraph(infile, outfile, max_depth = 100, min_prob = 0.0001,
-                       max_branches = 100, output = graphout)
-  #analysing the graph and removing useless information
-  g = readChar(graphout, file.info(graphout)$size)
-  g = stringr::str_replace(g, 'shape=doublecircle', '')
-  g = stringr::str_replace(g, '  labeljust=\"l\"', '')
-  g = strsplit(g, split = '\r\n')
-  g = unlist(g)
+  policy <- sarsop::read_policyx(file = outfile)
+  output <- TigerPOMDP::Interp_policy(state_prior,policy$vectors,policy$action)
 
-  #limit between nodes and edges in the file
-  i = min(which(grepl('->', g)))
-
-  s = function(char){return(strsplit(char, split = ' '))}
-  nodes = g[3:(i-1)]
-  nodes = unlist(lapply(nodes,s))
-  nodes = matrix(nodes, ncol = 5, byrow = T)
-  action = substr(nodes[,5], 2, 3)
-  nodes = data.frame(name = nodes[,1], action = action)
-  edges = g[i:(length(g)-1)]
-  edges = unlist(lapply(edges,s))
-  edges = matrix(edges, ncol = 6, byrow = T)
-  obs = substr(edges[,5], 2, 3)
-  edges = data.frame(from = edges[,1], dest = edges[,3], obs =obs)
-
-  #looking for the number of years of management before survey
-  current_action = as.character(nodes$action[1])
-  list_actions = current_action
-  current_node = as.character(nodes$name[1])
-  list_nodes = current_node
-  N = min(100, nrow(nodes))
-  while(length(list_nodes) <N){
-    q = edges[which(edges$from == current_node),]
-    next_node = as.character(q[which(q$obs == 'o1'),]$dest)
-    if (is.null(next_node)){break}
-    next_action = as.character(nodes[which(nodes$name == next_node),]$action)
-
-    if (next_node %in% list_nodes){
-      break
-    } else {
-      list_nodes = c(list_nodes, next_node)
-      list_actions = c(list_actions, next_action)
-      current_node = next_node
-    }
+  update_belief <- function(state_prior, transition, observation,
+                            z0, a0) {
+    belief <- vapply(1:length(state_prior), function(i) {
+      state_prior %*% transition[, i, a0] * observation[i,
+                                                        z0, a0]
+    }, numeric(1))
+    belief/sum(belief)
   }
 
-  a = list_actions[1]
+  state_posterior = matrix(state_prior, ncol = 2)
+  optimal_action = output[[2]]
+  Tmax = 100
+  for (i in c(1:(Tmax))) {
+    a1 = optimal_action[i]
+    o1 = 2 #we treat the case when the species is not seen
+    s_p <- update_belief(state_posterior[i, ], t, o, o1,
+                         a1)
+    state_posterior = rbind(state_posterior, s_p)
+    output <- Interp_policy(s_p,policy$vectors,policy$action)
+
+    optimal_action = c(optimal_action, output[[2]])
+  }
+
+
+  a = optimal_action[1]
   act = a
   years = numeric()
-  while(sum(years) < length(list_actions)){
-    if (length(unique(list_actions))==1){
-      i = length(list_actions)
+  while(sum(years) < length(optimal_action)){
+    if (length(unique(optimal_action))==1){
+      i = length(optimal_action)
       years = c(years, i)
       break
     } else {
-      i = min(which(list_actions!= a))-1
-      list_actions = list_actions[-c(1:i)]
-      a = list_actions[1]
+      i = min(which(optimal_action!= a))-1
+      optimal_action = optimal_action[-c(1:i)]
+      a = optimal_action[1]
       act = c(act,a)
       years = c(years, i)
     }
