@@ -1,5 +1,5 @@
 #' @export
-past_actions=function(input)
+past_obs=function(input)
 {
   depth = input$length_past
   tablo = c()
@@ -7,14 +7,14 @@ past_actions=function(input)
     tablo = c(tablo,input[[paste0('submit_couple_', i)]])
   }
   if (0 %in% tablo){
-      id = which.min(tablo) - 1
+    id = which.min(tablo) - 1
   } else {
     id = depth
   }
 
-  act = c()
+  obs = c()
   for (i in c(1:id)){
-    act = c(act, input[[paste0('past_action_', i)]])
+    obs = c(obs, input[[paste0('past_obs_', i)]])
   }
-  return(act)
+  return(obs)
 }

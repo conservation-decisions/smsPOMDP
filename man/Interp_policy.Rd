@@ -5,7 +5,7 @@
 Computes the best policy
 }
 \description{
-Given the policy and the initial belief state, returns the action which maximizes the value
+Given the policy and the initial belief state, returns the action which maximizes the value, and the corresponding value
 }
 \usage{
 Interp_policy(initial, alpha, alpha_action)
