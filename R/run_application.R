@@ -46,7 +46,7 @@ run_application = function(){
       })
 
       shiny::observeEvent(input$graph, {
-        output$plot = shiny::renderPlot({TigerPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), disc(), size = 2)})
+        output$plot = shiny::renderPlot({TigerPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), c(1,0), disc(), size = 2)})
       })
     }
   )
