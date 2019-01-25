@@ -47,7 +47,7 @@ plot_stream=function(p0, pm, d0, d, V, Cm, Cs, s, act, obs, disc = 0.95, size = 
   graphics::legend("left", legend = "Survey", bty = "n", cex = size)
   graphics::legend("bottomleft", legend = "Manage", bty = "n", cex = size)
   #Observation
-  plot3 = graphics::plot(c(1:(T-1)), observation, yaxt = "n", pch = 19,
+  plot3 = graphics::plot(c(1:(T)), observation, yaxt = "n", pch = 19,
                          xlab = "Time (years)", ylab = "Observation", ylim = c(0.9,
                                                                                2.1), xlim = c(-2, T), cex = 2)
   graphics::legend("topleft", legend = "Not seen", bty = "n", cex = size)
