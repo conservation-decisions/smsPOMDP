@@ -7,4 +7,4 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: shiny, stringr, readr, methods, imager, rlang, devtools, digest, graphics
-RoxygenNote: 6.1.0.9000
+RoxygenNote: 6.1.1
