@@ -29,8 +29,8 @@ compute_belief=function(p0, pm, d0, d, V, Cm, Cs, s, act, obs, disc = 0.95, size
 
   #calcul of belief states, extant
   state_posterior = matrix(s, ncol = 2)
-
-  for (i in c(1:(T-1))){
+  Tmax = length(act)
+  for (i in c(1:(Tmax))){
     a1 = action[i]
     o1 = observation[i]
     s_p <- TigerPOMDP::update_belief(state_posterior[i,], t, o, o1, a1)
