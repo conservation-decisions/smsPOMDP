@@ -129,7 +129,7 @@ run_application = function(){
       current_belief = shiny::reactive(TigerPOMDP::compute_belief(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc()))
       #
       observeEvent(input$submit_couple_1, {
-        output$past_plot = shiny::renderPlot(TigerPOMDP::plot_stream(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc()))
+        output$past_plot = shiny::renderPlot(TigerPOMDP::plot_stream(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc(), size = 2))
       })
       observeEvent(input$next_policy, {
         output$next_policy_plot = shiny::renderPlot({TigerPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), current_belief(), disc())})
