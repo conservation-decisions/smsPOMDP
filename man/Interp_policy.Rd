@@ -34,12 +34,6 @@ Milad Memarzadeh
 
 \examples{
 \dontrun{
-#requires prior installation of the package sarsop and devtools
-list.of.packages <- c("sarsop")
-new.packages <- list.of.packages[!(list.of.packages %in% utils::installed.packages()[,"Package"])]
-if(length(new.packages)>0) {
-  devtools::install_github("boettiger-lab/sarsop", host = "https://api.github.com")
-}
 #values for Sumatran tigers
 pen = 0.1
 p0 = 1-pen

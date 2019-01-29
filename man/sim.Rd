@@ -8,7 +8,7 @@ Simulation function
 Generates (plot) a simulation for a given belief state : actions lead, observations, current state, posterior belief state
 }
 \usage{
-sim(p0, pm, d0, d, V, Cm, Cs, s, T, disc=0.95, size=1)
+sim(p0, pm, d0, d, V, Cm, Cs, state_prior, T, disc=0.95, size=1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -33,14 +33,14 @@ Estimated cost of managing ($/yr).
   \item{Cs}{
 Estimated cost of survey ($/yr).
 }
-  \item{s}{
+  \item{state_prior}{
 Initial belief state, vector of 2 values (belief state extant and extinct), between 0 and 1.
 }
   \item{T}{
   Horizon of the simulation. Integer
 }
   \item{disc}{
-Discount used to compute the value (default 0.95)
+Discount factor used to compute the policy (default 0.95)
 }
   \item{size}{
 Size of the text on the graph (default 1)
@@ -72,10 +72,7 @@ state_prior = c(0.9,0.1) #extant : 0.9, extinct : 0.1
 #Horizon of the simulation
 Tmax = 20
 
-#prior action
-a0 = 'Manage'
-
-sim(p0, pm, d0, d, V, Cm, Cs, state_prior, Tmax, a0)
+sim(p0, pm, d0, d, V, Cm, Cs, state_prior, Tmax)
  }
 
 }

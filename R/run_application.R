@@ -88,7 +88,8 @@ run_application = function(){
       observeEvent(input$submit_length_past,{
         output$past_control = shiny::renderUI({
           shiny::tagList(
-            shiny::h5(paste0('Year ', 1))
+            shiny::numericInput(inputId = 'past_init_b', 'Initial belief state (extant)', value = 1, min = 0, max = 1)
+            , shiny::h5(paste0('Year ', 1))
             , shiny::selectInput(inputId = paste0("past_action_", 1)
                                  ,label = 'Action'
                                  ,choices = c('Manage', 'Survey', 'Nothing')
@@ -124,10 +125,11 @@ run_application = function(){
 
       p_a = shiny::reactive(TigerPOMDP::past_actions(input)) #past actions
       p_o = shiny::reactive(TigerPOMDP::past_obs(input)) #past observations
-      current_belief = shiny::reactive(TigerPOMDP::compute_belief(p0(), pm(), d0(), d(), V(), Cm(), Cs(),c(1,0), p_a(), p_o(), disc()))
+      init_belief = shiny::reactive({c(input$past_init_b, 1-input$past_init_b)}) #initial belief state
+      current_belief = shiny::reactive(TigerPOMDP::compute_belief(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc()))
       #
       observeEvent(input$submit_couple_1, {
-        output$past_plot = shiny::renderPlot(TigerPOMDP::plot_stream(p0(), pm(), d0(), d(), V(), Cm(), Cs(),c(1,0), p_a(), p_o(), disc()))
+        output$past_plot = shiny::renderPlot(TigerPOMDP::plot_stream(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc()))
       })
       observeEvent(input$next_policy, {
         output$next_policy_plot = shiny::renderPlot({TigerPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), current_belief(), disc())})

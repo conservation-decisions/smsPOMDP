@@ -1,5 +1,5 @@
 #' @export
-compute_belief=function(p0, pm, d0, d, V, Cm, Cs, s, act, obs, disc = 0.95, size = 1)
+compute_belief=function(p0, pm, d0, d, V, Cm, Cs, state_prior, act, obs, disc = 0.95, size = 1)
 {
 
   #tests the inputs
@@ -28,7 +28,7 @@ compute_belief=function(p0, pm, d0, d, V, Cm, Cs, s, act, obs, disc = 0.95, size
   observation = unlist(lapply(obs, conv_obs))
 
   #calcul of belief states, extant
-  state_posterior = matrix(s, ncol = 2)
+  state_posterior = matrix(state_prior, ncol = 2)
   Tmax = length(act)
   for (i in c(1:(Tmax))){
     a1 = action[i]

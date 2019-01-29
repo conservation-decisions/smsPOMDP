@@ -30,7 +30,7 @@ plot_stream=function(p0, pm, d0, d, V, Cm, Cs, s, act, obs, disc = 0.95, size = 
   #calcul of belief states, extant
   state_posterior = matrix(s, ncol = 2)
 
-  for (i in c(1:(T-1))){
+  for (i in c(1:(T))){
     a1 = action[i]
     o1 = observation[i]
     s_p <- TigerPOMDP::update_belief(state_posterior[i,], t, o, o1, a1)
@@ -54,10 +54,10 @@ plot_stream=function(p0, pm, d0, d, V, Cm, Cs, s, act, obs, disc = 0.95, size = 
   graphics::legend("bottomleft", legend = "Seen", bty = "n", cex = size)
 
 
-  plot4 = graphics::plot(c(0:(T - 1)), state_posterior[,1],
+  plot4 = graphics::plot(c(0:(T)), state_posterior[,1],
                          type = "l", xlab = "Time (years)", ylab = "Probabilities",
                          ylim = c(0, 1), xlim = c(-2, T) )
-  graphics::lines(c(0:(T - 1)), state_posterior[,2], col = "red",
+  graphics::lines(c(0:(T)), state_posterior[,2], col = "red",
                   cex = size)
   graphics::legend("bottomleft", legend = c("Extant", "Extinct"), col = c("black",
                                                                           "red"), lty = 1, bty = "n", cex = size)

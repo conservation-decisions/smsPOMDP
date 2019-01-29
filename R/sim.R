@@ -1,5 +1,5 @@
 #' @export
-sim=function(p0, pm, d0, d, V, Cm, Cs, s, T, disc = 0.95, size = 1)
+sim=function(p0, pm, d0, d, V, Cm, Cs, state_prior, T, disc = 0.95, size = 1)
 {
 
   #tests the inputs
@@ -16,7 +16,7 @@ sim=function(p0, pm, d0, d, V, Cm, Cs, s, T, disc = 0.95, size = 1)
   o = TigerPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
   r = TigerPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
 
-  alpha = sarsop::sarsop(t, o, r, disc, s)
+  alpha = sarsop::sarsop(t, o, r, disc, state_prior)
 
   log_dir = tempdir()
   id <- digest::digest(match.call())
@@ -25,7 +25,7 @@ sim=function(p0, pm, d0, d, V, Cm, Cs, s, T, disc = 0.95, size = 1)
   stdout <- paste0(log_dir, "/", id, ".log")
   simout <- paste0(log_dir, "/", id, ".sim")
 
-  sarsop::write_pomdpx(t, o, r, disc, s, file = infile)
+  sarsop::write_pomdpx(t, o, r, disc, state_prior, file = infile)
   status <- sarsop::pomdpsol(infile, outfile, stdout = stdout)
   g = sarsop::pomdpsim(infile, outfile, simout, steps = T,
                        simulations = 1, stdout = stdout, spinner = TRUE)
@@ -70,7 +70,7 @@ sim=function(p0, pm, d0, d, V, Cm, Cs, s, T, disc = 0.95, size = 1)
   obs = unlist(lapply(obs, conv_obs))
 
   #calcul of belief states, extant
-  state_posterior = matrix(s, ncol = 2)
+  state_posterior = matrix(state_prior, ncol = 2)
 
   for (i in c(1:(T-1))){
     a1 = action[i]
