@@ -1,7 +1,5 @@
 #' @export
 Interp_policy = function(initial, alpha, alpha_action){
-  library(purrr)
-
   ## Compute dot product with initial
   a <- initial %*% alpha
 
