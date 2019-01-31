@@ -13,12 +13,14 @@ run_application = function(){
                             , shiny::numericInput('Cm', 'Estimated cost of managing ($/yr)', value = 18.784)
                             , shiny::numericInput('Cs', 'Estimated cost of surveying ($/yr)', min = 0, max = 1, value = 10.840)
                             , shiny::numericInput('disc', 'Discount factor', value = 0.95, max = 1, min = 0)
-                            , shiny::helpText('Parameters only for the simulation')
-                            , shiny::numericInput('Tmax', 'Duration of simulation', value = 10)
-                            , shiny::numericInput('b', 'Initial belief state (extant)', value = 1)
                             , shiny::actionButton('sim', 'View simulation')
                             , shiny::actionButton('graph', 'View graphical solution')
-                            , shiny::actionButton('past', 'Set past management stream')
+                            , shiny::actionButton('past', 'Set history of management and observations')
+                            , shiny::conditionalPanel('input.sim'
+                                                     , shiny::helpText('Parameters only for the simulation')
+                                                     , shiny::numericInput('Tmax', 'Duration of simulation', value = 10)
+                                                     , shiny::numericInput('b', 'Initial belief state (extant)', value = 1)
+                                                      )
         )
         , shiny::mainPanel(""
                            , shiny::uiOutput('main')
@@ -99,7 +101,7 @@ run_application = function(){
                                  ,choices = c('Seen', 'Not_seen')
                                  , selected = 'Seen')
             , shiny::actionButton(inputId = paste0("submit_couple_", 1)
-                                  , label = 'Submit couple')
+                                  , label = 'Submit')
             , conditionalPanel('input.length_past > 1',
                                lapply(c(2:input$length_past),
                                       function(i){
@@ -114,7 +116,7 @@ run_application = function(){
                                                                                      ,choices = c('Seen', 'Not_seen')
                                                                                      , selected = 'Seen')
                                                                 , shiny::actionButton(inputId = paste0("submit_couple_", i)
-                                                                                      , label = 'Submit couple')
+                                                                                      , label = 'Submit')
                                         )
 
                                       })
