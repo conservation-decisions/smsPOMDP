@@ -50,6 +50,7 @@ Discount factor used to compute the policy (default 0.95)
   \item{size}{
 Size of the text on the graph (default 1)
 }
+}
 \value{
 Plot.
 }
