@@ -7,7 +7,7 @@ Plot history of belief states
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
-Plots succession of actions, observations and belief state given the list of past actions and observations. Mostly used by  \code{\link{run_application}}
+Plots succession of actions, observations and belief states given the list of past actions and observations 
 }
 \usage{
 plot_stream(p0, pm, d0, d, V, Cm, Cs, s, act, obs, disc = 0.95, size = 1)
