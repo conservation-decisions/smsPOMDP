@@ -5,7 +5,7 @@
 List of past observations
 }
 \description{
-Called by the shinyApp (run_application). Returns a list of the past actions given the input
+Returns a list of the past observations given an input
 }
 \usage{
 past_obs(input)
