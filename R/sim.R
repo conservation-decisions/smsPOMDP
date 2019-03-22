@@ -12,9 +12,9 @@ sim=function(p0, pm, d0, d, V, Cm, Cs, state_prior, T, disc = 0.95, size = 1)
   stopifnot(T >0) #positive horizon
 
   #buiding the matrices of the problem
-  t = TigerPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
-  o = TigerPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
-  r = TigerPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
+  t = smsPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
+  o = smsPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
+  r = smsPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
 
   alpha = sarsop::sarsop(t, o, r, disc, state_prior)
 
@@ -75,7 +75,7 @@ sim=function(p0, pm, d0, d, V, Cm, Cs, state_prior, T, disc = 0.95, size = 1)
   for (i in c(1:(T-1))){
     a1 = action[i]
     o1 = obs[i]
-    s_p <- TigerPOMDP::update_belief(state_posterior[i,], t, o, o1, a1)
+    s_p <- smsPOMDP::update_belief(state_posterior[i,], t, o, o1, a1)
     state_posterior = rbind(state_posterior,s_p)
   }
 
