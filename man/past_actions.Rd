@@ -5,7 +5,7 @@
 List of past actions
 }
 \description{
-Called by the shinyApp (run_application). Returns a list of the past actions given the input
+Returns a list of the past actions given an input
 }
 \usage{
 past_actions(input)
