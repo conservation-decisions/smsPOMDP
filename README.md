@@ -1,16 +1,16 @@
-# TigerPOMDP
+# smsPOMDP
 R package : solving POMDP problem When to stop managing or surveying cryptic threatened species ?
 
 ``` r
-#TigerPOMDP requires the previous intall of the package 'sarsop', available on github
+#smsPOMDP requires the previous intall of the package 'sarsop', available on github
 list.of.packages <- c("sarsop")
 new.packages <- list.of.packages[!(list.of.packages %in% utils::installed.packages()[,"Package"])]
 if(length(new.packages)>0) {
   devtools::install_github("boettiger-lab/sarsop", host = "https://api.github.com")
 }
 
-devtools::install_github("lvpascal/TigerPOMDP", host = "https://api.github.com")
-library(TigerPOMDP)
+devtools::install_github("lvpascal/smsPOMDP", host = "https://api.github.com")
+library(smsPOMDP)
 ```
 
 ## Problem definition
@@ -36,8 +36,8 @@ V = 175.133 #Estimated economic value of the species ($/yr)
 Cm = 18.784 #Estimated cost of managing ($/yr)
 Cs = 10.840 #Estimated cost of surveying ($/yr)
 ```
-### Buildind transition, observation and reward matrices calling TigerPOMDP functions
-The TigerPOMDP package provides a set of functions which compute transition, observation and reward matrices
+### Buildind transition, observation and reward matrices calling smsPOMDP functions
+The smsPOMDP package provides a set of functions which compute transition, observation and reward matrices
 ``` r
 #transition, observation and reward matrices
 Tr = tr(p0, pm, d0, d, V, Cm, Cs)
