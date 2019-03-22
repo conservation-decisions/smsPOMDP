@@ -5,7 +5,7 @@
 Simulation function
 }
 \description{
-Generates (plot) a simulation for a given belief state : actions lead, observations, current state, posterior belief state
+Plots a simulation for a given belief state : action implemented, observation, current state, posterior belief state
 }
 \usage{
 sim(p0, pm, d0, d, V, Cm, Cs, state_prior, T, disc=0.95, size=1)
