@@ -48,7 +48,7 @@ run_application = function(){
       #different scenarios depending on the users choice
       #launch a simulation
       shiny::observeEvent(input$sim, {
-        output$plot = shiny::renderPlot({TigerPOMDP::sim(p0(), pm(), d0(), d(), V(), Cm(), Cs(), state_prior(), Tmax(), disc(), size = 2)})
+        output$plot = shiny::renderPlot({smsPOMDP::sim(p0(), pm(), d0(), d(), V(), Cm(), Cs(), state_prior(), Tmax(), disc(), size = 2)})
         output$main = renderUI({
           shiny::plotOutput('plot', height = '1000px')
         })
@@ -56,7 +56,7 @@ run_application = function(){
 
       #see decision graph
       shiny::observeEvent(input$graph, {
-        output$plot = shiny::renderPlot({TigerPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), c(1,0), disc(), size = 2)})
+        output$plot = shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), c(1,0), disc(), size = 2)})
         output$main = renderUI({
           shiny::plotOutput('plot', height = '1000px')
         })
@@ -125,16 +125,16 @@ run_application = function(){
         })
       })
 
-      p_a = shiny::reactive(TigerPOMDP::past_actions(input)) #past actions
-      p_o = shiny::reactive(TigerPOMDP::past_obs(input)) #past observations
+      p_a = shiny::reactive(smsPOMDP::past_actions(input)) #past actions
+      p_o = shiny::reactive(smsPOMDP::past_obs(input)) #past observations
       init_belief = shiny::reactive({c(input$past_init_b, 1-input$past_init_b)}) #initial belief state
-      current_belief = shiny::reactive(TigerPOMDP::compute_belief(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc()))
+      current_belief = shiny::reactive(smsPOMDP::compute_belief(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc()))
       #
       observeEvent(input$submit_couple_1, {
-        output$past_plot = shiny::renderPlot(TigerPOMDP::plot_stream(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc(), size = 2))
+        output$past_plot = shiny::renderPlot(smsPOMDP::plot_stream(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc(), size = 2))
       })
       observeEvent(input$next_policy, {
-        output$next_policy_plot = shiny::renderPlot({TigerPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), current_belief(), disc())})
+        output$next_policy_plot = shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), current_belief(), disc())})
       })
 
 
