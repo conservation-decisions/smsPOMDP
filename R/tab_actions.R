@@ -9,7 +9,7 @@ tab_actions = function(transition, observation, reward, state_prior, disc = 0.95
   sarsop::write_pomdpx(transition, observation, reward, disc, state_prior, file = infile)
   status <- sarsop::pomdpsol(infile, outfile, stdout = stdout)
   policy <- sarsop::read_policyx(file = outfile)
-  output <- TigerPOMDP::Interp_policy(state_prior,policy$vectors,policy$action)
+  output <- smsPOMDP::Interp_policy(state_prior,policy$vectors,policy$action)
 
   state_posterior = matrix(state_prior, ncol = 2)
   optimal_action = output[[2]]
@@ -17,7 +17,7 @@ tab_actions = function(transition, observation, reward, state_prior, disc = 0.95
   for (i in c(1:(Tmax))) {
     a1 = optimal_action[i]
     o1 = 2 #we treat the case when the species is not seen
-    s_p <- TigerPOMDP::update_belief(state_posterior[i, ], transition, observation, o1,
+    s_p <- smsPOMDP::update_belief(state_posterior[i, ], transition, observation, o1,
                                      a1)
     state_posterior = rbind(state_posterior, s_p)
     output <- Interp_policy(s_p,policy$vectors,policy$action)
