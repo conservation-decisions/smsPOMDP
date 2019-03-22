@@ -13,18 +13,18 @@ graph = function(p0, pm, d0, d, V, Cm, Cs, state_prior, disc=0.95, size = 1){
   stopifnot(disc>=0, disc <= 1) #checks if the discount factor is between 0 and 1
 
   #buiding the matrices of the problem
-  t = TigerPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
-  o = TigerPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
-  r = TigerPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
+  t = smsPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
+  o = smsPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
+  r = smsPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
 
    #initial belief state
   if (state_prior[1] == 1){
-    tab = TigerPOMDP::tab_actions(t,o,r,state_prior,disc)
-    return(TigerPOMDP::minigraph(tab, tab2 = NULL, size = size))
+    tab = smsPOMDP::tab_actions(t,o,r,state_prior,disc)
+    return(smsPOMDP::minigraph(tab, tab2 = NULL, size = size))
   } else {
-    tab = TigerPOMDP::tab_actions(t,o,r,c(1,0),disc)
-    tab2 = TigerPOMDP::tab_actions(t,o,r,state_prior,disc)
-    return(TigerPOMDP::minigraph(tab, tab2, size))
+    tab = smsPOMDP::tab_actions(t,o,r,c(1,0),disc)
+    tab2 = smsPOMDP::tab_actions(t,o,r,state_prior,disc)
+    return(smsPOMDP::minigraph(tab, tab2, size))
   }
 
 }
