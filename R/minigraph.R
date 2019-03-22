@@ -9,7 +9,7 @@ minigraph = function(tab, tab2=NULL, size = 1){
       a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','NOTHING')
       a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','NOTHING')
       a3 = switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','NOTHING')
-      t = imager::load.image(file=paste(path.package("TigerPOMDP"),"/extdata/im3.jpg",sep=""))
+      t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im3.jpg",sep=""))
       graphics::plot(t, axes = F)
       graphics::text(200,200,'Not seen for', cex = size)
       graphics::text(200, 250, y1, cex = size)
