@@ -12,9 +12,9 @@ plot_stream=function(p0, pm, d0, d, V, Cm, Cs, s, act, obs, disc = 0.95, size = 
   stopifnot(length(act)==length(obs)) #checks if there is the same number of actions and observations
 
   #buiding the matrices of the problem
-  t = TigerPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
-  o = TigerPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
-  r = TigerPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
+  t = smsPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
+  o = smsPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
+  r = smsPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
 
   T = length(act)
   conv_action = function(asdf){
@@ -33,7 +33,7 @@ plot_stream=function(p0, pm, d0, d, V, Cm, Cs, s, act, obs, disc = 0.95, size = 
   for (i in c(1:(T))){
     a1 = action[i]
     o1 = observation[i]
-    s_p <- TigerPOMDP::update_belief(state_posterior[i,], t, o, o1, a1)
+    s_p <- smsPOMDP::update_belief(state_posterior[i,], t, o, o1, a1)
     state_posterior = rbind(state_posterior,s_p)
   }
 
