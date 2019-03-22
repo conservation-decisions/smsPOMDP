@@ -35,12 +35,12 @@ Luz Pascal
 \dontrun{
 #values of number of years of management and survey found for Sumatran tiger, if state prior is c(1,0)
 state_prior = c(1,0)
-tab = TigerPOMDP::tab_actions(transition, observation, reward, state_prior, disc = 0.95)
+tab = smsPOMDP::tab_actions(transition, observation, reward, state_prior, disc = 0.95)
 minigraph(tab)
 
 #if state prior != c(1,0)
-tab = TigerPOMDP::tab_actions(transition, observation, reward, c(1,0), disc = 0.95)
-tab2 = TigerPOMDP::tab_actions(transition, observation, reward, c(0.6,0.4), disc = 0.95)
+tab = smsPOMDP::tab_actions(transition, observation, reward, c(1,0), disc = 0.95)
+tab2 = smsPOMDP::tab_actions(transition, observation, reward, c(0.6,0.4), disc = 0.95)
 minigraph(tab, tab2)
 }
 }
