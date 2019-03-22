@@ -5,7 +5,7 @@
 Plots decision graph
 }
 \description{
-Plots decision graph given the number of successive years per action
+Plots optimal policy graph given a data.frame summarizing the optimal policy
 }
 \usage{
 minigraph(tab, tab2=NULL, size = 1)
