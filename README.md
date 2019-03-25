@@ -47,7 +47,8 @@ Re = rew(p0, pm, d0, d, V, Cm, Cs)
 ### Resolution of POMDP
 You only need to call the 'graph' function, which will provide a decisions diagram
 ``` r
-graph(p0, pm, d0, d, V, Cm, Cs)
+state_prior = c(0.9,0.1) #extant : 0.9, extinct : 0.1
+graph(p0, pm, d0, d, V, Cm, Cs, state_prior)
 ```
 ![](decision-graph.png)<!-- -->
 
@@ -55,13 +56,12 @@ graph(p0, pm, d0, d, V, Cm, Cs)
 A few more parameters to set and call the 'sim' function
 ``` r
 #Initial belief state
-state_prior = c(1,0) #extant :1, extinct : 0
-#Horizon of the simulation
-Tmax = 15
-#prior action
-a0 = 'Manage'
+state_prior = c(0.9,0.1) #extant : 0.9, extinct : 0.1
 
-sim(p0, pm, d0, d, V, Cm, Cs, state_prior, Tmax, a0)
+#Horizon of the simulation
+Tmax = 20
+
+sim(p0, pm, d0, d, V, Cm, Cs, state_prior, Tmax)
 ```
 ![](simulation.png)<!-- -->
 ### Running the app
