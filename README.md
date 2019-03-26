@@ -9,7 +9,7 @@ if(length(new.packages)>0) {
   devtools::install_github("boettiger-lab/sarsop", host = "https://api.github.com")
 }
 
-devtools::install_github("lvpascal/smsPOMDP", host = "https://api.github.com")
+devtools::install_github("conservation-decisions/smsPOMDP", host = "https://api.github.com")
 library(smsPOMDP)
 ```
 
