@@ -18,8 +18,8 @@ run_application = function(){
                             , shiny::actionButton('past', 'Set history of management and observations')
                             , shiny::conditionalPanel('input.sim'
                                                      , shiny::helpText('Parameters only for the simulation')
-                                                     , shiny::numericInput('Tmax', 'Duration of simulation', value = 10)
-                                                     , shiny::numericInput('b', 'Initial belief state (extant)', value = 1)
+                                                     , shiny::numericInput('Tmax', 'Duration of simulation', value = 10, min = 1)
+                                                     , shiny::numericInput('b', 'Initial belief state (extant)', value = 1, min = 0, max = 1)
                                                       )
         )
         , shiny::mainPanel(""
