@@ -1,0 +1,1 @@
+exdata folder contains all the images that might be loaded by the app
