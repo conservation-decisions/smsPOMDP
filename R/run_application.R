@@ -17,20 +17,20 @@ run_application = function(){
                             , shiny::actionButton('graph', 'View graphical solution')
                             , shiny::actionButton('past', 'Set history of management and observations')
                             , shiny::conditionalPanel('input.sim'
-                                                     , shiny::helpText('Parameters only for the simulation')
-                                                     , shiny::numericInput('Tmax', 'Duration of simulation', value = 10, min = 1)
-                                                     , shiny::numericInput('b', 'Initial belief state (extant)', value = 1, min = 0, max = 1)
-                                                      )
+                                                      , shiny::helpText('Parameters only for the simulation')
+                                                      , shiny::numericInput('Tmax', 'Duration of simulation', value = 10, min = 1)
+                                                      , shiny::numericInput('b', 'Initial belief state (extant)', value = 1, min = 0, max = 1)
+                            )
         )
         , shiny::mainPanel(""
                            , shiny::uiOutput('main')
-
+                           
         )
       )
-
+      
     ),
-
-
+    
+    
     server <- function(input, output, session){
       #Inputs
       p0 = shiny::reactive(input$p0)
@@ -44,7 +44,7 @@ run_application = function(){
       b = shiny::reactive(input$b)
       state_prior = shiny::reactive({c(b(), 1-b())})
       Tmax = shiny::reactive(input$Tmax)
-
+      
       #different scenarios depending on the users choice
       #launch a simulation
       shiny::observeEvent(input$sim, {
@@ -53,7 +53,7 @@ run_application = function(){
           shiny::plotOutput('plot', height = '1000px')
         })
       })
-
+      
       #see decision graph
       shiny::observeEvent(input$graph, {
         output$plot = shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), c(1,0), disc(), size = 2)})
@@ -61,11 +61,11 @@ run_application = function(){
           shiny::plotOutput('plot', height = '1000px')
         })
       })
-
+      
       #################################################################################
       #give a set of past actions and observations and see the best following strategy#
       #################################################################################
-
+      
       #correponding panel
       shiny::observeEvent(input$past, {
         output$main = renderUI({
@@ -77,15 +77,18 @@ run_application = function(){
             )
             , shiny::column(width = 9
                             , shiny::plotOutput('past_plot')
-                            , shiny::actionButton('next_policy', 'Next policy')
-                            , shiny::plotOutput('next_policy_plot')
+                            , shiny::conditionalPanel('input.submit_couple_1'
+                                                      , shiny::actionButton('next_policy', 'Next policy')
+                                                      , shiny::plotOutput('next_policy_plot')                    
+                            )
+
             )
-
-
+            
+            
           )
         })
       })
-
+      
       #set past management stream
       observeEvent(input$submit_length_past,{
         output$past_control = shiny::renderUI({
@@ -118,13 +121,13 @@ run_application = function(){
                                                                 , shiny::actionButton(inputId = paste0("submit_couple_", i)
                                                                                       , label = 'Submit')
                                         )
-
+                                        
                                       })
             )
           )
         })
       })
-
+      
       p_a = shiny::reactive(smsPOMDP::past_actions(input)) #past actions
       p_o = shiny::reactive(smsPOMDP::past_obs(input)) #past observations
       init_belief = shiny::reactive({c(input$past_init_b, 1-input$past_init_b)}) #initial belief state
@@ -136,8 +139,8 @@ run_application = function(){
       observeEvent(input$next_policy, {
         output$next_policy_plot = shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), current_belief(), disc())})
       })
-
-
+      
+      
     }
   )
   shiny::runApp(app)
