@@ -33,14 +33,29 @@ Luz Pascal
 }
 \examples{
 \dontrun{
-#values of number of years of management and survey found for Sumatran tiger, if state prior is c(1,0)
-state_prior = c(1,0)
-tab = smsPOMDP::tab_actions(transition, observation, reward, state_prior, disc = 0.95)
-minigraph(tab)
+##values for Sumatran tigers
+pen = 0.1
+p0 = 1-pen
+pem = 0.05816
+pm = 1 - pem
+V = 175.133
+Cm = 18.784
+Cs = 10.840
+d0 = 0.01
+d = 0.78193
+disc = 0.95
 
-#if state prior != c(1,0)
-tab = smsPOMDP::tab_actions(transition, observation, reward, c(1,0), disc = 0.95)
-tab2 = smsPOMDP::tab_actions(transition, observation, reward, c(0.6,0.4), disc = 0.95)
-minigraph(tab, tab2)
+
+state_prior = c(1,0)
+t = smsPOMDP::tr(p0, pm, d0, d, V, Cm, Cs)
+o = smsPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)
+r = smsPOMDP::rew(p0, pm, d0, d, V, Cm, Cs)
+tab = smsPOMDP::tab_actions(t, o, r, state_prior, disc)
+smsPOMDP::minigraph(tab)
+
+state_prior = c(0.3,0.7)
+tab = smsPOMDP::tab_actions(t, o, r, c(1, 0), disc)
+tab2 = smsPOMDP::tab_actions(t, o, r, state_prior, disc)
+smsPOMDP::minigraph(tab, tab2)
 }
 }
