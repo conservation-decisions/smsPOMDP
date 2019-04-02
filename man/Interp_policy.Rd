@@ -46,9 +46,9 @@ d0 = 0.01
 d = 0.78193
 
   #buiding the matrices of the problem
-  t = TigerPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
-  o = TigerPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
-  r = TigerPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
+  t = smsPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
+  o = smsPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
+  r = smsPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
 
   state_prior = c(1,0) #initial belief state
   log_dir = tempdir()
@@ -60,7 +60,7 @@ d = 0.78193
   sarsop::write_pomdpx(t, o, r, disc, state_prior, file = infile)
   status <- sarsop::pomdpsol(infile, outfile, stdout = stdout)
   policy <- sarsop::read_policyx(file = outfile)
-  output <- TigerPOMDP::Interp_policy(state_prior,policy$vectors,policy$action)
+  output <- smsPOMDP::Interp_policy(state_prior,policy$vectors,policy$action)
 
   }
 }
