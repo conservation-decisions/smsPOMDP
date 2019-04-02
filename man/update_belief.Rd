@@ -49,8 +49,8 @@ d0 = 0.01
 d = 0.78193
 
 state_prior = c(1,0)
-t = TigerPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
-o = TigerPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
+t = smsPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
+o = smsPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
 
 z0 = 2 #Not seen
 a0 = 1 #manage
