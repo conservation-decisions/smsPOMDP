@@ -29,7 +29,7 @@ Discount factor used to compute the policy (default 0.95)
 }
 }
 \value{
-data.frame summarising the policy if the species is not seen. actions (1 = Manage, 2 = Survey, 3 = Nothing) and number of successive years per action.
+data.frame summarising the policy if the species is not seen. actions (1 = Manage, 2 = Survey, 3 = Stop) and number of successive years per action.
 }
 \author{
 Luz Pascal
