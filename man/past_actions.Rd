@@ -17,7 +17,7 @@ input items of the shinyApp (run_application)
 }
 }
 \value{
-Vector of the past actions. Values in c('Manage', 'Survey', 'Nothing')
+Vector of the past actions. Values in c('Manage', 'Survey', 'Stop')
 }
 \author{
 Luz Pascal
