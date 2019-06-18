@@ -13,17 +13,17 @@ graph(p0, pm, d0, d, V, Cm, Cs, state_prior, disc=0.95, size = 1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{p0}{
-Local probability of persitance : P(extant/extant, survey or nothing). Number between 0 and 1
+    \item{p0}{
+Local probability of persitance : P(extant/extant, survey or stop).
 }
   \item{pm}{
-Local probability of persitance if managed : P(extant/extant, manage). Number between 0 and 1
+Local probability of persitance if manage : P(extant/extant, manage).
 }
   \item{d0}{
-Local probability of detection : P(present/extant, nothing or manage). Number between 0 and 1
+Local probability of detection : P(present/extant, stop or manage).
 }
   \item{d}{
-Local probability of detection if surveyed : P(present/extant, survey). Number between 0 and 1
+Local probability of detection if survey : P(present/extant, survey).
 }
   \item{V}{
 Estimated economic value of the species ($/yr).
