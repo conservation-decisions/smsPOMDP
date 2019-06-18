@@ -89,7 +89,7 @@ graphics::legend("bottomleft", legend = "Extant", bty = "n",
 plot2 = graphics::plot(c(0:(T - 1)), actions, yaxt = "n", 
                        pch = 19, xlab = "Time (years)", ylab = "Action", ylim = c(0.9, 
                                                                                   3.1), xlim = c(-2, T), cex = 2)
-graphics::legend("topleft", legend = "Nothing", bty = "n", 
+graphics::legend("topleft", legend = "Stop", bty = "n", 
                  cex = size)
 graphics::legend("left", legend = "Survey", bty = "n", cex = size)
 graphics::legend("bottomleft", legend = "Manage", bty = "n", 
