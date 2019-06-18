@@ -6,9 +6,9 @@ minigraph = function(tab, tab2=NULL, size = 1){
       graphics::par(mfrow = c(1,1))
       y1 = paste0(tab[1,2],' years')
       y2 = paste0(tab[2,2],' years')
-      a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','NOTHING')
-      a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','NOTHING')
-      a3 = switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','NOTHING')
+      a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
+      a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
+      a3 = switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','STOP')
       t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im3.jpg",sep=""))
       graphics::plot(t, axes = F)
       graphics::text(200,200,'Not seen for', cex = size)
@@ -22,8 +22,8 @@ minigraph = function(tab, tab2=NULL, size = 1){
       graphics::text(1050, 575, a3, cex = size)
     } else if (n ==2){
       y1 = paste0(tab[1,2],' years')
-      a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','NOTHING')
-      a2 = switch (as.numeric(as.character(tab[2,1])), 'MANAGE','SURVEY','NOTHING')
+      a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
+      a2 = switch (as.numeric(as.character(tab[2,1])), 'MANAGE','SURVEY','STOP')
       t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im2.jpg",sep=""))
       graphics::plot(t, axes = F)
       graphics::text(550,400,'Not seen for', cex = size)
@@ -32,7 +32,7 @@ minigraph = function(tab, tab2=NULL, size = 1){
       graphics::text(620, 100, a1, cex = size)
       graphics::text(1050, 575, a2, cex = size)
     } else if (n ==1){
-      a1 = switch (as.numeric(as.character(tab[1,1])),'MANAGE','SURVEY','NOTHING')
+      a1 = switch (as.numeric(as.character(tab[1,1])),'MANAGE','SURVEY','STOP')
       t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im1.jpg",sep=""))
       graphics::plot(t, axes = F)
       graphics::text(650, 350, a1, cex = size*3)
@@ -42,16 +42,16 @@ minigraph = function(tab, tab2=NULL, size = 1){
     n2 = nrow(tab2)
     if (n2==3){
       #text for solution if starting from c(1,0)
-      a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','NOTHING')
-      a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','NOTHING')
-      a3 = switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','NOTHING')
+      a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
+      a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
+      a3 = switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','STOP')
       y1 = paste0(tab[1,2],' years')
       y2 = paste0(tab[2,2],' years')
 
       #text for solution if starting from another state prior
-      a4 = switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','NOTHING')
-      a5 = switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','NOTHING')
-      a6 = switch (as.numeric(as.character(tab2[3,1])),'MANAGE','SURVEY','NOTHING')
+      a4 = switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
+      a5 = switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','STOP')
+      a6 = switch (as.numeric(as.character(tab2[3,1])),'MANAGE','SURVEY','STOP')
       y3 = paste0(tab2[1,2],' years')
       y4 = paste0(tab2[2,2],' years')
 
@@ -84,15 +84,15 @@ minigraph = function(tab, tab2=NULL, size = 1){
     } else if (n2==2){
       if (n == 3){
         #text for solution if starting from c(1,0)
-        a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','NOTHING')
-        a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','NOTHING')
-        a3 = switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','NOTHING')
+        a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
+        a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
+        a3 = switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','STOP')
         y1 = paste0(tab[1,2],' years')
         y2 = paste0(tab[2,2],' years')
 
         #text for solution if starting from another state prior
-        a4 = switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','NOTHING')
-        a5 = switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','NOTHING')
+        a4 = switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
+        a5 = switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','STOP')
         y3 = paste0(tab2[1,2],' years')
 
         t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im3_2.jpg",sep=""))
@@ -118,13 +118,13 @@ minigraph = function(tab, tab2=NULL, size = 1){
 
       } else if (n==2){
         #text for solution if starting from c(1,0)
-        a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','NOTHING')
-        a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','NOTHING')
+        a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
+        a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
         y1 = paste0(tab[1,2],' years')
 
         #text for solution if starting from another state prior
-        a4 = switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','NOTHING')
-        a5 = switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','NOTHING')
+        a4 = switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
+        a5 = switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','STOP')
         y3 = paste0(tab2[1,2],' years')
 
         t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im2_2.jpg",sep=""))
@@ -149,14 +149,14 @@ minigraph = function(tab, tab2=NULL, size = 1){
     } else if (n2==1){
       if (n == 3){
         #text for solution if starting from c(1,0)
-        a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','NOTHING')
-        a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','NOTHING')
-        a3 = switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','NOTHING')
+        a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
+        a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
+        a3 = switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','STOP')
         y1 = paste0(tab[1,2],' years')
         y2 = paste0(tab[2,2],' years')
 
         #text for solution if starting from another state prior
-        a4 = switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','NOTHING')
+        a4 = switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
 
         t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im3_1.jpg",sep=""))
         graphics::plot(t, axes = F)
@@ -177,13 +177,13 @@ minigraph = function(tab, tab2=NULL, size = 1){
 
       } else if (n==2){
         #text for solution if starting from c(1,0)
-        a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','NOTHING')
-        a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','NOTHING')
+        a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
+        a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
         y1 = paste0(tab[1,2],' years')
 
         #text for solution if starting from another state prior
-        a4 = switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','NOTHING')
-        a5 = switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','NOTHING')
+        a4 = switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
+        a5 = switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','STOP')
         y3 = paste0(tab2[1,2],' years')
 
         t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im2_1.jpg",sep=""))
@@ -199,7 +199,7 @@ minigraph = function(tab, tab2=NULL, size = 1){
         graphics::text(400,80, 'Seen', cex = size)
         graphics::text(200, 100, a4, cex = size)
       } else if (n==1){
-        a1 = switch (as.numeric(as.character(tab[1,1])),'MANAGE','SURVEY','NOTHING')
+        a1 = switch (as.numeric(as.character(tab[1,1])),'MANAGE','SURVEY','STOP')
         t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im1.jpg",sep=""))
         graphics::plot(t, axes = F)
         graphics::text(650, 350, a1, cex = size*3)
