@@ -25,7 +25,7 @@ observation matrix for each action, can be computed using \code{\link{obs}}
 Observation, integer (1 for seen, 2 for not seen)
 }
   \item{a0}{
-Prior action, integer (1 for manage, 2 for survey, 3 for nothing)
+Prior action, integer (1 for manage, 2 for survey, 3 for stop)
 }
 
 }
