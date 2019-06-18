@@ -18,7 +18,7 @@ compute_belief=function(p0, pm, d0, d, V, Cm, Cs, state_prior, act, obs, disc = 
 
   T = length(act)
   conv_action = function(asdf){
-    switch (asdf, Manage = 1, Survey = 2, Nothing = 3)
+    switch (asdf, Manage = 1, Survey = 2, Stop = 3)
   }
   action = unlist(lapply(act, conv_action))
 
