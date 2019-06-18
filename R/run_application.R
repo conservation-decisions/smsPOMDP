@@ -5,10 +5,10 @@ run_application = function(){
       shiny::titlePanel("POMDP solver: When to stop managing or surveying cryptic threatened species ?"),
       shiny::sidebarLayout(
         shiny::sidebarPanel("POMDP parameters"
-                            , shiny::numericInput('p0', 'Local probability of persistence (if survey or nothing)', min = 0, max = 1, value = 0.9)
-                            , shiny::numericInput('pm', 'Local probability of persistence (if managed)', min = 0, max = 1, value = 0.94184)
-                            , shiny::numericInput('d0', 'Local probability of detection (if managed or nothing)', min = 0, max = 1, value = 0.01)
-                            , shiny::numericInput('d', 'Local probability of detection (if surveyed)', min = 0, max = 1, value = 0.78193)
+                            , shiny::numericInput('p0', 'Local probability of persistence (if survey or stop)', min = 0, max = 1, value = 0.9)
+                            , shiny::numericInput('pm', 'Local probability of persistence (if manage)', min = 0, max = 1, value = 0.94184)
+                            , shiny::numericInput('d0', 'Local probability of detection (if manage or stop)', min = 0, max = 1, value = 0.01)
+                            , shiny::numericInput('d', 'Local probability of detection (if survey)', min = 0, max = 1, value = 0.78193)
                             , shiny::numericInput('V', 'Estimated economic value of the species ($/yr)', value = 175.133)
                             , shiny::numericInput('Cm', 'Estimated cost of managing ($/yr)', value = 18.784)
                             , shiny::numericInput('Cs', 'Estimated cost of surveying ($/yr)', min = 0, max = 1, value = 10.840)
@@ -97,7 +97,7 @@ run_application = function(){
             , shiny::h5(paste0('Year ', 1))
             , shiny::selectInput(inputId = paste0("past_action_", 1)
                                  ,label = 'Action'
-                                 ,choices = c('Manage', 'Survey', 'Nothing')
+                                 ,choices = c('Manage', 'Survey', 'Stop')
                                  , selected = 'Manage')
             , shiny::selectInput(inputId = paste0("past_obs_", 1)
                                  ,label = 'Observation'
@@ -112,7 +112,7 @@ run_application = function(){
                                                                 , shiny::h5(paste0('Year ', i))
                                                                 , shiny::selectInput(inputId = paste0("past_action_", i)
                                                                                      ,label = 'Action'
-                                                                                     ,choices = c('Manage', 'Survey', 'Nothing')
+                                                                                     ,choices = c('Manage', 'Survey', 'Stop')
                                                                                      , selected = 'Manage')
                                                                 , shiny::selectInput(inputId = paste0("past_obs_", i)
                                                                                      ,label = 'Observation'
