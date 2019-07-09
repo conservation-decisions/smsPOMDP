@@ -49,7 +49,7 @@ run_application = function(){
       #launch a simulation
       shiny::observeEvent(input$sim, {
         output$plot = shiny::renderPlot({smsPOMDP::sim(p0(), pm(), d0(), d(), V(), Cm(), Cs(), state_prior(), Tmax(), disc(), size = 2)})
-        output$main = renderUI({
+        output$main = shiny::renderUI({
           shiny::plotOutput('plot', height = '1000px')
         })
       })
@@ -57,7 +57,7 @@ run_application = function(){
       #see decision graph
       shiny::observeEvent(input$graph, {
         output$plot = shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), c(1,0), disc(), size = 2)})
-        output$main = renderUI({
+        output$main = shiny::renderUI({
           shiny::plotOutput('plot', height = '1000px')
         })
       })
@@ -68,7 +68,7 @@ run_application = function(){
       
       #correponding panel
       shiny::observeEvent(input$past, {
-        output$main = renderUI({
+        output$main = shiny::renderUI({
           shiny::tagList(
             shiny::column(width = 2
                           , shiny::numericInput('length_past', "Number of years for past management", value = 1, min = 1)
@@ -90,7 +90,7 @@ run_application = function(){
       })
       
       #set past management stream
-      observeEvent(input$submit_length_past,{
+      shiny::observeEvent(input$submit_length_past,{
         output$past_control = shiny::renderUI({
           shiny::tagList(
             shiny::numericInput(inputId = 'past_init_b', 'Initial belief state (extant)', value = 1, min = 0, max = 1)
@@ -105,7 +105,7 @@ run_application = function(){
                                  , selected = 'Seen')
             , shiny::actionButton(inputId = paste0("submit_couple_", 1)
                                   , label = 'Submit')
-            , conditionalPanel('input.length_past > 1',
+            , shiny::conditionalPanel('input.length_past > 1',
                                lapply(c(2:input$length_past),
                                       function(i){
                                         shiny::conditionalPanel(paste0('input.submit_couple_', i-1)
@@ -133,10 +133,10 @@ run_application = function(){
       init_belief = shiny::reactive({c(input$past_init_b, 1-input$past_init_b)}) #initial belief state
       current_belief = shiny::reactive(smsPOMDP::compute_belief(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc()))
       #
-      observeEvent(input$submit_couple_1, {
+      shiny::observeEvent(input$submit_couple_1, {
         output$past_plot = shiny::renderPlot(smsPOMDP::plot_stream(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc(), size = 2))
       })
-      observeEvent(input$next_policy, {
+      shiny::observeEvent(input$next_policy, {
         output$next_policy_plot = shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), current_belief(), disc())})
       })
       
