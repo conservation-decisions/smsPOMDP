@@ -1,5 +1,8 @@
 #' @export
 tab_actions = function(transition, observation, reward, state_prior, disc = 0.95){
+  stopifnot(check_square_stochastic(t[,,1]))
+  stopifnot(check_square_stochastic(t[,,2]))
+  stopifnot(check_square_stochastic(t[,,3]))
   log_dir = tempdir()
   id <- digest::digest(match.call())
   infile <- paste0(log_dir, "/", id, ".pomdpx")
