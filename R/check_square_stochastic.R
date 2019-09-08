@@ -1,5 +1,9 @@
 #' @export
 check_square_stochastic = function(X){
+  #X is a matrix
+  #returns a bool
+  #T if x is a square stochastic matrix
+  #F otherwise
   error_msg = T
   s1 <- dim(X)[1]
   s2 <- dim(X)[2]
