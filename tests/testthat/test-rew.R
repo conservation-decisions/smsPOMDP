@@ -15,7 +15,7 @@ test_that("reward matrix", {
   r = smsPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
   
   #checking the dimensions of the matrices
-  expect_equal(dim(o)[1],2)#2 states
-  expect_equal(dim(o)[2],3)#3 actions
+  expect_equal(dim(r)[1],2)#2 states
+  expect_equal(dim(r)[2],3)#3 actions
   
 })

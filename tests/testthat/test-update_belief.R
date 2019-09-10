@@ -14,7 +14,7 @@ test_that("Compute current belief state given past action, observation and initi
   #Initial belief state
   state_prior = c(0.9,0.1) #extant : 0.9, extinct : 0.1
   
-  #test1: last observation is not seen: current belief state is not[1,0]
+  #test1: last observation is not seen
   t = smsPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
   o = smsPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
   
@@ -26,9 +26,8 @@ test_that("Compute current belief state given past action, observation and initi
   expect_gte(current[1],0)
   expect_gte(current[2],0)
   expect_lte(current[1],1)
-  expect_lte(current[2],2)
+  expect_lte(current[2],1)
   expect_equal(current[1]+current[2],1)#current should be a probability distribution
-  expect_lt(current[1],1)# last observation is seen: current belief state is [1,0], the species is extant
   
   #test2: last observation is seen: current belief state is [1,0], the species is extant
   #previous actions and observations
@@ -45,17 +44,8 @@ test_that("Compute current belief state given past action, observation and initi
   expect_gte(current[1],0)
   expect_gte(current[2],0)
   expect_lte(current[1],1)
-  expect_lte(current[2],2)
-  expect_equal(current[1]+current[2],1)#current should be a probability distribution
-  expect_lt(current[1],1)# last observation is seen: current belief state is [1,0], the species is extant
-  
-  #is current a distribution over 2 states
-  expect_length(current,2)#belief state: 2 states, length of current is 2
-  expect_gte(current[1],0)
-  expect_gte(current[2],0)
-  expect_lte(current[1],1)
-  expect_lte(current[2],2)
+  expect_lte(current[2],1)
   expect_equal(current[1]+current[2],1)#current should be a probability distribution
   expect_equal(current[1],1)# last observation is seen: current belief state is [1,0], the species is extant
-  
+ 
 })

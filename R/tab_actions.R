@@ -1,8 +1,13 @@
 #' @export
-tab_actions = function(transition, observation, reward, state_prior, disc = 0.95){
-  stopifnot(check_square_stochastic(t[,,1]))
-  stopifnot(check_square_stochastic(t[,,2]))
-  stopifnot(check_square_stochastic(t[,,3]))
+tab_actions = function(transition, observation, reward, state_prior, disc = 0.95, Tmax = 100){
+  stopifnot(check_square_stochastic(transition[,,1]))
+  stopifnot(check_square_stochastic(transition[,,2]))
+  stopifnot(check_square_stochastic(transition[,,3]))
+  
+  stopifnot(check_stochastic(observation[,,1]))
+  stopifnot(check_stochastic(observation[,,2]))
+  stopifnot(check_stochastic(observation[,,3]))
+  
   log_dir = tempdir()
   id <- digest::digest(match.call())
   infile <- paste0(log_dir, "/", id, ".pomdpx")
@@ -16,7 +21,7 @@ tab_actions = function(transition, observation, reward, state_prior, disc = 0.95
 
   state_posterior = matrix(state_prior, ncol = 2)
   optimal_action = output[[2]]
-  Tmax = 100
+  
   for (i in c(1:(Tmax))) {
     a1 = optimal_action[i]
     o1 = 2 #we treat the case when the species is not seen
