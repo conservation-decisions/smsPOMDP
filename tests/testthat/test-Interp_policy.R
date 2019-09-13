@@ -10,7 +10,7 @@ test_that("Interp_policy returns action and value function", {
   V = 175.133 #Estimated economic value of the species ($/yr)
   Cm = 18.784 #Estimated cost of managing ($/yr)
   Cs = 10.840 #Estimated cost of surveying ($/yr)
-  
+  disc = 0.95
   #buiding the matrices of the problem
   t = smsPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
   o = smsPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
@@ -28,6 +28,6 @@ test_that("Interp_policy returns action and value function", {
   policy <- sarsop::read_policyx(file = outfile)
   output <- smsPOMDP::Interp_policy(state_prior,policy$vectors,policy$action)
   
-  expect_length(output, 2)#value and actions
+  expect_equal(length(output), 2)#value and actions
   
 })
