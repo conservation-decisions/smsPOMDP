@@ -18,5 +18,5 @@ test_that("plots have known output", {
   disp_plot_stream = function () smsPOMDP::plot_stream(p0, pm, d0, d, V, Cm, Cs, s, act, obs, disc = 0.95, size = 1)
   
   vdiffr::expect_doppelganger("disp-plot-stream-base", disp_plot_stream)
-  
+  #plot checked using the package vdiffr
 })
