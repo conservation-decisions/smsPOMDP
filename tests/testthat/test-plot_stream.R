@@ -1,4 +1,5 @@
 library("ggplot2")
+context('smsPOMDP')
 
 test_that("plots have known output", {
   #values for Sumatran tigers

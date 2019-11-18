@@ -9,7 +9,12 @@ minigraph = function(tab, tab2=NULL, size = 1, test = F){
       a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
       a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
       a3 = switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','STOP')
-      t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im3.jpg",sep=""))
+      if (test){
+        t = imager::load.image(file=paste(path.package("smsPOMDP"),"/inst/extdata/im3.jpg",sep=""))
+      } else {
+        t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im3.jpg",sep=""))
+      }
+      # t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im3.jpg",sep=""))
       graphics::plot(t, axes = F)
       graphics::text(200,200,'Not seen for', cex = size)
       graphics::text(200, 250, y1, cex = size)
@@ -212,9 +217,9 @@ minigraph = function(tab, tab2=NULL, size = 1, test = F){
         y3 = paste0(tab2[1,2],' years')
         
         if (test){
-          t = imager::load.image(file=paste(path.package("smsPOMDP"),"/inst/extdata/im3_1.jpg",sep=""))
+          t = imager::load.image(file=paste(path.package("smsPOMDP"),"/inst/extdata/im2_1.jpg",sep=""))
         } else {
-          t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im3_1.jpg",sep=""))
+          t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im2_1.jpg",sep=""))
         }
         
         graphics::plot(t, axes = F)

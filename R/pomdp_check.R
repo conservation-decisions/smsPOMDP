@@ -9,7 +9,7 @@ pomdp_check = function(transition, observation, reward, state_prior){
   a1 <- dim(transition)[3]#number of actions
 
   if (s1 < 1 | a1 < 1 | s1 != s2) {
-    error_msg <- "MDP Toolbox ERROR: The transition matrix must be on the form P(S,S,A) with S : number of states greater than 0 and A : number of action greater than 0"
+    error_msg <- "The transition matrix must be on the form P(S,S,A) with S : number of states greater than 0 and A : number of action greater than 0"
     is_error_detected <- T
   }
   if (!is_error_detected) {
@@ -29,13 +29,13 @@ pomdp_check = function(transition, observation, reward, state_prior){
       s3 <- dim(reward)[1]#number of states of the reward matrix
       a2 <- dim(reward)[2]#number of actions of the reward matrix
     if (s3 < 1 | a2 < 1) {
-      error_msg <- "MDP Toolbox ERROR: The reward matrix R must be an array (S,S,A) or (SxA) with S : number of states greater than 0 and A : number of actions greater than 0"
+      error_msg <- "The reward matrix R must be an array (SxA) with S : number of states greater than 0 and A : number of actions greater than 0"
       is_error_detected <- T
     }
   }
   if (!is_error_detected) {
     if (s1 != s3 | a1 != a2) {
-      error_msg <- "MDP Toolbox ERROR: Incompatibility between transition and reward dimensions"
+      error_msg <- "Incompatibility between transition and reward dimensions"
       is_error_detected <- T
     }
   }
@@ -46,16 +46,16 @@ pomdp_check = function(transition, observation, reward, state_prior){
     o1 <- dim(observation)[1]#number of states of the reward matrix
     a3 <- dim(reward)[2]#number of actions of the reward matrix
     if (s4 < 1 | a3 < 1) {
-      error_msg <- "MDP Toolbox ERROR: The reward matrix R must be an array (S,S,A) or (SxA) with S : number of states greater than 0 and A : number of actions greater than 0"
+      error_msg <- "The reward matrix R must be an array (S,S,A) or (SxA) with S : number of states greater than 0 and A : number of actions greater than 0"
       is_error_detected <- T
     }
   }
   if (!is_error_detected) {
     if (s1 != s4 | a1 != a3) {
-      error_msg <- "MDP Toolbox ERROR: Incompatibility between transition and observation dimensions"
+      error_msg <- "Incompatibility between transition and observation dimensions"
       is_error_detected <- T
     }
   }
   
-  return(error_msg)
+  return(is_error_detected)
 }

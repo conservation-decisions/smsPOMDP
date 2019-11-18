@@ -1,5 +1,5 @@
 #' @export
-graph = function(p0, pm, d0, d, V, Cm, Cs, state_prior, disc=0.95, size = 1){
+graph = function(p0, pm, d0, d, V, Cm, Cs, state_prior, disc=0.95, size = 1, test = F){
 
   #tests the inputs
   stopifnot(p0>=0,p0<=1) #checks if p0 is a probability
@@ -20,11 +20,11 @@ graph = function(p0, pm, d0, d, V, Cm, Cs, state_prior, disc=0.95, size = 1){
    #initial belief state
   if (state_prior[1] == 1){
     tab = smsPOMDP::tab_actions(t,o,r,state_prior,disc)
-    return(smsPOMDP::minigraph(tab, tab2 = NULL, size = size))
+    return(smsPOMDP::minigraph(tab, tab2 = NULL, size = size, test))
   } else {
     tab = smsPOMDP::tab_actions(t,o,r,c(1,0),disc)
     tab2 = smsPOMDP::tab_actions(t,o,r,state_prior,disc)
-    return(smsPOMDP::minigraph(tab, tab2, size))
+    return(smsPOMDP::minigraph(tab, tab2, size, test))
   }
 
 }
