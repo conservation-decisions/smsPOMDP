@@ -1,7 +1,7 @@
 library("ggplot2")
 context('smsPOMDP')
 
-test_that("plots have known output", {
+test_that("plot_stream: plots have known output", {
   #values for Sumatran tigers
   pen = 0.1
   p0 = 1-pen
