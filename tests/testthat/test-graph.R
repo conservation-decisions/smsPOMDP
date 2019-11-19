@@ -1,6 +1,6 @@
 context("smsPOMDP")
 
-test_that("test main_graph", {
+test_that("test graph", {
   pen = 0.1 #local probability of extinction P(extinct/extant, survey or nothing)
   p0 = 1-pen #local probability of persitance P(extant/extant, manage)
   pem = 0.05816 #local probability of extinction if managed P(extinct/extant, manage)
@@ -14,8 +14,8 @@ test_that("test main_graph", {
   #buiding the matrices of the problem
   #Initial belief state
   state_prior = c(0.9,0.1) #extant : 0.9, extinct : 0.1
-  
-  disp_main_graph = function() smsPOMDP::main_graph(p0, pm, d0, d, V, Cm, Cs, state_prior)
-  vdiffr::expect_doppelganger("disp_main_graph_base",
-                              disp_main_graph)
+
+  disp_graph = function() smsPOMDP::graph(p0, pm, d0, d, V, Cm, Cs, state_prior)
+  vdiffr::expect_doppelganger("disp_graph_base",
+                              disp_graph)
 })

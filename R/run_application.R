@@ -33,17 +33,47 @@ run_application = function(){
     
     server <- function(input, output, session){
       #Inputs
-      p0 = shiny::reactive(input$p0)
-      pm = shiny::reactive(input$pm)
-      d0 = shiny::reactive(input$d0)
-      d = shiny::reactive(input$d)
-      V = shiny::reactive(input$V)
-      Cm = shiny::reactive(input$Cm)
-      Cs = shiny::reactive(input$Cs)
-      disc = shiny::reactive(input$disc)
-      b = shiny::reactive(input$b)
+      p0 <- reactive({
+        validate( need(input$p0 >=0 & input$p0 <=1 , "Please select local probability of persistence (if survey or stop) between 0 and 1") )
+        input$p0
+      })
+      pm <- reactive({
+        validate( need(input$pm >=0 & input$pm<=1 , "Please select local probability of persistence (if manage) between 0 and 1") )
+        input$pm
+      })
+      d0 <- reactive({
+        validate( need(input$d0 >=0 & input$d0 <=1 , "Please select local probability of detection (if manage or stop) between 0 and 1") )
+        input$d0
+      })
+      d <- reactive({
+        validate( need(input$d >=0 & input$d <=1 , "Please select local probability of detection (if survey) between 0 and 1") )
+        input$d
+      })
+      V <- reactive({
+        validate( need(input$V >=0 , "Please select estimated economic value of the species ($/yr) positive") )
+        input$V
+      })
+      Cm <- reactive({
+        validate( need(input$Cm >=0, "Please select estimated cost of managing ($/yr) positive") )
+        input$Cm
+      })
+      Cs <- reactive({
+        validate( need(input$Cs >=0, "Please select estimated cost of survey ($/yr) positive") )
+        input$Cs
+      })
+      disc <- reactive({
+        validate( need(input$disc >=0 & input$disc <=1 , "Please select a discount factor between 0 and 1") )
+        input$disc
+      })
+      b <- reactive({
+        validate( need(input$b >=0 & input$b <=1 , "Please select initial belief state (extant) between 0 and 1") )
+        input$b
+      })
       state_prior = shiny::reactive({c(b(), 1-b())})
-      Tmax = shiny::reactive(input$Tmax)
+      Tmax <- reactive({
+        validate( need(input$Tmax >=0, "Please select a positive duration of simulation") )
+        input$Tmax
+      })
       
       #different scenarios depending on the users choice
       #launch a simulation
@@ -56,7 +86,7 @@ run_application = function(){
       
       #see decision graph
       shiny::observeEvent(input$graph, {
-        output$plot = shiny::renderPlot({smsPOMDP::main_graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), c(1,0), disc(), size = 2)})
+        output$plot = shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), c(1,0), disc(), size = 2)})
         output$main = shiny::renderUI({
           shiny::plotOutput('plot', height = '1000px')
         })
@@ -130,18 +160,21 @@ run_application = function(){
       
       p_a = shiny::reactive(smsPOMDP::past_actions(input)) #past actions
       p_o = shiny::reactive(smsPOMDP::past_obs(input)) #past observations
-      init_belief = shiny::reactive({c(input$past_init_b, 1-input$past_init_b)}) #initial belief state
+      init_belief = shiny::reactive({
+        validate( need(input$past_init_b >=0 & input$past_init_b <=1 , "Please select initial belief state (extant) between 0 and 1") )
+        c(input$past_init_b, 1-input$past_init_b)
+        }) #initial belief state
       current_belief = shiny::reactive(smsPOMDP::compute_belief(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc()))
       #
       shiny::observeEvent(input$submit_couple_1, {
         output$past_plot = shiny::renderPlot(smsPOMDP::plot_stream(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc(), size = 2))
       })
       shiny::observeEvent(input$next_policy, {
-        output$next_policy_plot = shiny::renderPlot({smsPOMDP::main_graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), current_belief(), disc())})
+        output$next_policy_plot = shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), current_belief(), disc())})
       })
       
       
     }
   )
-  shiny::runApp(app)
+  shiny::shinyApp(ui, server)
 }

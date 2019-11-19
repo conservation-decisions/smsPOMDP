@@ -258,11 +258,6 @@ minigraph = function(tab, tab2=NULL, size = 1){
         a1 = switch (as.numeric(as.character(tab[1,1])),'MANAGE','SURVEY','STOP')
         fpath = system.file("extdata", "im1.jpg", package="smsPOMDP")
         t = imager::load.image(file=fpath)
-        # if (test){
-        #   t = imager::load.image(file=paste(path.package("smsPOMDP"),"/inst/extdata/im1.jpg",sep=""))
-        # } else {
-        #   t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im1.jpg",sep=""))
-        # }
         graphics::plot(t, axes = F)
         graphics::text(650, 350, a1, cex = size*3)
       }

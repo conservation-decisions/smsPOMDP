@@ -1,5 +1,5 @@
 #' @export
-main_graph = function(p0, pm, d0, d, V, Cm, Cs, state_prior, disc=0.95, size = 1){
+graph = function(p0, pm, d0, d, V, Cm, Cs, state_prior, disc=0.95, size = 1){
 
   #tests the inputs
   stopifnot(p0>=0,p0<=1) #checks if p0 is a probability

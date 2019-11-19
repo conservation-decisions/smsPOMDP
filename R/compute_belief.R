@@ -36,5 +36,8 @@ compute_belief=function(p0, pm, d0, d, V, Cm, Cs, state_prior, act, obs, disc = 
     s_p <- smsPOMDP::update_belief(state_posterior[i,], t, o, o1, a1)
     state_posterior = rbind(state_posterior,s_p)
   }
-  return(state_posterior[nrow(state_posterior),])
+  
+  b = state_posterior[nrow(state_posterior),]
+  b = b/sum(b) #trick used to avoid to return a belief that is not a probability distribution
+  return(b)
 }
