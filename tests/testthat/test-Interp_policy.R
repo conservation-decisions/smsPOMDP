@@ -18,7 +18,7 @@ test_that("Interp_policy returns action and value function", {
 
   state_prior = c(0.5,0.5) #initial belief state
   log_dir = tempdir()
-  id <- digest::digest(match.call())
+  id <- 'test-Interp_policy'
   infile <- paste0(log_dir, "/", id, ".pomdpx")
   outfile <- paste0(log_dir, "/", id, ".policyx")
   stdout <- paste0(log_dir, "/", id, ".log")

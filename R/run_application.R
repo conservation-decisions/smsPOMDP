@@ -56,7 +56,7 @@ run_application = function(){
       
       #see decision graph
       shiny::observeEvent(input$graph, {
-        output$plot = shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), c(1,0), disc(), size = 2)})
+        output$plot = shiny::renderPlot({smsPOMDP::main_graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), c(1,0), disc(), size = 2)})
         output$main = shiny::renderUI({
           shiny::plotOutput('plot', height = '1000px')
         })
@@ -137,7 +137,7 @@ run_application = function(){
         output$past_plot = shiny::renderPlot(smsPOMDP::plot_stream(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc(), size = 2))
       })
       shiny::observeEvent(input$next_policy, {
-        output$next_policy_plot = shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), current_belief(), disc())})
+        output$next_policy_plot = shiny::renderPlot({smsPOMDP::main_graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), current_belief(), disc())})
       })
       
       

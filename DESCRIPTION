@@ -8,4 +8,4 @@ Encoding: UTF-8
 LazyData: true
 Imports: shiny, stringr, readr, methods, imager, rlang, devtools, digest, graphics, purrr, stats, sarsop, testthat
 Remotes: boettiger-lab/sarsop
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.0
