@@ -1,7 +1,8 @@
 Package: smsPOMDP
 Title: POMDP problem solver: When to stop managing or surveying cryptic threatened species ? 
 Version: 1.1
-Authors@R: person("Luz", "Pascal", email = "luz.pascal96@gmail.com", role = c("aut", "cre"))
+Author: Luz Pascal <luz.pascal96@gmail.com>
+Maintainer: Luz Pascal <luz.pascal96@gmail.com>
 Description: This package provides a set of functions helping to solve the ecological problem: When to stop managing or surveying cryptic threatened species ?
 License: MIT + file LICENSE
 Encoding: UTF-8

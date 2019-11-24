@@ -1,30 +1,27 @@
 {
   "input": {
-    "b": 1,
+    "b": 0,
     "Cm": 18.784,
     "Cs": 10.84,
     "d": 0.78193,
     "d0": 0.01,
     "disc": 0.95,
     "graph": 1,
-    "length_past": 3,
+    "length_past": 1,
     "next_policy": 1,
     "p0": 0.9,
     "past": 1,
     "past_action_1": "Manage",
-    "past_action_2": "Survey",
-    "past_action_3": "Survey",
+    "past_action_2": "Manage",
     "past_init_b": 1,
     "past_obs_1": "Not_seen",
-    "past_obs_2": "Not_seen",
-    "past_obs_3": "Not_seen",
+    "past_obs_2": "Seen",
     "pm": 0.94184,
     "sim": 1,
     "submit_couple_1": 1,
-    "submit_couple_2": 1,
-    "submit_couple_3": 1,
+    "submit_couple_2": 0,
     "submit_length_past": 1,
-    "Tmax": 15,
+    "Tmax": 10,
     "V": 175.133
   },
   "output": {
@@ -35,7 +32,7 @@
       ]
     },
     "next_policy_plot": {
-      "src": "[image data sha1: ee9c36df134cb60ec62358a183e0c1b86b9c415a]",
+      "src": "[image data sha1: 10b822e50eef6d8e97b769edc398e411c9d269e7]",
       "width": 443,
       "height": 400,
       "coordmap": {
@@ -69,7 +66,7 @@
       }
     },
     "past_control": {
-      "html": "<div class=\"form-group shiny-input-container\">\n  <label class=\"control-label\" for=\"past_init_b\">Initial belief state (extant)<\/label>\n  <input id=\"past_init_b\" type=\"number\" class=\"form-control\" value=\"1\" min=\"0\" max=\"1\"/>\n<\/div>\n<h5>Year 1<\/h5>\n<div class=\"form-group shiny-input-container\">\n  <label class=\"control-label\" for=\"past_action_1\">Action<\/label>\n  <div>\n    <select id=\"past_action_1\"><option value=\"Manage\" selected>Manage<\/option>\n<option value=\"Survey\">Survey<\/option>\n<option value=\"Stop\">Stop<\/option><\/select>\n    <script type=\"application/json\" data-for=\"past_action_1\" data-nonempty=\"\">{}<\/script>\n  <\/div>\n<\/div>\n<div class=\"form-group shiny-input-container\">\n  <label class=\"control-label\" for=\"past_obs_1\">Observation<\/label>\n  <div>\n    <select id=\"past_obs_1\"><option value=\"Seen\" selected>Seen<\/option>\n<option value=\"Not_seen\">Not_seen<\/option><\/select>\n    <script type=\"application/json\" data-for=\"past_obs_1\" data-nonempty=\"\">{}<\/script>\n  <\/div>\n<\/div>\n<button id=\"submit_couple_1\" type=\"button\" class=\"btn btn-default action-button\">Submit<\/button>\n<div data-display-if=\"input.length_past &gt; 1\" data-ns-prefix=\"\">\n  <div data-display-if=\"input.submit_couple_1\" data-ns-prefix=\"\">\n    <h5>Year 2<\/h5>\n    <div class=\"form-group shiny-input-container\">\n      <label class=\"control-label\" for=\"past_action_2\">Action<\/label>\n      <div>\n        <select id=\"past_action_2\"><option value=\"Manage\" selected>Manage<\/option>\n<option value=\"Survey\">Survey<\/option>\n<option value=\"Stop\">Stop<\/option><\/select>\n        <script type=\"application/json\" data-for=\"past_action_2\" data-nonempty=\"\">{}<\/script>\n      <\/div>\n    <\/div>\n    <div class=\"form-group shiny-input-container\">\n      <label class=\"control-label\" for=\"past_obs_2\">Observation<\/label>\n      <div>\n        <select id=\"past_obs_2\"><option value=\"Seen\" selected>Seen<\/option>\n<option value=\"Not_seen\">Not_seen<\/option><\/select>\n        <script type=\"application/json\" data-for=\"past_obs_2\" data-nonempty=\"\">{}<\/script>\n      <\/div>\n    <\/div>\n    <button id=\"submit_couple_2\" type=\"button\" class=\"btn btn-default action-button\">Submit<\/button>\n  <\/div>\n  <div data-display-if=\"input.submit_couple_2\" data-ns-prefix=\"\">\n    <h5>Year 3<\/h5>\n    <div class=\"form-group shiny-input-container\">\n      <label class=\"control-label\" for=\"past_action_3\">Action<\/label>\n      <div>\n        <select id=\"past_action_3\"><option value=\"Manage\" selected>Manage<\/option>\n<option value=\"Survey\">Survey<\/option>\n<option value=\"Stop\">Stop<\/option><\/select>\n        <script type=\"application/json\" data-for=\"past_action_3\" data-nonempty=\"\">{}<\/script>\n      <\/div>\n    <\/div>\n    <div class=\"form-group shiny-input-container\">\n      <label class=\"control-label\" for=\"past_obs_3\">Observation<\/label>\n      <div>\n        <select id=\"past_obs_3\"><option value=\"Seen\" selected>Seen<\/option>\n<option value=\"Not_seen\">Not_seen<\/option><\/select>\n        <script type=\"application/json\" data-for=\"past_obs_3\" data-nonempty=\"\">{}<\/script>\n      <\/div>\n    <\/div>\n    <button id=\"submit_couple_3\" type=\"button\" class=\"btn btn-default action-button\">Submit<\/button>\n  <\/div>\n<\/div>",
+      "html": "<div class=\"form-group shiny-input-container\">\n  <label class=\"control-label\" for=\"past_init_b\">Initial belief state (extant)<\/label>\n  <input id=\"past_init_b\" type=\"number\" class=\"form-control\" value=\"1\" min=\"0\" max=\"1\"/>\n<\/div>\n<h5>Year 1<\/h5>\n<div class=\"form-group shiny-input-container\">\n  <label class=\"control-label\" for=\"past_action_1\">Action<\/label>\n  <div>\n    <select id=\"past_action_1\"><option value=\"Manage\" selected>Manage<\/option>\n<option value=\"Survey\">Survey<\/option>\n<option value=\"Stop\">Stop<\/option><\/select>\n    <script type=\"application/json\" data-for=\"past_action_1\" data-nonempty=\"\">{}<\/script>\n  <\/div>\n<\/div>\n<div class=\"form-group shiny-input-container\">\n  <label class=\"control-label\" for=\"past_obs_1\">Observation<\/label>\n  <div>\n    <select id=\"past_obs_1\"><option value=\"Seen\" selected>Seen<\/option>\n<option value=\"Not_seen\">Not_seen<\/option><\/select>\n    <script type=\"application/json\" data-for=\"past_obs_1\" data-nonempty=\"\">{}<\/script>\n  <\/div>\n<\/div>\n<button id=\"submit_couple_1\" type=\"button\" class=\"btn btn-default action-button\">Submit<\/button>\n<div data-display-if=\"input.length_past &gt; 1\" data-ns-prefix=\"\">\n  <div data-display-if=\"input.submit_couple_1\" data-ns-prefix=\"\">\n    <h5>Year 2<\/h5>\n    <div class=\"form-group shiny-input-container\">\n      <label class=\"control-label\" for=\"past_action_2\">Action<\/label>\n      <div>\n        <select id=\"past_action_2\"><option value=\"Manage\" selected>Manage<\/option>\n<option value=\"Survey\">Survey<\/option>\n<option value=\"Stop\">Stop<\/option><\/select>\n        <script type=\"application/json\" data-for=\"past_action_2\" data-nonempty=\"\">{}<\/script>\n      <\/div>\n    <\/div>\n    <div class=\"form-group shiny-input-container\">\n      <label class=\"control-label\" for=\"past_obs_2\">Observation<\/label>\n      <div>\n        <select id=\"past_obs_2\"><option value=\"Seen\" selected>Seen<\/option>\n<option value=\"Not_seen\">Not_seen<\/option><\/select>\n        <script type=\"application/json\" data-for=\"past_obs_2\" data-nonempty=\"\">{}<\/script>\n      <\/div>\n    <\/div>\n    <button id=\"submit_couple_2\" type=\"button\" class=\"btn btn-default action-button\">Submit<\/button>\n  <\/div>\n  <div data-display-if=\"input.submit_couple_0\" data-ns-prefix=\"\">\n    <h5>Year 1<\/h5>\n    <div class=\"form-group shiny-input-container\">\n      <label class=\"control-label\" for=\"past_action_1\">Action<\/label>\n      <div>\n        <select id=\"past_action_1\"><option value=\"Manage\" selected>Manage<\/option>\n<option value=\"Survey\">Survey<\/option>\n<option value=\"Stop\">Stop<\/option><\/select>\n        <script type=\"application/json\" data-for=\"past_action_1\" data-nonempty=\"\">{}<\/script>\n      <\/div>\n    <\/div>\n    <div class=\"form-group shiny-input-container\">\n      <label class=\"control-label\" for=\"past_obs_1\">Observation<\/label>\n      <div>\n        <select id=\"past_obs_1\"><option value=\"Seen\" selected>Seen<\/option>\n<option value=\"Not_seen\">Not_seen<\/option><\/select>\n        <script type=\"application/json\" data-for=\"past_obs_1\" data-nonempty=\"\">{}<\/script>\n      <\/div>\n    <\/div>\n    <button id=\"submit_couple_1\" type=\"button\" class=\"btn btn-default action-button\">Submit<\/button>\n  <\/div>\n<\/div>",
       "deps": [
         {
           "name": "selectize",
@@ -88,15 +85,15 @@
       ]
     },
     "past_plot": {
-      "src": "[image data sha1: c996bb5c0d36365cf7158338fa4f964cce741c4c]",
+      "src": "[image data sha1: 880b701decfdebc82270f8a6fb8ff22ec2002df6]",
       "width": 443,
       "height": 400,
       "coordmap": {
         "panels": [
           {
             "domain": {
-              "left": -2.2,
-              "right": 3.2,
+              "left": -2.12,
+              "right": 1.12,
               "bottom": -0.04,
               "top": 1.04
             },

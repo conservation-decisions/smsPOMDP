@@ -1,12 +1,12 @@
 {
   "input": {
-    "b": 1,
+    "b": 0,
     "Cm": 18.784,
     "Cs": 10.84,
     "d": 0.78193,
     "d0": 0.01,
     "disc": 0.95,
-    "graph": 0,
+    "graph": 1,
     "p0": 0.9,
     "past": 0,
     "pm": 0.94184,
@@ -22,23 +22,23 @@
       ]
     },
     "plot": {
-      "src": "[image data sha1: ad26188313ccc2ebfaa51112675d5489c91a8d74]",
+      "src": "[image data sha1: cfcebbbd7d5086a86c93609ce0a990658b104404]",
       "width": 631,
       "height": 1000,
       "coordmap": {
         "panels": [
           {
             "domain": {
-              "left": -2.48,
-              "right": 10.48,
-              "bottom": -0.04,
-              "top": 1.04
+              "left": 1,
+              "right": 1280,
+              "bottom": 1384.60662334785,
+              "top": -663.606623347855
             },
             "range": {
-              "left": 43.2,
-              "right": 623.8,
-              "bottom": 948.6,
-              "top": 756.2
+              "left": 59.04,
+              "right": 600.76,
+              "bottom": 925.56,
+              "top": 58.04
             },
             "log": {
               "x": null,

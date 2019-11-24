@@ -1,6 +1,6 @@
 {
   "input": {
-    "b": 1,
+    "b": 0,
     "Cm": 18.784,
     "Cs": 10.84,
     "d": 0.78193,
@@ -11,7 +11,7 @@
     "past": 0,
     "pm": 0.94184,
     "sim": 1,
-    "Tmax": 15,
+    "Tmax": 10,
     "V": 175.133
   },
   "output": {
@@ -22,15 +22,15 @@
       ]
     },
     "plot": {
-      "src": "[image data sha1: 5b7cf4f38dc849e356221bf686b001beced5c98b]",
+      "src": "[image data sha1: 785cee2f8739e61b32a9c1c4d330fc8da3bb117f]",
       "width": 631,
       "height": 1000,
       "coordmap": {
         "panels": [
           {
             "domain": {
-              "left": -2.68,
-              "right": 15.68,
+              "left": -2.48,
+              "right": 10.48,
               "bottom": -0.04,
               "top": 1.04
             },

@@ -1,7 +1,7 @@
 #' @export
-Interp_policy <- function(initial, alpha, alpha_action){
+Interp_policy <- function(state_prior, alpha, alpha_action){
   ## Compute dot product with initial
-  a <- initial %*% alpha
+  a <- state_prior %*% alpha
 
   ## Return policy of the vector which has the biggest inner product
   #alpha_action[which.max(a)]

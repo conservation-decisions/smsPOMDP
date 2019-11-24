@@ -8,7 +8,7 @@ Computes the best policy
 Given a policy and an initial belief state, returns the action which maximizes the value function, and its corresponding value
 }
 \usage{
-Interp_policy(initial, alpha, alpha_action)
+Interp_policy(state_prior, alpha, alpha_action)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
