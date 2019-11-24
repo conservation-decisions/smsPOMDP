@@ -6,6 +6,7 @@ Description: This package provides a set of functions helping to solve the ecolo
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: shiny, stringr, readr, methods, imager, rlang, devtools, digest, graphics, purrr, stats, sarsop, testthat
+Imports: shiny, imager, digest, graphics, stats, sarsop
+Suggests: testthat, vdiffr, shinytest
 Remotes: boettiger-lab/sarsop
-RoxygenNote: 7.0.0
+RoxygenNote: 7.0.1

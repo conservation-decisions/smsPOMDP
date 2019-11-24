@@ -12,8 +12,8 @@ Interp_policy(initial, alpha, alpha_action)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{initial}{
-Initial belief state
+  \item{state_prior}{
+Initial belief state, vector of 2 values (belief state extant and extinct), between 0 and 1.
 }
   \item{alpha}{
 alpha vector
@@ -35,32 +35,32 @@ Milad Memarzadeh
 \examples{
 \dontrun{
 #values for Sumatran tigers
-pen = 0.1
-p0 = 1-pen
-pem = 0.05816
-pm = 1 - pem
-V = 175.133
-Cm = 18.784
-Cs = 10.840
-d0 = 0.01
-d = 0.78193
+pen <- 0.1
+p0 <- 1-pen
+pem <- 0.05816
+pm <- 1 - pem
+V <- 175.133
+Cm <- 18.784
+Cs <- 10.840
+d0 <- 0.01
+d <- 0.78193
 
-  #buiding the matrices of the problem
-  t = smsPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
-  o = smsPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
-  r = smsPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
+#buiding the matrices of the problem
+t <- smsPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
+o <- smsPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
+r <- smsPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
 
-  state_prior = c(1,0) #initial belief state
-  log_dir = tempdir()
-  id <- digest::digest(match.call())
-  infile <- paste0(log_dir, "/", id, ".pomdpx")
-  outfile <- paste0(log_dir, "/", id, ".policyx")
-  stdout <- paste0(log_dir, "/", id, ".log")
+state_prior <- c(1,0) #initial belief state
+log_dir <- tempdir()
+id <- digest::digest(match.call())
+infile <- paste0(log_dir, "/", id, ".pomdpx")
+outfile <- paste0(log_dir, "/", id, ".policyx")
+stdout <- paste0(log_dir, "/", id, ".log")
 
-  sarsop::write_pomdpx(t, o, r, disc, state_prior, file = infile)
-  status <- sarsop::pomdpsol(infile, outfile, stdout = stdout)
-  policy <- sarsop::read_policyx(file = outfile)
-  output <- smsPOMDP::Interp_policy(state_prior,policy$vectors,policy$action)
+sarsop::write_pomdpx(t, o, r, disc, state_prior, file = infile)
+status <- sarsop::pomdpsol(infile, outfile, stdout = stdout)
+policy <- sarsop::read_policyx(file = outfile)
+output <- smsPOMDP::Interp_policy(state_prior,policy$vectors,policy$action)
 
   }
 }

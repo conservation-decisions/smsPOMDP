@@ -1,5 +1,5 @@
-\name{main_graph}
-\alias{main_graph}
+\name{graph}
+\alias{graph}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Plot decision graph
@@ -9,7 +9,7 @@ Plot decision graph
 Plots decision graph of the solution to the problem : When to stop managing or surveying cryptic threatened species ?
 }
 \usage{
-main_graph(p0, pm, d0, d, V, Cm, Cs, state_prior, disc=0.95, size = 1)
+graph(p0, pm, d0, d, V, Cm, Cs, state_prior, disc=0.95, size = 1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -55,19 +55,19 @@ Luz Pascal
 }
 \examples{
 \dontrun{
- #values for Sumatran tigers
-pen = 0.1
-p0 = 1-pen
-pem = 0.05816
-pm = 1 - pem
-V = 175.133
-Cm = 18.784
-Cs = 10.840
-d0 = 0.01
-d = 0.78193
+#values for Sumatran tigers
+pen <- 0.1
+p0 <- 1-pen
+pem <- 0.05816
+pm <- 1 - pem
+V <- 175.133
+Cm <- 18.784
+Cs <- 10.840
+d0 <- 0.01
+d <- 0.78193
 
 #Initial belief state
-state_prior = c(0.9,0.1) #extant : 0.9, extinct : 0.1
+state_prior <- c(0.9,0.1) #extant : 0.9, extinct : 0.1
 
-main_graph(p0, pm, d0, d, V, Cm, Cs, state_prior)}
+graph(p0, pm, d0, d, V, Cm, Cs, state_prior)}
 }

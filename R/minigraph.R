@@ -1,22 +1,20 @@
 #' @export
-minigraph = function(tab, tab2=NULL, size = 1){
+minigraph <- function(tab, tab2=NULL, size = 1){
+  stopifnot(class(tab)=='data.frame')
+  stopifnot(dim(tab)[1]<=3)#number of  rows longer than the function is meant to deal with
+  stopifnot(dim(tab)[2]<=2)#number of cols longer than the function is meant to deal with
+  
   if(is.null(tab2)){
-    n = nrow(tab)
+    n <- nrow(tab)
     if (n ==3){
       graphics::par(mfrow = c(1,1))
-      y1 = paste0(tab[1,2],' years')
-      y2 = paste0(tab[2,2],' years')
-      a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
-      a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
-      a3 = switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','STOP')
-      fpath = system.file("extdata", "im3.jpg", package="smsPOMDP")
-      t = imager::load.image(file=fpath)
-      # if (test){
-      #   t = imager::load.image(file=paste(path.package("smsPOMDP"),"/inst/extdata/im3.jpg",sep=""))
-      # } else {
-      #   t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im3.jpg",sep=""))
-      # }
-      # t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im3.jpg",sep=""))
+      y1 <- paste0(tab[1,2],' years')
+      y2 <- paste0(tab[2,2],' years')
+      a1 <- switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
+      a2 <- switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
+      a3 <- switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','STOP')
+      fpath <- system.file("extdata", "im3.jpg", package="smsPOMDP")
+      t <- imager::load.image(file=fpath)
       graphics::plot(t, axes = F)
       graphics::text(200,200,'Not seen for', cex = size)
       graphics::text(200, 250, y1, cex = size)
@@ -28,16 +26,11 @@ minigraph = function(tab, tab2=NULL, size = 1){
       graphics::text(200, 575, a2, cex = size)
       graphics::text(1050, 575, a3, cex = size)
     } else if (n ==2){
-      y1 = paste0(tab[1,2],' years')
-      a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
-      a2 = switch (as.numeric(as.character(tab[2,1])), 'MANAGE','SURVEY','STOP')
-      fpath = system.file("extdata", "im2.jpg", package="smsPOMDP")
-      t = imager::load.image(file=fpath)
-      # if (test){
-      #   t = imager::load.image(file=paste(path.package("smsPOMDP"),"/inst/extdata/im2.jpg",sep=""))
-      # } else {
-      #   t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im2.jpg",sep=""))
-      # }
+      y1 <- paste0(tab[1,2],' years')
+      a1 <- switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
+      a2 <- switch (as.numeric(as.character(tab[2,1])), 'MANAGE','SURVEY','STOP')
+      fpath <- system.file("extdata", "im2.jpg", package="smsPOMDP")
+      t <- imager::load.image(file=fpath)
       graphics::plot(t, axes = F)
       graphics::text(550,400,'Not seen for', cex = size)
       graphics::text(550, 450, y1, cex = size)
@@ -45,42 +38,35 @@ minigraph = function(tab, tab2=NULL, size = 1){
       graphics::text(620, 100, a1, cex = size)
       graphics::text(1050, 575, a2, cex = size)
     } else if (n ==1){
-      a1 = switch (as.numeric(as.character(tab[1,1])),'MANAGE','SURVEY','STOP')
-      fpath = system.file("extdata", "im1.jpg", package="smsPOMDP")
-      t = imager::load.image(file=fpath)
-      # if (test){
-      #   t = imager::load.image(file=paste(path.package("smsPOMDP"),"/inst/extdata/im1.jpg",sep=""))
-      # } else {
-      #   t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im1.jpg",sep=""))
-      # }
+      a1 <- switch (as.numeric(as.character(tab[1,1])),'MANAGE','SURVEY','STOP')
+      fpath <- system.file("extdata", "im1.jpg", package="smsPOMDP")
+      t <- imager::load.image(file=fpath)
       graphics::plot(t, axes = F)
       graphics::text(650, 350, a1, cex = size*3)
     }
   } else {
-    n = nrow(tab)
-    n2 = nrow(tab2)
+    stopifnot(class(tab2)=='data.frame')
+    stopifnot(dim(tab2)[1]<=3)#number of  rows longer than the function is meant to deal with
+    stopifnot(dim(tab2)[2]<=2)#number of cols longer than the function is meant to deal with
+    
+    n <- nrow(tab)
+    n2 <- nrow(tab2)
     if (n2==3){
       #text for solution if starting from c(1,0)
-      a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
-      a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
-      a3 = switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','STOP')
-      y1 = paste0(tab[1,2],' years')
-      y2 = paste0(tab[2,2],' years')
+      a1 <- switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
+      a2 <- switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
+      a3 <- switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','STOP')
+      y1 <- paste0(tab[1,2],' years')
+      y2 <- paste0(tab[2,2],' years')
 
       #text for solution if starting from another state prior
-      a4 = switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
-      a5 = switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','STOP')
-      a6 = switch (as.numeric(as.character(tab2[3,1])),'MANAGE','SURVEY','STOP')
-      y3 = paste0(tab2[1,2],' years')
-      y4 = paste0(tab2[2,2],' years')
-      fpath = system.file("extdata", "im3_3.jpg", package="smsPOMDP")
-      t = imager::load.image(file=fpath)
-      
-      # if (test){
-      #   t = imager::load.image(file=paste(path.package("smsPOMDP"),"/inst/extdata/im3_3.jpg",sep=""))
-      # } else {
-      #   t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im3_3.jpg",sep=""))
-      # }
+      a4 <- switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
+      a5 <- switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','STOP')
+      a6 <- switch (as.numeric(as.character(tab2[3,1])),'MANAGE','SURVEY','STOP')
+      y3 <- paste0(tab2[1,2],' years')
+      y4 <- paste0(tab2[2,2],' years')
+      fpath <- system.file("extdata", "im3_3.jpg", package="smsPOMDP")
+      t <- imager::load.image(file=fpath)
       
       graphics::plot(t, axes = F)
       #text for solution if starting from c(1,0)
@@ -93,7 +79,6 @@ minigraph = function(tab, tab2=NULL, size = 1){
       graphics::text(920, 200, a1, cex = size)
       graphics::text(700, 600, a2, cex = size)
       graphics::text(1150, 520, a3, cex = size)
-
 
       #text for solution if starting from another state prior
       graphics::text(100,200,'Not seen for', cex = size)
@@ -110,25 +95,19 @@ minigraph = function(tab, tab2=NULL, size = 1){
     } else if (n2==2){
       if (n == 3){
         #text for solution if starting from c(1,0)
-        a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
-        a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
-        a3 = switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','STOP')
-        y1 = paste0(tab[1,2],' years')
-        y2 = paste0(tab[2,2],' years')
+        a1 <- switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
+        a2 <- switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
+        a3 <- switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','STOP')
+        y1 <- paste0(tab[1,2],' years')
+        y2 <- paste0(tab[2,2],' years')
 
         #text for solution if starting from another state prior
-        a4 = switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
-        a5 = switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','STOP')
-        y3 = paste0(tab2[1,2],' years')
-        fpath = system.file("extdata", "im3_2.jpg", package="smsPOMDP")
-        t = imager::load.image(file=fpath)
-        
-        # if (test){
-        #   t = imager::load.image(file=paste(path.package("smsPOMDP"),"/inst/extdata/im3_2.jpg",sep=""))
-        # } else {
-        #   t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im3_2.jpg",sep=""))
-        # }
-        # 
+        a4 <- switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
+        a5 <- switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','STOP')
+        y3 <- paste0(tab2[1,2],' years')
+        fpath <- system.file("extdata", "im3_2.jpg", package="smsPOMDP")
+        t <- imager::load.image(file=fpath)
+
         graphics::plot(t, axes = F)
         #text for solution if starting from c(1,0)
         graphics::text(740,300,'Not seen for', cex = size)
@@ -151,24 +130,18 @@ minigraph = function(tab, tab2=NULL, size = 1){
 
       } else if (n==2){
         #text for solution if starting from c(1,0)
-        a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
-        a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
-        y1 = paste0(tab[1,2],' years')
+        a1 <- switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
+        a2 <- switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
+        y1 <- paste0(tab[1,2],' years')
 
         #text for solution if starting from another state prior
-        a4 = switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
-        a5 = switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','STOP')
-        y3 = paste0(tab2[1,2],' years')
+        a4 <- switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
+        a5 <- switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','STOP')
+        y3 <- paste0(tab2[1,2],' years')
         
-        fpath = system.file("extdata", "im2_2.jpg", package="smsPOMDP")
-        t = imager::load.image(file=fpath)
-        
-        # if (test){
-        #   t = imager::load.image(file=paste(path.package("smsPOMDP"),"/inst/extdata/im2_2.jpg",sep=""))
-        # } else {
-        #   t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im2_2.jpg",sep=""))
-        # }
-        # 
+        fpath <- system.file("extdata", "im2_2.jpg", package="smsPOMDP")
+        t <- imager::load.image(file=fpath)
+
         graphics::plot(t, axes = F)
         #text for solution if starting from c(1,0)
         graphics::text(750,300,'Not seen for', cex = size)
@@ -190,23 +163,17 @@ minigraph = function(tab, tab2=NULL, size = 1){
     } else if (n2==1){
       if (n == 3){
         #text for solution if starting from c(1,0)
-        a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
-        a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
-        a3 = switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','STOP')
-        y1 = paste0(tab[1,2],' years')
-        y2 = paste0(tab[2,2],' years')
+        a1 <- switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
+        a2 <- switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
+        a3 <- switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','STOP')
+        y1 <- paste0(tab[1,2],' years')
+        y2 <- paste0(tab[2,2],' years')
 
         #text for solution if starting from another state prior
-        a4 = switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
-        fpath = system.file("extdata", "im3_1.jpg", package="smsPOMDP")
-        t = imager::load.image(file=fpath)
+        a4 <- switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
+        fpath <- system.file("extdata", "im3_1.jpg", package="smsPOMDP")
+        t <- imager::load.image(file=fpath)
         
-        # if (test){
-        #   t = imager::load.image(file=paste(path.package("smsPOMDP"),"/inst/extdata/im3_1.jpg",sep=""))
-        # } else {
-        #   t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im3_1.jpg",sep=""))
-        # }
-
         graphics::plot(t, axes = F)
         #text for solution if starting from c(1,0)
         graphics::text(740,300,'Not seen for', cex = size)
@@ -225,23 +192,17 @@ minigraph = function(tab, tab2=NULL, size = 1){
 
       } else if (n==2){
         #text for solution if starting from c(1,0)
-        a1 = switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
-        a2 = switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
-        y1 = paste0(tab[1,2],' years')
+        a1 <- switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
+        a2 <- switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
+        y1 <- paste0(tab[1,2],' years')
 
         #text for solution if starting from another state prior
-        a4 = switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
-        a5 = switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','STOP')
-        y3 = paste0(tab2[1,2],' years')
+        a4 <- switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
+        a5 <- switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','STOP')
+        y3 <- paste0(tab2[1,2],' years')
 
-        fpath = system.file("extdata", "im2_1.jpg", package="smsPOMDP")
-        t = imager::load.image(file=fpath)
-        
-        # if (test){
-        #   t = imager::load.image(file=paste(path.package("smsPOMDP"),"/inst/extdata/im2_1.jpg",sep=""))
-        # } else {
-        #   t = imager::load.image(file=paste(path.package("smsPOMDP"),"/extdata/im2_1.jpg",sep=""))
-        # }
+        fpath <- system.file("extdata", "im2_1.jpg", package="smsPOMDP")
+        t <- imager::load.image(file=fpath)
         
         graphics::plot(t, axes = F)
         #text for solution if starting from c(1,0)
@@ -255,9 +216,9 @@ minigraph = function(tab, tab2=NULL, size = 1){
         graphics::text(400,80, 'Seen', cex = size)
         graphics::text(200, 100, a4, cex = size)
       } else if (n==1){
-        a1 = switch (as.numeric(as.character(tab[1,1])),'MANAGE','SURVEY','STOP')
-        fpath = system.file("extdata", "im1.jpg", package="smsPOMDP")
-        t = imager::load.image(file=fpath)
+        a1 <- switch (as.numeric(as.character(tab[1,1])),'MANAGE','SURVEY','STOP')
+        fpath <- system.file("extdata", "im1.jpg", package="smsPOMDP")
+        t <- imager::load.image(file=fpath)
         graphics::plot(t, axes = F)
         graphics::text(650, 350, a1, cex = size*3)
       }

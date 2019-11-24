@@ -1,5 +1,5 @@
 #' @export
-run_application = function(){
+run_application <- function(){
   app <- shiny::shinyApp(
     ui <- shiny::fluidPage(
       shiny::titlePanel("POMDP solver: When to stop managing or surveying cryptic threatened species ?"),
@@ -33,61 +33,61 @@ run_application = function(){
     
     server <- function(input, output, session){
       #Inputs
-      p0 <- reactive({
-        validate( need(input$p0 >=0 & input$p0 <=1 , "Please select local probability of persistence (if survey or stop) between 0 and 1") )
+      p0 <- shiny::reactive({
+        shiny::validate( shiny::need(input$p0 >=0 & input$p0 <=1 , "Please select local probability of persistence (if survey or stop) between 0 and 1") )
         input$p0
       })
-      pm <- reactive({
-        validate( need(input$pm >=0 & input$pm<=1 , "Please select local probability of persistence (if manage) between 0 and 1") )
+      pm <- shiny::reactive({
+        shiny::validate( shiny::need(input$pm >=0 & input$pm<=1 , "Please select local probability of persistence (if manage) between 0 and 1") )
         input$pm
       })
-      d0 <- reactive({
-        validate( need(input$d0 >=0 & input$d0 <=1 , "Please select local probability of detection (if manage or stop) between 0 and 1") )
+      d0 <- shiny::reactive({
+        shiny::validate( shiny::need(input$d0 >=0 & input$d0 <=1 , "Please select local probability of detection (if manage or stop) between 0 and 1") )
         input$d0
       })
-      d <- reactive({
-        validate( need(input$d >=0 & input$d <=1 , "Please select local probability of detection (if survey) between 0 and 1") )
+      d <- shiny::reactive({
+        shiny::validate( shiny::need(input$d >=0 & input$d <=1 , "Please select local probability of detection (if survey) between 0 and 1") )
         input$d
       })
-      V <- reactive({
-        validate( need(input$V >=0 , "Please select estimated economic value of the species ($/yr) positive") )
+      V <- shiny::reactive({
+        shiny::validate( shiny::need(input$V >=0 , "Please select estimated economic value of the species ($/yr) positive") )
         input$V
       })
-      Cm <- reactive({
-        validate( need(input$Cm >=0, "Please select estimated cost of managing ($/yr) positive") )
+      Cm <- shiny::reactive({
+        shiny::validate( shiny::need(input$Cm >=0, "Please select estimated cost of managing ($/yr) positive") )
         input$Cm
       })
-      Cs <- reactive({
-        validate( need(input$Cs >=0, "Please select estimated cost of survey ($/yr) positive") )
+      Cs <- shiny::reactive({
+        shiny::validate( shiny::need(input$Cs >=0, "Please select estimated cost of survey ($/yr) positive") )
         input$Cs
       })
-      disc <- reactive({
-        validate( need(input$disc >=0 & input$disc <=1 , "Please select a discount factor between 0 and 1") )
+      disc <- shiny::reactive({
+        shiny::validate( shiny::need(input$disc >=0 & input$disc <=1 , "Please select a discount factor between 0 and 1") )
         input$disc
       })
-      b <- reactive({
-        validate( need(input$b >=0 & input$b <=1 , "Please select initial belief state (extant) between 0 and 1") )
+      b <- shiny::reactive({
+        shiny::validate( shiny::need(input$b >=0 & input$b <=1 , "Please select initial belief state (extant) between 0 and 1") )
         input$b
       })
-      state_prior = shiny::reactive({c(b(), 1-b())})
-      Tmax <- reactive({
-        validate( need(input$Tmax >=0, "Please select a positive duration of simulation") )
+      state_prior <- shiny::reactive({c(b(), 1-b())})
+      Tmax <- shiny::reactive({
+        shiny::validate( shiny::need(input$Tmax >=0, "Please select a positive duration of simulation") )
         input$Tmax
       })
       
       #different scenarios depending on the users choice
       #launch a simulation
       shiny::observeEvent(input$sim, {
-        output$plot = shiny::renderPlot({smsPOMDP::sim(p0(), pm(), d0(), d(), V(), Cm(), Cs(), state_prior(), Tmax(), disc(), size = 2)})
-        output$main = shiny::renderUI({
+        output$plot <- shiny::renderPlot({smsPOMDP::sim(p0(), pm(), d0(), d(), V(), Cm(), Cs(), state_prior(), Tmax(), disc(), size = 2)})
+        output$main <- shiny::renderUI({
           shiny::plotOutput('plot', height = '1000px')
         })
       })
       
       #see decision graph
       shiny::observeEvent(input$graph, {
-        output$plot = shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), c(1,0), disc(), size = 2)})
-        output$main = shiny::renderUI({
+        output$plot <- shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), c(1,0), disc(), size = 2)})
+        output$main <- shiny::renderUI({
           shiny::plotOutput('plot', height = '1000px')
         })
       })
@@ -98,7 +98,7 @@ run_application = function(){
       
       #correponding panel
       shiny::observeEvent(input$past, {
-        output$main = shiny::renderUI({
+        output$main <- shiny::renderUI({
           shiny::tagList(
             shiny::column(width = 2
                           , shiny::numericInput('length_past', "Number of years for past management", value = 1, min = 1)
@@ -121,7 +121,7 @@ run_application = function(){
       
       #set past management stream
       shiny::observeEvent(input$submit_length_past,{
-        output$past_control = shiny::renderUI({
+        output$past_control <- shiny::renderUI({
           shiny::tagList(
             shiny::numericInput(inputId = 'past_init_b', 'Initial belief state (extant)', value = 1, min = 0, max = 1)
             , shiny::h5(paste0('Year ', 1))
@@ -158,19 +158,19 @@ run_application = function(){
         })
       })
       
-      p_a = shiny::reactive(smsPOMDP::past_actions(input)) #past actions
-      p_o = shiny::reactive(smsPOMDP::past_obs(input)) #past observations
-      init_belief = shiny::reactive({
-        validate( need(input$past_init_b >=0 & input$past_init_b <=1 , "Please select initial belief state (extant) between 0 and 1") )
+      p_a <- shiny::reactive(smsPOMDP::past_actions(input)) #past actions
+      p_o <- shiny::reactive(smsPOMDP::past_obs(input)) #past observations
+      init_belief <- shiny::reactive({
+        shiny::validate( shiny::need(input$past_init_b >=0 & input$past_init_b <=1 , "Please select initial belief state (extant) between 0 and 1") )
         c(input$past_init_b, 1-input$past_init_b)
         }) #initial belief state
-      current_belief = shiny::reactive(smsPOMDP::compute_belief(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc()))
+      current_belief <- shiny::reactive(smsPOMDP::compute_belief(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc()))
       #
       shiny::observeEvent(input$submit_couple_1, {
-        output$past_plot = shiny::renderPlot(smsPOMDP::plot_stream(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc(), size = 2))
+        output$past_plot <- shiny::renderPlot(smsPOMDP::plot_stream(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc(), size = 2))
       })
       shiny::observeEvent(input$next_policy, {
-        output$next_policy_plot = shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), current_belief(), disc())})
+        output$next_policy_plot <- shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), current_belief(), disc())})
       })
       
       

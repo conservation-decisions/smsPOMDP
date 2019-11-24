@@ -8,7 +8,7 @@ Simulation function
 Plots a simulation for a given belief state : action implemented, observation, current state, posterior belief state
 }
 \usage{
-sim(p0, pm, d0, d, V, Cm, Cs, state_prior, T, disc=0.95, size=1)
+sim(p0, pm, d0, d, V, Cm, Cs, state_prior, Tmax, disc=0.95, size=1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -36,8 +36,8 @@ Estimated cost of survey ($/yr).
   \item{state_prior}{
 Initial belief state, vector of 2 values (belief state extant and extinct), between 0 and 1.
 }
-  \item{T}{
-  Horizon of the simulation. Integer
+  \item{Tmax}{
+Horizon of the simulation. Integer
 }
   \item{disc}{
 Discount factor used to compute the policy (default 0.95)

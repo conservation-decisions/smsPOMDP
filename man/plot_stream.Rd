@@ -10,7 +10,7 @@ Plot history of belief states
 Plots succession of actions, observations and belief states given the list of past actions and observations 
 }
 \usage{
-plot_stream(p0, pm, d0, d, V, Cm, Cs, s, act, obs, disc = 0.95, size = 1)
+plot_stream(p0, pm, d0, d, V, Cm, Cs, state_prior, actions, observations, disc = 0.95, size = 1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -35,13 +35,13 @@ Estimated cost of managing ($/yr).
   \item{Cs}{
 Estimated cost of survey ($/yr).
 }
-  \item{s}{
+  \item{state_prior}{
 Initial belief state, vector of 2 values (belief state extant and extinct), between 0 and 1.
 }
-  \item{act}{
+  \item{actions}{
 List of past actions. Values in c('Manage','Survey','Stop'). Has to have the same length as obs.
 }
-  \item{obs}{
+  \item{observations}{
 List of past observations. Values in c('Seen','Not_seen'). Has to have the same length as act.
 }
   \item{disc}{
@@ -60,19 +60,19 @@ Luz Pascal
 \examples{
 \dontrun{
  #values for Sumatran tigers
-pen = 0.1
-p0 = 1-pen
-pem = 0.05816
-pm = 1 - pem
-V = 175.133
-Cm = 18.784
-Cs = 10.840
-d0 = 0.01
-d = 0.78193
+pen <- 0.1
+p0 <- 1-pen
+pem <- 0.05816
+pm <- 1 - pem
+V <- 175.133
+Cm <- 18.784
+Cs <- 10.840
+d0 <- 0.01
+d <- 0.78193
 
-s = c(1,0)
-act = c('Manage', 'Manage', 'Survey','Stop')
-obs = c('Not_seen','Not_seen','Not_seen','Seen')
-plot_stream(p0, pm, d0, d, V, Cm, Cs, s, act, obs, disc = 0.95, size = 1)
+state_prior <- c(1,0)
+actions <- c('Manage', 'Manage', 'Survey','Stop')
+observations <- c('Not_seen','Not_seen','Not_seen','Seen')
+plot_stream(p0, pm, d0, d, V, Cm, Cs, state_prior, actions, observations, disc = 0.95, size = 1)
 }
 }

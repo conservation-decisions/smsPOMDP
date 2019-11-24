@@ -1,0 +1,33 @@
+{
+  "input": {
+    "b": 1,
+    "Cm": 18.784,
+    "Cs": 10.84,
+    "d": 0.78193,
+    "d0": 0.01,
+    "disc": 0.95,
+    "graph": 0,
+    "p0": 0.9,
+    "past": 0,
+    "pm": 0.94184,
+    "sim": 1,
+    "Tmax": 10,
+    "V": 175.133
+  },
+  "output": {
+    "main": {
+      "html": "<div id=\"plot\" class=\"shiny-plot-output\" style=\"width: 100% ; height: 1000px\"><\/div>",
+      "deps": [
+
+      ]
+    },
+    "plot": {
+      "message": "could not find function \"cseq\"",
+      "call": "cseq(0, Tmax - 1)",
+      "type": null
+    }
+  },
+  "export": {
+
+  }
+}
