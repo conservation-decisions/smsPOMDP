@@ -9,4 +9,6 @@ LazyData: true
 Imports: shiny, imager, digest, graphics, stats, sarsop
 Suggests: testthat, vdiffr, shinytest
 Remotes: boettiger-lab/sarsop
+URL: https://github.com/conservation-decisions/smsPOMDP
+BugReports: https://github.com/conservation-decisions/smsPOMDP/issues
 RoxygenNote: 7.0.1
