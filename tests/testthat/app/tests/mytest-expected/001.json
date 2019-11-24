@@ -10,51 +10,12 @@
     "p0": 0.9,
     "past": 0,
     "pm": 0.94184,
-    "sim": 1,
+    "sim": 0,
     "Tmax": 10,
     "V": 175.133
   },
   "output": {
-    "main": {
-      "html": "<div id=\"plot\" class=\"shiny-plot-output\" style=\"width: 100% ; height: 1000px\"><\/div>",
-      "deps": [
 
-      ]
-    },
-    "plot": {
-      "src": "[image data sha1: 741489e49a09e4d7e8ab7b33a1f1dc2c6476274e]",
-      "width": 631,
-      "height": 1000,
-      "coordmap": {
-        "panels": [
-          {
-            "domain": {
-              "left": -2.48,
-              "right": 10.48,
-              "bottom": -0.04,
-              "top": 1.04
-            },
-            "range": {
-              "left": 43.2,
-              "right": 623.8,
-              "bottom": 948.6,
-              "top": 756.2
-            },
-            "log": {
-              "x": null,
-              "y": null
-            },
-            "mapping": {
-
-            }
-          }
-        ],
-        "dims": {
-          "width": 631,
-          "height": 1000
-        }
-      }
-    }
   },
   "export": {
 

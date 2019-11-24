@@ -11,7 +11,7 @@
     "past": 0,
     "pm": 0.94184,
     "sim": 1,
-    "Tmax": 15,
+    "Tmax": 10,
     "V": 175.133
   },
   "output": {
@@ -22,15 +22,15 @@
       ]
     },
     "plot": {
-      "src": "[image data sha1: 01bf504ae0be9d5099828002f56e42946356e8a9]",
+      "src": "[image data sha1: ad26188313ccc2ebfaa51112675d5489c91a8d74]",
       "width": 631,
       "height": 1000,
       "coordmap": {
         "panels": [
           {
             "domain": {
-              "left": -2.68,
-              "right": 15.68,
+              "left": -2.48,
+              "right": 10.48,
               "bottom": -0.04,
               "top": 1.04
             },

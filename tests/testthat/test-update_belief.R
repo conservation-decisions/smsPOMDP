@@ -47,5 +47,5 @@ test_that("Compute current belief state given past action, observation and initi
   expect_lte(current[2],1)
   expect_equal(current[1]+current[2],1)#current should be a probability distribution
   expect_equal(current[1],1)# last observation is seen: current belief state is [1,0], the species is extant
- 
+  
 })

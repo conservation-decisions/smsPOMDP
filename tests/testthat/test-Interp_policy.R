@@ -15,19 +15,19 @@ test_that("Interp_policy returns action and value function", {
   t = smsPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
   o = smsPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
   r = smsPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
-
+  
   state_prior = c(0.5,0.5) #initial belief state
   log_dir = tempdir()
   id <- 'test-Interp_policy'
   infile <- paste0(log_dir, "/", id, ".pomdpx")
   outfile <- paste0(log_dir, "/", id, ".policyx")
   stdout <- paste0(log_dir, "/", id, ".log")
-
+  
   sarsop::write_pomdpx(t, o, r, disc, state_prior, file = infile)
   status <- sarsop::pomdpsol(infile, outfile, stdout = stdout)
   policy <- sarsop::read_policyx(file = outfile)
   output <- smsPOMDP::Interp_policy(state_prior,policy$vectors,policy$action)
   output = c(output)
   expect_equal(length(output), 2)#value and actions
-
+  
 })

@@ -14,7 +14,7 @@ test_that("test graph", {
   #buiding the matrices of the problem
   #Initial belief state
   state_prior = c(0.9,0.1) #extant : 0.9, extinct : 0.1
-
+  
   disp_graph = function() smsPOMDP::graph(p0, pm, d0, d, V, Cm, Cs, state_prior)
   vdiffr::expect_doppelganger("disp_graph_base",
                               disp_graph)

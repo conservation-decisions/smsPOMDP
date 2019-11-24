@@ -34,7 +34,7 @@ test_that("Compute current belief state given past list (string) of actions, obs
   ac = c('Manage','Survey','Stop')
   ob = c('Not_seen','Not_seen', 'Seen')
   current = compute_belief(p0, pm, d0, d, V, Cm, Cs, state_prior, ac, ob)#current belief state
-
+  
   #is current a distribution over 2 states
   expect_length(current,2)#belief state: 2 states, length of current is 2
   expect_gte(current[1],0)

@@ -18,7 +18,7 @@ test_that("check pomdp", {
   r <- smsPOMDP::rew(p0, pm, d0, d, V, Cm, Cs)#reward matrix
   
   testthat::expect_true(smsPOMDP::check_pomdp(t, o, r))
-
+  
   #EXPECT TO FAIL THE TEST
   #not stochastic transition matrix
   t1 <- array(0, dim = c(2,2,3))
