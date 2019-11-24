@@ -7,10 +7,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: shiny, imager, digest, graphics, stats, sarsop
-Suggests: 
-    testthat (>= 2.1.0),
-    vdiffr,
-    shinytest
+Suggests: testthat (>= 2.1.0), vdiffr, shinytest
 Remotes: boettiger-lab/sarsop
 URL: https://github.com/conservation-decisions/smsPOMDP
 BugReports: https://github.com/conservation-decisions/smsPOMDP/issues
