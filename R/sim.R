@@ -107,7 +107,7 @@ graphics::legend("bottomleft", legend = "Seen", bty = "n",
 plot4 = graphics::plot(seq(0, Tmax-1), state_posterior[, 1], 
                        type = "l", xlab = "Time (years)", ylab = "Belief state", 
                        ylim = c(0, 1), xlim = c(-2, Tmax))
-graphics::lines(cseq(0, Tmax-1), state_posterior[, 2], col = "red", 
+graphics::lines(seq(0, Tmax-1), state_posterior[, 2], col = "red", 
                 cex = size)
 graphics::legend("bottomleft", legend = c("Extant", "Extinct"), 
                  col = c("black", "red"), lty = 1, bty = "n", cex = size)
