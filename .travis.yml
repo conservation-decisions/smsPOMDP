@@ -2,3 +2,9 @@
 
 language: R
 
+after_success: "sbt coveralls"
+
+notifications:
+  email:
+    recipients:
+      - luz.pascal96@gmail.comm
