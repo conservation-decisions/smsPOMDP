@@ -10,7 +10,8 @@ Plot history of belief states
 Plots succession of actions, observations and belief states given the list of past actions and observations 
 }
 \usage{
-plot_stream(p0, pm, d0, d, V, Cm, Cs, state_prior, actions, observations, disc = 0.95, size = 1)
+plot_stream(p0, pm, d0, d, V, Cm, Cs, state_prior,
+            actions, observations, disc = 0.95, size = 1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
