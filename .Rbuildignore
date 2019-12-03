@@ -1,2 +1,6 @@
-^TigerPOMDP\.Rproj$
+^smsPOMDP\.Rproj$
 ^\.Rproj\.user$
+^decision-graph.png
+^decision-graph2.png
+^simulation.png
+^run_app.png
