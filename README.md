@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/conservation-decisions/smsPOMDP.svg?branch=master)](https://travis-ci.org/conservation-decisions/smsPOMDP) 
+[![Coverage Status](https://coveralls.io/repos/github/conservation-decisions/smsPOMDP/badge.svg?branch=master)](https://coveralls.io/github/conservation-decisions/smsPOMDP?branch=master)
+
+
 # smsPOMDP
 R package : solving POMDP problem When to stop managing or surveying cryptic threatened species ?
 
@@ -75,7 +79,3 @@ This package provides a function which lanches an app, which eases the resolutio
 run_application()
 ```
 ![](interface.png)<!-- -->
-
-
-[![Build Status](https://travis-ci.org/conservation-decisions/smsPOMDP.svg?branch=master)](https://travis-ci.org/conservation-decisions/smsPOMDP) 
-[![Coverage Status](https://coveralls.io/repos/github/conservation-decisions/smsPOMDP/badge.svg?branch=master)](https://coveralls.io/github/conservation-decisions/smsPOMDP?branch=master)
