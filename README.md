@@ -54,13 +54,13 @@ You only need to call the 'graph' function, which will provide a decisions diagr
 state_prior = c(1,0) #extant : 1, extinct : 0
 graph(p0, pm, d0, d, V, Cm, Cs, state_prior)
 ```
-![](decision-graph.png)<!-- -->
+![](README-decision-graph.png)<!-- -->
 
 ``` r
 state_prior = c(0.9,0.1) #extant : 0.9, extinct : 0.1
 graph(p0, pm, d0, d, V, Cm, Cs, state_prior)
 ```
-![](decision-graph2.png)<!-- -->
+![](README-decision-graph2.png)<!-- -->
 ### Simulation
 A few more parameters to set and call the 'sim' function
 ``` r
@@ -72,10 +72,10 @@ Tmax = 20
 
 sim(p0, pm, d0, d, V, Cm, Cs, state_prior, Tmax)
 ```
-![](simulation.png)<!-- -->
+![](README-simulation.png)<!-- -->
 ### Running the app
 This package provides a function which lanches an app, which eases the resolution of the problem for the users.
 ``` r
 run_application()
 ```
-![](interface.png)<!-- -->
+![](README-interface.png)<!-- -->
