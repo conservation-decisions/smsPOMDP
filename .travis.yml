@@ -26,8 +26,8 @@ after_script: R -q -e 'tic::after_script()'
 # DO NOT CHANGE THE CODE ABOVE
 
 # Custom parts:
-after_success: "sbt coveralls"
-
+after_success:
+    - Rscript -e 'covr::codecov()
 # Header
 language: r
 sudo: false
