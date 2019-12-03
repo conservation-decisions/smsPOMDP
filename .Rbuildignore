@@ -1,6 +1,6 @@
 ^smsPOMDP\.Rproj$
 ^\.Rproj\.user$
-^decision-graph.png
-^decision-graph2.png
-^simulation.png
-^run_app.png
+^README-decision-graph.png
+^README-decision-graph2.png
+^README-simulation.png
+^README-run_app.png
