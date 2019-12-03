@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/conservation-decisions/smsPOMDP.svg?branch=master)](https://travis-ci.org/conservation-decisions/smsPOMDP) 
-[![Coverage Status](https://coveralls.io/repos/github/conservation-decisions/smsPOMDP/badge.svg?branch=master)](https://coveralls.io/github/conservation-decisions/smsPOMDP?branch=master)
+
+[![Codecov test coverage](https://codecov.io/gh/conservation-decisions/smsPOMDP/branch/master/graph/badge.svg)](https://codecov.io/gh/conservation-decisions/smsPOMDP?branch=master)
 
 
 # smsPOMDP
