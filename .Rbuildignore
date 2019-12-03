@@ -4,3 +4,6 @@
 ^README-decision-graph2.png
 ^README-simulation.png
 ^README-interface.png
+^\.travis\.yml$
+^appveyor\.yml$
+^tic\.R$
