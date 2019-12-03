@@ -1,4 +1,3 @@
-library("ggplot2")
 context('smsPOMDP')
 
 test_that("plot_stream: plots have known output", {
