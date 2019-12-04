@@ -1,0 +1,36 @@
+{
+  "input": {
+    "b": 1,
+    "Cm": -1,
+    "Cs": 10.84,
+    "d": 0.7819,
+    "d0": 0.01,
+    "disc": 0.95,
+    "graph": 1,
+    "p0": 0.9,
+    "past": 0,
+    "pm": 0.9418,
+    "sim": 0,
+    "Tmax": 10,
+    "V": 175.133
+  },
+  "output": {
+    "main": {
+      "html": "<div id=\"plot\" class=\"shiny-plot-output\" style=\"width: 100% ; height: 1000px\"><\/div>",
+      "deps": [
+
+      ]
+    },
+    "plot": {
+      "message": "Please select estimated cost of managing ($/yr) positive",
+      "call": "NULL",
+      "type": [
+        "shiny.silent.error",
+        "validation"
+      ]
+    }
+  },
+  "export": {
+
+  }
+}
