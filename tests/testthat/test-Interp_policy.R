@@ -32,19 +32,10 @@ test_that("Interp_policy returns action and value function", {
   
   #2nd case
   state_prior <- c(0,0) #initial belief state
-  log_dir <- tempdir()
-  id <- 'test-Interp_policy'
-  infile <- paste0(log_dir, "/", id, ".pomdpx")
-  outfile <- paste0(log_dir, "/", id, ".policyx")
-  stdout <- paste0(log_dir, "/", id, ".log")
-  
-  sarsop::write_pomdpx(t, o, r, disc, state_prior, file = infile)
-  status <- sarsop::pomdpsol(infile, outfile, stdout = stdout)
-  policy <- sarsop::read_policyx(file = outfile)
   output <- smsPOMDP::Interp_policy(state_prior,policy$vectors,policy$action)
   output = c(output)
   expect_equal(length(output), 2)#value and actions
-  expect_equal(output[1], 0)#value
-  expect_equal(output[2], 1)#action
+  expect_equal(output[[1]], 0)#value
+  expect_equal(output[[2]], 1)#action
   
 })
