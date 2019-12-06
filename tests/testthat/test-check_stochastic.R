@@ -11,4 +11,7 @@ test_that("check stochastic matrix", {
   
   m2 <- matrix(c(1,1,1,1), ncol = 2)
   testthat::expect_false(smsPOMDP::check_stochastic(m2))
+  
+  m2 <- matrix(c(-1,2,2,-1), ncol = 2)
+  testthat::expect_false(smsPOMDP::check_stochastic(m2))
 })

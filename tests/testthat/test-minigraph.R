@@ -59,4 +59,11 @@ test_that("Minigraph: test all different possible graphs", {
   vdiffr::expect_doppelganger("disp_sur10_stop_stop_base",
                               disp_sur10_stop_stop)
   
+  #1st tab 1 action, 2nd tab 1 action
+  tab11 = data.frame(action = c(3), years = c(89))#survey for 10 years and stop
+  tab12 = data.frame(action = c(3), years = c(89))#stop
+  disp_stop_stop = function() smsPOMDP::minigraph(tab11, tab12)
+  vdiffr::expect_doppelganger("disp_stop_stop_base",
+                              disp_stop_stop)
+  
 })
