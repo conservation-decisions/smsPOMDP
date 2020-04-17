@@ -5,8 +5,9 @@ ui <- shiny::fluidPage(
     shiny::sidebarPanel("POMDP parameters"
                         , shiny::numericInput('p0', 'Local probability of persistence (if survey or stop)', min = 0, max = 1, value = 0.9)
                         , shiny::numericInput('pm', 'Local probability of persistence (if manage)', min = 0, max = 1, value = 0.94184)
-                        , shiny::numericInput('d0', 'Local probability of detection (if manage or stop)', min = 0, max = 1, value = 0.01)
-                        , shiny::numericInput('d', 'Local probability of detection (if survey)', min = 0, max = 1, value = 0.78193)
+                        , shiny::numericInput('d0', 'Local probability of detection (if stop)', min = 0, max = 1, value = 0.01)
+                        , shiny::numericInput('dm', 'Local probability of detection (if manage)', min = 0, max = 1, value = 0.01)
+                        , shiny::numericInput('ds', 'Local probability of detection (if survey)', min = 0, max = 1, value = 0.78193)
                         , shiny::numericInput('V', 'Estimated economic value of the species ($/yr)', value = 175.133)
                         , shiny::numericInput('Cm', 'Estimated cost of managing ($/yr)', value = 18.784)
                         , shiny::numericInput('Cs', 'Estimated cost of surveying ($/yr)', min = 0, max = 1, value = 10.840)
@@ -40,12 +41,16 @@ server <- function(input, output, session){
     input$pm
   })
   d0 <- shiny::reactive({
-    shiny::validate( shiny::need(input$d0 >=0 & input$d0 <=1 , "Please select local probability of detection (if manage or stop) between 0 and 1") )
+    shiny::validate( shiny::need(input$d0 >=0 & input$d0 <=1 , "Please select local probability of detection (if stop) between 0 and 1") )
     input$d0
   })
-  d <- shiny::reactive({
-    shiny::validate( shiny::need(input$d >=0 & input$d <=1 , "Please select local probability of detection (if survey) between 0 and 1") )
-    input$d
+  dm <- shiny::reactive({
+    shiny::validate( shiny::need(input$dm >=0 & input$dm <=1 , "Please select local probability of detection (if manage) between 0 and 1") )
+    input$dm
+  })
+  ds <- shiny::reactive({
+    shiny::validate( shiny::need(input$ds >=0 & input$ds <=1 , "Please select local probability of detection (if survey) between 0 and 1") )
+    input$ds
   })
   V <- shiny::reactive({
     shiny::validate( shiny::need(input$V >=0 , "Please select estimated economic value of the species ($/yr) positive") )
@@ -76,7 +81,7 @@ server <- function(input, output, session){
   #different scenarios depending on the users choice
   #launch a simulation
   shiny::observeEvent(input$sim, {
-    output$plot <- shiny::renderPlot({smsPOMDP::sim(p0(), pm(), d0(), d(), V(), Cm(), Cs(), state_prior(), Tmax(), disc(), size = 2)})
+    output$plot <- shiny::renderPlot({smsPOMDP::sim(p0(), pm(), d0(), dm(), ds(), V(), Cm(), Cs(), state_prior(), Tmax(), disc(), size = 2)})
     output$main <- shiny::renderUI({
       shiny::plotOutput('plot', height = '1000px')
     })
@@ -84,7 +89,7 @@ server <- function(input, output, session){
   
   #see decision graph
   shiny::observeEvent(input$graph, {
-    output$plot <- shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), c(1,0), disc(), size = 2)})
+    output$plot <- shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), dm(), ds(), V(), Cm(), Cs(), c(1,0), disc(), size = 2)})
     output$main <- shiny::renderUI({
       shiny::plotOutput('plot', height = '1000px')
     })
@@ -162,13 +167,13 @@ server <- function(input, output, session){
     shiny::validate( shiny::need(input$past_init_b >=0 & input$past_init_b <=1 , "Please select initial belief state (extant) between 0 and 1") )
     c(input$past_init_b, 1-input$past_init_b)
   }) #initial belief state
-  current_belief <- shiny::reactive(smsPOMDP::compute_belief(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc()))
+  current_belief <- shiny::reactive(smsPOMDP::compute_belief(p0(), pm(), d0(), dm(), ds(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc()))
   #
   shiny::observeEvent(input$submit_couple_1, {
-    output$past_plot <- shiny::renderPlot(smsPOMDP::plot_stream(p0(), pm(), d0(), d(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc(), size = 2))
+    output$past_plot <- shiny::renderPlot(smsPOMDP::plot_stream(p0(), pm(), d0(), dm(), ds(), V(), Cm(), Cs(),init_belief(), p_a(), p_o(), disc(), size = 2))
   })
   shiny::observeEvent(input$next_policy, {
-    output$next_policy_plot <- shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), d(), V(), Cm(), Cs(), current_belief(), disc())})
+    output$next_policy_plot <- shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), dm(), ds(), V(), Cm(), Cs(), current_belief(), disc())})
   })
   
   
