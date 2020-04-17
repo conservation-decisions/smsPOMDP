@@ -1,0 +1,37 @@
+{
+  "input": {
+    "b": 1,
+    "Cm": 18.784,
+    "Cs": 10.84,
+    "d0": 0.01,
+    "disc": 0.95,
+    "dm": 0.01,
+    "ds": 0.78193,
+    "graph": 1,
+    "p0": 0.9,
+    "past": 0,
+    "pm": -1,
+    "sim": 0,
+    "Tmax": 10,
+    "V": 175.133
+  },
+  "output": {
+    "main": {
+      "html": "<div id=\"plot\" class=\"shiny-plot-output\" style=\"width: 100% ; height: 1000px\"><\/div>",
+      "deps": [
+
+      ]
+    },
+    "plot": {
+      "message": "Please select local probability of persistence (if manage) between 0 and 1",
+      "call": "NULL",
+      "type": [
+        "shiny.silent.error",
+        "validation"
+      ]
+    }
+  },
+  "export": {
+
+  }
+}

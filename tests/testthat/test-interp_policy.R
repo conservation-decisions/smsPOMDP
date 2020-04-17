@@ -12,6 +12,7 @@ test_that("interp_policy returns action and value function", {
   d0 <- 0.01
   dm <- 0.01
   ds <- 0.78193
+  disc <- 0.95
   
   #buiding the matrices of the problem
   t <- smsPOMDP::tr(p0, pm, d0, dm, ds, V, Cm, Cs) #transition matrix

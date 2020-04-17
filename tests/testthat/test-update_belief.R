@@ -19,6 +19,7 @@ test_that("Compute current belief state given past action, observation and initi
   
   z0 <- 2 #Not seen
   a0 <- 1 #manage
+  state_prior <-c(1,0)
   current <- update_belief(state_prior, t, o, z0, a0)
   #is current a distribution over 2 states
   expect_length(current,2)#belief state: 2 states, length of current is 2
