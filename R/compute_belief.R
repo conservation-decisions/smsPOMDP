@@ -1,20 +1,21 @@
 #' @export
-compute_belief <- function(p0, pm, d0, d, V, Cm, Cs, state_prior, act, obs, disc = 0.95, size = 1)
+compute_belief <- function(p0, pm, d0, dm, ds, V, Cm, Cs, 
+                           state_prior, act, obs, disc = 0.95, size = 1)
 {
-
   #tests the inputs
   stopifnot(p0>=0,p0<=1) #checks if p0 is a probability
   stopifnot(pm>=0,pm<=1) #checks if pm is a probability
   stopifnot(d0>=0,d0<=1) #checks if d0 is a probability
-  stopifnot(d>=0,d<=1) #checks if d is a probability
+  stopifnot(dm>=0,dm<=1) #checks if dm is a probability
+  stopifnot(ds>=0,ds<=1) #checks if ds is a probability
   stopifnot(V>=0, Cm >= 0, Cs >= 0) #checks if values and costs are positif
   stopifnot(disc>=0, disc <= 1) #checks if values and costs are positif
   stopifnot(length(act)==length(obs)) #checks if there is the same number of actions and observations
 
   #buiding the matrices of the problem
-  t <- smsPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
-  o <- smsPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
-  r <- smsPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
+  t <- smsPOMDP::tr(p0, pm, d0, dm, ds, V, Cm, Cs) #transition matrix
+  o <- smsPOMDP::obs(p0, pm, d0, dm, ds, V, Cm, Cs)#observation matrix
+  r <- smsPOMDP::rew(p0, pm, d0, dm, ds, V, Cm, Cs)#reward matrix
 
   conv_action <- function(asdf){
     switch (asdf, Manage = 1, Survey = 2, Stop = 3)

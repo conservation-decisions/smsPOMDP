@@ -42,17 +42,20 @@ V <- 175.133
 Cm <- 18.784
 Cs <- 10.840
 d0 <- 0.01
-d <- 0.78193
+dm <- 0.01
+ds <- 0.78193
 
 #buiding the matrices of the problem
-t <- smsPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
-o <- smsPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
-r <- smsPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
+t <- smsPOMDP::tr(p0, pm, d0, dm, ds, V, Cm, Cs) #transition matrix
+o <- smsPOMDP::obs(p0, pm, d0, dm, ds, V, Cm, Cs)#observation matrix
+r <- smsPOMDP::rew(p0, pm, d0, dm, ds, V, Cm, Cs)#reward matrix
 
+#example 1
 state_prior <- c(1,0)
 tab <- smsPOMDP::tab_actions(t, o, r, state_prior, disc)
 smsPOMDP::minigraph(tab)
 
+#example 2
 state_prior <- c(0.3,0.7)
 tab <- smsPOMDP::tab_actions(t, o, r, c(1, 0), disc)
 tab2 <- smsPOMDP::tab_actions(t, o, r, state_prior, disc)

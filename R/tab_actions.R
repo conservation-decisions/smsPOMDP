@@ -1,8 +1,8 @@
 #' @export
-tab_actions = function(transition, observation, reward, state_prior, disc = 0.95, Tmax = 100){
+tab_actions <- function(transition, observation, reward, state_prior, disc = 0.95, Tmax = 100){
   stopifnot(smsPOMDP::check_pomdp(transition, observation, reward))
 
-  log_dir = tempdir()
+  log_dir <- tempdir()
   id <- digest::digest(match.call())
   infile <- paste0(log_dir, "/", id, ".pomdpx")
   outfile <- paste0(log_dir, "/", id, ".policyx")
@@ -11,7 +11,7 @@ tab_actions = function(transition, observation, reward, state_prior, disc = 0.95
   sarsop::write_pomdpx(transition, observation, reward, disc, state_prior, file = infile)
   status <- sarsop::pomdpsol(infile, outfile, stdout = stdout)
   policy <- sarsop::read_policyx(file = outfile)
-  output <- smsPOMDP::Interp_policy(state_prior,policy$vectors,policy$action)
+  output <- smsPOMDP::interp_policy(state_prior,policy$vectors,policy$action)
 
   state_posterior <- matrix(state_prior, ncol = 2)
   optimal_action <- output[[2]]
@@ -22,14 +22,14 @@ tab_actions = function(transition, observation, reward, state_prior, disc = 0.95
     s_p <- smsPOMDP::update_belief(state_posterior[i, ], transition, observation, o1,
                                      a1)
     state_posterior <- rbind(state_posterior, s_p)
-    output <- Interp_policy(s_p,policy$vectors,policy$action)
+    output <- smsPOMDP::interp_policy(s_p,policy$vectors,policy$action)
 
-    optimal_action = c(optimal_action, output[[2]])
+    optimal_action <- c(optimal_action, output[[2]])
   }
 
   a <- optimal_action[1]
   act <- a
-  years = numeric()
+  years <- numeric()
   while(sum(years) < length(optimal_action)){
     if (length(unique(optimal_action))==1){
       i <- length(optimal_action)
@@ -43,6 +43,6 @@ tab_actions = function(transition, observation, reward, state_prior, disc = 0.95
       years <- c(years, i)
     }
   }
-  tab = data.frame(action = act, years = years)
+  tab <- data.frame(action = act, years = years)
   return(tab)
 }

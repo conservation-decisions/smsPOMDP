@@ -9,20 +9,23 @@ Plot decision graph
 Plots decision graph of the solution to the problem : When to stop managing or surveying cryptic threatened species ?
 }
 \usage{
-graph(p0, pm, d0, d, V, Cm, Cs, state_prior, disc=0.95, size = 1)
+graph(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior, disc=0.95, size = 1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-    \item{p0}{
+  \item{p0}{
 Local probability of persitance : P(extant/extant, survey or stop).
 }
   \item{pm}{
 Local probability of persitance if manage : P(extant/extant, manage).
 }
   \item{d0}{
-Local probability of detection : P(present/extant, stop or manage).
+Local probability of detection : P(present/extant, stop).
 }
-  \item{d}{
+  \item{dm}{
+Local probability of detection : P(present/extant, manage).
+}
+  \item{ds}{
 Local probability of detection if survey : P(present/extant, survey).
 }
   \item{V}{
@@ -64,10 +67,11 @@ V <- 175.133
 Cm <- 18.784
 Cs <- 10.840
 d0 <- 0.01
-d <- 0.78193
+dm <- 0.01
+ds <- 0.78193
 
 #Initial belief state
 state_prior <- c(0.9,0.1) #extant : 0.9, extinct : 0.1
 
-graph(p0, pm, d0, d, V, Cm, Cs, state_prior)}
+graph(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior)}
 }

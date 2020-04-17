@@ -9,7 +9,7 @@ Transition matrix function
 Computes the transition matrix between states for each action : manage, survey and stop. State 1 : extant, state 2 : extinct
 }
 \usage{
-tr(p0, pm, d0, d, V, Cm, Cs)
+tr(p0, pm, d0, dm, ds, V, Cm, Cs)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,9 +20,12 @@ Local probability of persitance : P(extant/extant, survey or stop).
 Local probability of persitance if manage : P(extant/extant, manage).
 }
   \item{d0}{
-Local probability of detection : P(present/extant, stop or manage).
+Local probability of detection : P(present/extant, stop).
 }
-  \item{d}{
+  \item{dm}{
+Local probability of detection : P(present/extant, manage).
+}
+  \item{ds}{
 Local probability of detection if survey : P(present/extant, survey).
 }
   \item{V}{
@@ -48,15 +51,18 @@ Luz Pascal
 \examples{
 \dontrun{
 #values for Sumatran tigers
-pen = 0.1
-p0 = 1-pen
-pem = 0.05816
-pm = 1 - pem
-V = 175.133
-Cm = 18.784
-Cs = 10.840
-d0 = 0.01
-d = 0.78193
+pen <- 0.1
+p0 <- 1-pen
+pem <- 0.05816
+pm <- 1 - pem
+V <- 175.133
+Cm <- 18.784
+Cs <- 10.840
+d0 <- 0.01
+dm <- 0.01
+ds <- 0.78193
 
-tr(p0, pm, d0, d, V, Cm, Cs)}
+#buiding the matrices of the problem
+t <- smsPOMDP::tr(p0, pm, d0, dm, ds, V, Cm, Cs) #transition matrix
+}
 }

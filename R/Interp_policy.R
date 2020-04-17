@@ -1,5 +1,5 @@
 #' @export
-Interp_policy <- function(state_prior, alpha, alpha_action){
+interp_policy <- function(state_prior, alpha, alpha_action){
   ## Compute dot product with initial
   a <- state_prior %*% alpha
 

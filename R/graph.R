@@ -1,11 +1,12 @@
 #' @export
-graph <- function(p0, pm, d0, d, V, Cm, Cs, state_prior, disc=0.95, size = 1){
+graph <- function(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior, disc=0.95, size = 1){
 
   #tests the inputs
   stopifnot(p0>=0,p0<=1) #checks if p0 is a probability
   stopifnot(pm>=0,pm<=1) #checks if pm is a probability
   stopifnot(d0>=0,d0<=1) #checks if d0 is a probability
-  stopifnot(d>=0,d<=1) #checks if d is a probability
+  stopifnot(dm>=0,dm<=1) #checks if d is a probability
+  stopifnot(ds>=0,ds<=1) #checks if d is a probability
   stopifnot(V>=0, Cm >= 0, Cs >= 0) #checks if values and costs are positif
   stopifnot(sum(state_prior)==1)#checks that state_prior is a probability
   stopifnot(state_prior>=0,state_prior<= 1)#checks that state_prior is a probability
@@ -13,11 +14,11 @@ graph <- function(p0, pm, d0, d, V, Cm, Cs, state_prior, disc=0.95, size = 1){
   stopifnot(disc>=0, disc <= 1) #checks if the discount factor is between 0 and 1
 
   #buiding the matrices of the problem
-  t <- smsPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
-  o <- smsPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
-  r <- smsPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
-
-  stopifnot(check_pomdp(t,o,r))
+  t <- smsPOMDP::tr(p0, pm, d0, dm, ds, V, Cm, Cs) #transition matrix
+  o <- smsPOMDP::obs(p0, pm, d0, dm, ds, V, Cm, Cs)#observation matrix
+  r <- smsPOMDP::rew(p0, pm, d0, dm, ds, V, Cm, Cs)#reward matrix
+  
+  stopifnot(smsPOMDP::check_pomdp(t,o,r))
   
   if (state_prior[1] == 1){#the species is extant for sure
     tab <- smsPOMDP::tab_actions(t,o,r,state_prior,disc)

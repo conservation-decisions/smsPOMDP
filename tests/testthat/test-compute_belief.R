@@ -1,24 +1,26 @@
 context("smsPOMDP")
 
 test_that("Compute current belief state given past list (string) of actions, observations and initial belief state", {
-  pen = 0.1 #local probability of extinction P(extinct/extant, survey or nothing)
-  p0 = 1-pen #local probability of persitance P(extant/extant, manage)
-  pem = 0.05816 #local probability of extinction if managed P(extinct/extant, manage)
-  pm = 1 - pem #local probability of persistance if managed P(extant/extant, manage)
-  d0 = 0.01 #local probability of detection P(present/extant, manage or nothing)
-  d = 0.78193 #local probability of detection if surveyed P(present/extant, survey)
-  V = 175.133 #Estimated economic value of the species ($/yr)
-  Cm = 18.784 #Estimated cost of managing ($/yr)
-  Cs = 10.840 #Estimated cost of surveying ($/yr)
+  #values for Sumatran tigers
+  pen <- 0.1
+  p0 <- 1-pen
+  pem <- 0.05816
+  pm <- 1 - pem
+  V <- 175.133
+  Cm <- 18.784
+  Cs <- 10.840
+  d0 <- 0.01
+  dm <- 0.01
+  ds <- 0.78193
   
   #Initial belief state
-  state_prior = c(0.9,0.1) #extant : 0.9, extinct : 0.1
+  state_prior <- c(0.9,0.1) #extant : 0.9, extinct : 0.1
   
   #test1: last observation is not seen: current belief state is not[1,0]
   #previous actions and observations
-  ac = c('Manage','Survey','Stop')
-  ob = c('Seen','Not_seen','Not_seen')
-  current = compute_belief(p0, pm, d0, d, V, Cm, Cs, state_prior, ac, ob)#current belief state
+  ac <- c('Manage','Survey','Stop')
+  ob <- c('Seen','Not_seen','Not_seen')
+  current <- compute_belief(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior, ac, ob)#current belief state
   
   #is current a distribution over 2 states
   expect_length(current,2)#belief state: 2 states, length of current is 2
@@ -31,9 +33,9 @@ test_that("Compute current belief state given past list (string) of actions, obs
   
   #test2: last observation is seen: current belief state is [1,0], the species is extant
   #previous actions and observations
-  ac = c('Manage','Survey','Stop')
-  ob = c('Not_seen','Not_seen', 'Seen')
-  current = compute_belief(p0, pm, d0, d, V, Cm, Cs, state_prior, ac, ob)#current belief state
+  ac <- c('Manage','Survey','Stop')
+  ob <- c('Not_seen','Not_seen', 'Seen')
+  current <- compute_belief(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior, ac, ob)#current belief state
   
   #is current a distribution over 2 states
   expect_length(current,2)#belief state: 2 states, length of current is 2

@@ -15,7 +15,7 @@ minigraph <- function(tab, tab2=NULL, size = 1){
       a3 <- switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','STOP')
       fpath <- system.file("extdata", "im3.jpg", package="smsPOMDP")
       t <- imager::load.image(file=fpath)
-      graphics::plot(t, axes = F)
+      graphics::plot(t, axes = FALSE)
       graphics::text(200,200,'Not seen for', cex = size)
       graphics::text(200, 250, y1, cex = size)
       graphics::text(500,400, 'Seen', cex = size)
@@ -31,7 +31,7 @@ minigraph <- function(tab, tab2=NULL, size = 1){
       a2 <- switch (as.numeric(as.character(tab[2,1])), 'MANAGE','SURVEY','STOP')
       fpath <- system.file("extdata", "im2.jpg", package="smsPOMDP")
       t <- imager::load.image(file=fpath)
-      graphics::plot(t, axes = F)
+      graphics::plot(t, axes = FALSE)
       graphics::text(550,400,'Not seen for', cex = size)
       graphics::text(550, 450, y1, cex = size)
       graphics::text(1000,200,'Seen', cex = size)
@@ -41,7 +41,7 @@ minigraph <- function(tab, tab2=NULL, size = 1){
       a1 <- switch (as.numeric(as.character(tab[1,1])),'MANAGE','SURVEY','STOP')
       fpath <- system.file("extdata", "im1.jpg", package="smsPOMDP")
       t <- imager::load.image(file=fpath)
-      graphics::plot(t, axes = F)
+      graphics::plot(t, axes = FALSE)
       graphics::text(650, 350, a1, cex = size*3)
     }
   } else {
@@ -68,7 +68,7 @@ minigraph <- function(tab, tab2=NULL, size = 1){
       fpath <- system.file("extdata", "im3_3.jpg", package="smsPOMDP")
       t <- imager::load.image(file=fpath)
       
-      graphics::plot(t, axes = F)
+      graphics::plot(t, axes = FALSE)
       #text for solution if starting from c(1,0)
       graphics::text(740,300,'Not seen for', cex = size)
       graphics::text(740, 350, y1, cex = size)
@@ -108,7 +108,7 @@ minigraph <- function(tab, tab2=NULL, size = 1){
         fpath <- system.file("extdata", "im3_2.jpg", package="smsPOMDP")
         t <- imager::load.image(file=fpath)
 
-        graphics::plot(t, axes = F)
+        graphics::plot(t, axes = FALSE)
         #text for solution if starting from c(1,0)
         graphics::text(740,300,'Not seen for', cex = size)
         graphics::text(740, 350, y1, cex = size)
@@ -142,7 +142,7 @@ minigraph <- function(tab, tab2=NULL, size = 1){
         fpath <- system.file("extdata", "im2_2.jpg", package="smsPOMDP")
         t <- imager::load.image(file=fpath)
 
-        graphics::plot(t, axes = F)
+        graphics::plot(t, axes = FALSE)
         #text for solution if starting from c(1,0)
         graphics::text(750,300,'Not seen for', cex = size)
         graphics::text(740, 350, y1, cex = size)
@@ -174,7 +174,7 @@ minigraph <- function(tab, tab2=NULL, size = 1){
         fpath <- system.file("extdata", "im3_1.jpg", package="smsPOMDP")
         t <- imager::load.image(file=fpath)
         
-        graphics::plot(t, axes = F)
+        graphics::plot(t, axes = FALSE)
         #text for solution if starting from c(1,0)
         graphics::text(740,300,'Not seen for', cex = size)
         graphics::text(740, 350, y1, cex = size)
@@ -204,7 +204,7 @@ minigraph <- function(tab, tab2=NULL, size = 1){
         fpath <- system.file("extdata", "im2_1.jpg", package="smsPOMDP")
         t <- imager::load.image(file=fpath)
         
-        graphics::plot(t, axes = F)
+        graphics::plot(t, axes = FALSE)
         #text for solution if starting from c(1,0)
         graphics::text(750,300,'Not seen for', cex = size)
         graphics::text(740, 350, y1, cex = size)
@@ -219,7 +219,7 @@ minigraph <- function(tab, tab2=NULL, size = 1){
         a1 <- switch (as.numeric(as.character(tab[1,1])),'MANAGE','SURVEY','STOP')
         fpath <- system.file("extdata", "im1.jpg", package="smsPOMDP")
         t <- imager::load.image(file=fpath)
-        graphics::plot(t, axes = F)
+        graphics::plot(t, axes = FALSE)
         graphics::text(650, 350, a1, cex = size*3)
       }
 

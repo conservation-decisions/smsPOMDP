@@ -8,7 +8,7 @@ Computes the best policy
 Given a policy and an initial belief state, returns the action which maximizes the value function, and its corresponding value
 }
 \usage{
-Interp_policy(state_prior, alpha, alpha_action)
+interp_policy(state_prior, alpha, alpha_action)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -43,12 +43,13 @@ V <- 175.133
 Cm <- 18.784
 Cs <- 10.840
 d0 <- 0.01
-d <- 0.78193
+dm <- 0.01
+ds <- 0.78193
 
 #buiding the matrices of the problem
-t <- smsPOMDP::tr(p0, pm, d0, d, V, Cm, Cs) #transition matrix
-o <- smsPOMDP::obs(p0, pm, d0, d, V, Cm, Cs)#observation matrix
-r <- smsPOMDP::rew(p0, pm, d0, d, V, Cm, Cs) #reward matrix
+t <- smsPOMDP::tr(p0, pm, d0, dm, ds, V, Cm, Cs) #transition matrix
+o <- smsPOMDP::obs(p0, pm, d0, dm, ds, V, Cm, Cs)#observation matrix
+r <- smsPOMDP::rew(p0, pm, d0, dm, ds, V, Cm, Cs)#reward matrix
 
 state_prior <- c(1,0) #initial belief state
 log_dir <- tempdir()
@@ -60,7 +61,7 @@ stdout <- paste0(log_dir, "/", id, ".log")
 sarsop::write_pomdpx(t, o, r, disc, state_prior, file = infile)
 status <- sarsop::pomdpsol(infile, outfile, stdout = stdout)
 policy <- sarsop::read_policyx(file = outfile)
-output <- smsPOMDP::Interp_policy(state_prior,policy$vectors,policy$action)
+output <- smsPOMDP::interp_policy(state_prior,policy$vectors,policy$action)
 
   }
 }

@@ -10,7 +10,7 @@ Plot history of belief states
 Plots succession of actions, observations and belief states given the list of past actions and observations 
 }
 \usage{
-plot_stream(p0, pm, d0, d, V, Cm, Cs, state_prior,
+plot_stream(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior,
             actions, observations, disc = 0.95, size = 1)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -22,9 +22,12 @@ Local probability of persitance : P(extant/extant, survey or stop).
 Local probability of persitance if manage : P(extant/extant, manage).
 }
   \item{d0}{
-Local probability of detection : P(present/extant, stop or manage).
+Local probability of detection : P(present/extant, stop).
 }
-  \item{d}{
+  \item{dm}{
+Local probability of detection : P(present/extant, manage).
+}
+  \item{ds}{
 Local probability of detection if survey : P(present/extant, survey).
 }
   \item{V}{
@@ -60,7 +63,7 @@ Luz Pascal
 }
 \examples{
 \dontrun{
- #values for Sumatran tigers
+#values for Sumatran tigers
 pen <- 0.1
 p0 <- 1-pen
 pem <- 0.05816
@@ -69,11 +72,12 @@ V <- 175.133
 Cm <- 18.784
 Cs <- 10.840
 d0 <- 0.01
-d <- 0.78193
+dm <- 0.01
+ds <- 0.78193
 
 state_prior <- c(1,0)
 actions <- c('Manage', 'Manage', 'Survey','Stop')
 observations <- c('Not_seen','Not_seen','Not_seen','Seen')
-plot_stream(p0, pm, d0, d, V, Cm, Cs, state_prior, actions, observations, disc = 0.95, size = 1)
+plot_stream(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior, actions, observations, disc = 0.95, size = 1)
 }
 }
