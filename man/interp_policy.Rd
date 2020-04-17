@@ -1,5 +1,5 @@
-\name{Interp_policy}
-\alias{Interp_policy}
+\name{interp_policy}
+\alias{interp_policy}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Computes the best policy
