@@ -1,25 +1,55 @@
 library(shiny)
 ui <- shiny::fluidPage(
-  shiny::titlePanel("POMDP solver: When to stop managing or surveying cryptic threatened species ?"),
+  tags$head(
+    tags$style(HTML("
+      .shiny-output-error-validation {
+        color: green;
+      }
+    "))
+  ),
+  
+  
+  shiny::titlePanel("POMDP solver: When to stop managing 
+                    or surveying cryptic threatened species ?"),
+  
   shiny::sidebarLayout(
-    shiny::sidebarPanel("POMDP parameters"
-                        , shiny::numericInput('p0', 'Local probability of persistence (if survey or stop)', min = 0, max = 1, value = 0.9)
-                        , shiny::numericInput('pm', 'Local probability of persistence (if manage)', min = 0, max = 1, value = 0.94184)
-                        , shiny::numericInput('d0', 'Local probability of detection (if stop)', min = 0, max = 1, value = 0.01)
-                        , shiny::numericInput('dm', 'Local probability of detection (if manage)', min = 0, max = 1, value = 0.01)
-                        , shiny::numericInput('ds', 'Local probability of detection (if survey)', min = 0, max = 1, value = 0.78193)
-                        , shiny::numericInput('V', 'Estimated economic value of the species ($/yr)', value = 175.133)
-                        , shiny::numericInput('Cm', 'Estimated cost of managing ($/yr)', value = 18.784)
-                        , shiny::numericInput('Cs', 'Estimated cost of surveying ($/yr)', min = 0, max = 1, value = 10.840)
-                        , shiny::numericInput('disc', 'Discount factor', value = 0.95, max = 1, min = 0)
-                        , shiny::actionButton('sim', 'View simulation')
-                        , shiny::actionButton('graph', 'View graphical solution')
-                        , shiny::actionButton('past', 'Set history of management and observations')
-                        , shiny::conditionalPanel('input.sim'
-                                                  , shiny::helpText('Parameters only for the simulation')
-                                                  , shiny::numericInput('Tmax', 'Duration of simulation', value = 10, min = 1)
-                                                  , shiny::numericInput('b', 'Initial belief state (extant)', value = 1, min = 0, max = 1)
-                        )
+    shiny::sidebarPanel(
+      "POMDP parameters"
+      , shiny::numericInput('p0', 'Local probability of 
+                            persistence (if survey or stop)',
+                            min = 0, max = 1, value = 0.9)
+      , shiny::numericInput('pm', 'Local probability of 
+                            persistence (if manage)', 
+                            min = 0, max = 1, value = 0.94184)
+      , shiny::numericInput('d0', 'Local probability of 
+                            detection (if stop)',
+                            min = 0, max = 1, value = 0.01)
+      , shiny::numericInput('dm', 'Local probability of 
+                            detection (if manage)', 
+                            min = 0, max = 1, value = 0.01)
+      , shiny::numericInput('ds', 'Local probability of 
+                            detection (if survey)', 
+                            min = 0, max = 1, value = 0.78193)
+      , shiny::numericInput('V', 'Estimated economic value of 
+                            the species ($/yr)',
+                            value = 175.133)
+      , shiny::numericInput('Cm', 'Estimated cost of managing ($/yr)',
+                            value = 18.784)
+      , shiny::numericInput('Cs', 'Estimated cost of surveying ($/yr)',
+                            min = 0, value = 10.840)
+      , shiny::numericInput('disc', 'Discount factor', 
+                            value = 0.95, min = 0, max = 1)
+      , shiny::actionButton('sim', 'View simulation')
+      , shiny::actionButton('graph', 'View graphical solution')
+      , shiny::actionButton('past', 'Set history of management and observations')
+      , shiny::conditionalPanel(
+          'input.sim'
+          , shiny::helpText('Parameters only for the simulation')
+          , shiny::numericInput('Tmax', 'Duration of simulation', 
+                                value = 10, min = 1)
+          , shiny::numericInput('b', 'Initial belief state (extant)',
+                                value = 1, min = 0, max = 1)
+          )
     )
     , shiny::mainPanel(""
                        , shiny::uiOutput('main')
@@ -33,7 +63,11 @@ ui <- shiny::fluidPage(
 server <- function(input, output, session){
   #Inputs
   p0 <- shiny::reactive({
-    shiny::validate( shiny::need(input$p0 >=0 & input$p0 <=1 , "Please select local probability of persistence (if survey or stop) between 0 and 1") )
+    shiny::validate(
+      shiny::need(input$p0 >=0 & input$p0 <=1 ,
+                  "Please select local probability 
+                  of persistence (if survey or stop) 
+                  between 0 and 1") )
     input$p0
   })
   pm <- shiny::reactive({
@@ -175,8 +209,6 @@ server <- function(input, output, session){
   shiny::observeEvent(input$next_policy, {
     output$next_policy_plot <- shiny::renderPlot({smsPOMDP::graph(p0(), pm(), d0(), dm(), ds(), V(), Cm(), Cs(), current_belief(), disc())})
   })
-  
-  
 }
 
 shiny::shinyApp(ui, server)
