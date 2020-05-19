@@ -1,6 +1,6 @@
 #' @export
 compute_belief <- function(p0, pm, d0, dm, ds, V, Cm, Cs, 
-                           state_prior, act, obs, disc = 0.95, size = 1)
+                           state_prior, act, obs, disc = 0.95)
 {
   #tests the inputs
   stopifnot(p0>=0,p0<=1) #checks if p0 is a probability

@@ -1,14 +1,16 @@
-\name{compute_belief}
-\alias{compute_belief}
+\name{reward_belief}
+\alias{reward_belief}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Compute current belief state
+%%  ~~function to do ... ~~
+Return rewards over time
 }
 \description{
-Compute current belief state given past actions, observations and initial belief state
+%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Return list of rewards over time given past actions and table of belief states
 }
 \usage{
-compute_belief(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior, act, obs, disc = 0.95)
+reward_belief(p0, pm, d0, dm, ds, V, Cm, Cs,state_posterior, act, disc = 0.95)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -36,28 +38,25 @@ Estimated cost of managing ($/yr).
   \item{Cs}{
 Estimated cost of survey ($/yr).
 }
-  \item{state_prior}{
-Initial belief state, vector of 2 values (belief state extant and extinct), between 0 and 1.
+  \item{state_posterior}{
+Table of belief states over time corresponding the actions. Can be computed using  \code{\link{compute_belief_list}}
 }
   \item{act}{
-list of actions, values in c('Manage', 'Survey', 'Stop')
-}
-  \item{obs}{
-list of observations, values in c('Seen', 'Not_seen')
-}
+  Vector of the past actions. Values in c('Manage', 'Survey', 'Stop')
+  }
   \item{disc}{
 Discount factor used to compute the policy (default 0.95)
 }
 }
 \value{
-Current belief state, vector of 2 values (belief state extant and extinct), between 0 and 1.
+Vector of rewards over time
 }
 \author{
 Luz Pascal
 }
 \examples{
- \dontrun{
-#values for Sumatran tigers
+\dontrun{
+#values for Sumatran tiger
 pen <- 0.1
 p0 <- 1-pen
 pem <- 0.05816
@@ -69,13 +68,12 @@ d0 <- 0.01
 dm <- 0.01
 ds <- 0.78193
 
-#Initial belief state
-state_prior <- c(0.9,0.1) #extant : 0.9, extinct : 0.1
+act <- c("Manage", "Survey", "Stop")
+obs <- c("Seen", "Seen", "Not seen")
+state_prior <- c(1,0)
 
-#previous actions and observations
-ac <- c('Manage','Survey','Stop')
-ob <- c('Not_seen','Not_seen', 'Seen')
+state_posterior<-smsPOMDP::compute_belief_list(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior, act, obs)
 
-compute_belief(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior, ac, ob)
- }
+rew_tab<-smsPOMDP::reward_belief(p0, pm, d0, dm, ds, V, Cm, Cs,state_posterior, act)
+}
 }

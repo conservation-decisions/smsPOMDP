@@ -1,14 +1,16 @@
-\name{compute_belief}
-\alias{compute_belief}
+\name{compute_belief_list}
+\alias{compute_belief_list}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Compute current belief state
+%%  ~~function to do ... ~~
+Compute list over time of belief states
 }
 \description{
-Compute current belief state given past actions, observations and initial belief state
+%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Compute list over time of belief states given past actions, observations and initial belief state
 }
 \usage{
-compute_belief(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior, act, obs, disc = 0.95)
+compute_belief_list(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior, act, obs, disc = 0.95)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -43,7 +45,7 @@ Initial belief state, vector of 2 values (belief state extant and extinct), betw
 list of actions, values in c('Manage', 'Survey', 'Stop')
 }
   \item{obs}{
-list of observations, values in c('Seen', 'Not_seen')
+list of observations, values in c('Seen', 'Not seen')
 }
   \item{disc}{
 Discount factor used to compute the policy (default 0.95)
@@ -76,6 +78,6 @@ state_prior <- c(0.9,0.1) #extant : 0.9, extinct : 0.1
 ac <- c('Manage','Survey','Stop')
 ob <- c('Not_seen','Not_seen', 'Seen')
 
-compute_belief(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior, ac, ob)
+smsPOMDP::compute_belief_list(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior, ac, ob)
  }
 }

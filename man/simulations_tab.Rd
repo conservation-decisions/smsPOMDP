@@ -1,14 +1,17 @@
-\name{compute_belief}
-\alias{compute_belief}
+\name{simulations_tab}
+\alias{simulations_tab}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Compute current belief state
+%%  ~~function to do ... ~~
+Tabulate simulations
 }
 \description{
-Compute current belief state given past actions, observations and initial belief state
+%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Function for tabulating the means and standard deviation of rewards and belief state if extant for nbSimul simulations, following the optimal policy.
 }
 \usage{
-compute_belief(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior, act, obs, disc = 0.95)
+simulations_tab(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior, Tmax, 
+                          disc = 0.95, nbSimul = 100)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -39,22 +42,30 @@ Estimated cost of survey ($/yr).
   \item{state_prior}{
 Initial belief state, vector of 2 values (belief state extant and extinct), between 0 and 1.
 }
-  \item{act}{
-list of actions, values in c('Manage', 'Survey', 'Stop')
-}
-  \item{obs}{
-list of observations, values in c('Seen', 'Not_seen')
+  \item{Tmax}{
+Horizon of the simulation. Integer
 }
   \item{disc}{
 Discount factor used to compute the policy (default 0.95)
 }
+  \item{nbSimul}{
+  Number of simulations to run (default 100). Integer
+  }
 }
 \value{
-Current belief state, vector of 2 values (belief state extant and extinct), between 0 and 1.
+A data.frame. Each row corresponds to a time step. The columns are:
+\item{mean_belief}{Mean of the belief state extant}
+\item{up_belief}{Upper bound (95\%) of the belief state extant}
+\item{low_belief}{Lower bound (95\%) of the belief state extant}
+\item{mean_reward}{Mean of the discounted intant reward}
+\item{up_reward}{Upper bound (95\%) of the discounted intant reward}
+\item{low_reward}{Lower bound (95\%) of the discounted intant reward}
+
 }
 \author{
 Luz Pascal
 }
+
 \examples{
  \dontrun{
 #values for Sumatran tigers
@@ -72,10 +83,10 @@ ds <- 0.78193
 #Initial belief state
 state_prior <- c(0.9,0.1) #extant : 0.9, extinct : 0.1
 
-#previous actions and observations
-ac <- c('Manage','Survey','Stop')
-ob <- c('Not_seen','Not_seen', 'Seen')
+#Horizon of the simulation
+Tmax <- 20
 
-compute_belief(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior, ac, ob)
+simulations_tab(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior, Tmax)
  }
+
 }
