@@ -8,8 +8,8 @@ minigraph <- function(tab, tab2=NULL, size = 1){
     n <- nrow(tab)
     if (n ==3){
       graphics::par(mfrow = c(1,1))
-      y1 <- paste0(tab[1,2],' years')
-      y2 <- paste0(tab[2,2],' years')
+      y1 <- paste0(tab[1,2],' time steps')
+      y2 <- paste0(tab[2,2],' time steps')
       a1 <- switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
       a2 <- switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
       a3 <- switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','STOP')
@@ -26,7 +26,7 @@ minigraph <- function(tab, tab2=NULL, size = 1){
       graphics::text(200, 625, a2, cex = size)
       graphics::text(1050, 625, a3, cex = size)
     } else if (n ==2){
-      y1 <- paste0(tab[1,2],' years')
+      y1 <- paste0(tab[1,2],' time steps')
       a1 <- switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
       a2 <- switch (as.numeric(as.character(tab[2,1])), 'MANAGE','SURVEY','STOP')
       fpath <- system.file("extdata", "im2.jpg", package="smsPOMDP")
@@ -56,15 +56,15 @@ minigraph <- function(tab, tab2=NULL, size = 1){
       a1 <- switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
       a2 <- switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
       a3 <- switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','STOP')
-      y1 <- paste0(tab[1,2],' years')
-      y2 <- paste0(tab[2,2],' years')
+      y1 <- paste0(tab[1,2],' time steps')
+      y2 <- paste0(tab[2,2],' time steps')
 
       #text for solution if starting from another state prior
       a4 <- switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
       a5 <- switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','STOP')
       a6 <- switch (as.numeric(as.character(tab2[3,1])),'MANAGE','SURVEY','STOP')
-      y3 <- paste0(tab2[1,2],' years')
-      y4 <- paste0(tab2[2,2],' years')
+      y3 <- paste0(tab2[1,2],' time steps')
+      y4 <- paste0(tab2[2,2],' time steps')
       fpath <- system.file("extdata", "im3_3.jpg", package="smsPOMDP")
       t <- imager::load.image(file=fpath)
       
@@ -98,13 +98,13 @@ minigraph <- function(tab, tab2=NULL, size = 1){
         a1 <- switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
         a2 <- switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
         a3 <- switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','STOP')
-        y1 <- paste0(tab[1,2],' years')
-        y2 <- paste0(tab[2,2],' years')
+        y1 <- paste0(tab[1,2],' time steps')
+        y2 <- paste0(tab[2,2],' time steps')
 
         #text for solution if starting from another state prior
         a4 <- switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
         a5 <- switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','STOP')
-        y3 <- paste0(tab2[1,2],' years')
+        y3 <- paste0(tab2[1,2],' time steps')
         fpath <- system.file("extdata", "im3_2.jpg", package="smsPOMDP")
         t <- imager::load.image(file=fpath)
 
@@ -132,12 +132,12 @@ minigraph <- function(tab, tab2=NULL, size = 1){
         #text for solution if starting from c(1,0)
         a1 <- switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
         a2 <- switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
-        y1 <- paste0(tab[1,2],' years')
+        y1 <- paste0(tab[1,2],' time steps')
 
         #text for solution if starting from another state prior
         a4 <- switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
         a5 <- switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','STOP')
-        y3 <- paste0(tab2[1,2],' years')
+        y3 <- paste0(tab2[1,2],' time steps')
         
         fpath <- system.file("extdata", "im2_2.jpg", package="smsPOMDP")
         t <- imager::load.image(file=fpath)
@@ -166,8 +166,8 @@ minigraph <- function(tab, tab2=NULL, size = 1){
         a1 <- switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
         a2 <- switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
         a3 <- switch (as.numeric(as.character(tab[3,1])),'MANAGE','SURVEY','STOP')
-        y1 <- paste0(tab[1,2],' years')
-        y2 <- paste0(tab[2,2],' years')
+        y1 <- paste0(tab[1,2],' time steps')
+        y2 <- paste0(tab[2,2],' time steps')
 
         #text for solution if starting from another state prior
         a4 <- switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
@@ -194,12 +194,12 @@ minigraph <- function(tab, tab2=NULL, size = 1){
         #text for solution if starting from c(1,0)
         a1 <- switch (as.numeric(as.character(tab[1,1])), 'MANAGE','SURVEY','STOP')
         a2 <- switch (as.numeric(as.character(tab[2,1])),'MANAGE','SURVEY','STOP')
-        y1 <- paste0(tab[1,2],' years')
+        y1 <- paste0(tab[1,2],' time steps')
 
         #text for solution if starting from another state prior
         a4 <- switch (as.numeric(as.character(tab2[1,1])), 'MANAGE','SURVEY','STOP')
         a5 <- switch (as.numeric(as.character(tab2[2,1])),'MANAGE','SURVEY','STOP')
-        y3 <- paste0(tab2[1,2],' years')
+        y3 <- paste0(tab2[1,2],' time steps')
 
         fpath <- system.file("extdata", "im2_1.jpg", package="smsPOMDP")
         t <- imager::load.image(file=fpath)
