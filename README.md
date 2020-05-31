@@ -17,6 +17,9 @@ devtools::install_github("conservation-decisions/smsPOMDP", host = "https://api.
 library(smsPOMDP)
 ```
 
+The main application of the package is also available:
+https://conservation-decisions.shinyapps.io/smsPOMDP/
+
 ## Problem definition
 
 Our problem is defined by a state space, `states`, representing the 
