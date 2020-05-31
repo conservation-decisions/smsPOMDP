@@ -1,0 +1,1055 @@
+{
+  "input": {
+    ".clientValue-default-plotlyCrosstalkOpts": {
+      "on": "plotly_click",
+      "persistent": false,
+      "dynamic": false,
+      "selectize": false,
+      "opacityDim": 0.2,
+      "selected": {
+        "opacity": 1
+      },
+      "debounce": 0,
+      "color": [
+
+      ]
+    },
+    "case_study": "Expensive management",
+    "Cm": 50,
+    "Cs": 25,
+    "d0": 0.01,
+    "dm": 0.01,
+    "ds": 0.78193,
+    "initial_belief": 1,
+    "p0": 0.9,
+    "plotly_afterplot-A": "\"plot_actions\"",
+    "plotly_afterplot-O": "\"plot_observations\"",
+    "plotly_afterplot-R": "\"plot_reward\"",
+    "pm": 0.94184,
+    "reload": 1,
+    "sidebarCollapsed": true,
+    "sidebarItemExpanded": null,
+    "Tmanage": 5,
+    "Tsim": 10,
+    "V": 200
+  },
+  "output": {
+    "plot_actions": {
+      "x": {
+        "layout": {
+          "height": 350,
+          "margin": {
+            "b": 40,
+            "l": 100,
+            "t": 25,
+            "r": 100
+          },
+          "xaxis": {
+            "domain": [
+              0,
+              1
+            ],
+            "automargin": true,
+            "title": "Time steps",
+            "autotick": false,
+            "ticks": "outside",
+            "dtick": 1,
+            "range": [
+              -6,
+              12
+            ]
+          },
+          "yaxis": {
+            "domain": [
+              0,
+              1
+            ],
+            "automargin": true,
+            "type": "category",
+            "categoryorder": "array",
+            "categoryarray": [
+              "Stop",
+              "Survey",
+              "Manage"
+            ],
+            "title": "Actions"
+          },
+          "showlegend": false,
+          "hovermode": "closest"
+        },
+        "source": "A",
+        "config": {
+          "showSendToCloud": false
+        },
+        "data": [
+          {
+            "x": [
+              -5,
+              -5,
+              -5,
+              -4,
+              -4,
+              -4,
+              -3,
+              -3,
+              -3,
+              -2,
+              -2,
+              -2,
+              -1,
+              -1,
+              -1
+            ],
+            "y": [
+              "Stop",
+              "Survey",
+              "Manage",
+              "Stop",
+              "Survey",
+              "Manage",
+              "Stop",
+              "Survey",
+              "Manage",
+              "Stop",
+              "Survey",
+              "Manage",
+              "Stop",
+              "Survey",
+              "Manage"
+            ],
+            "hoverinfo": [
+              "text",
+              "text",
+              "text",
+              "text",
+              "text",
+              "text",
+              "text",
+              "text",
+              "text",
+              "text",
+              "text",
+              "text",
+              "text",
+              "text",
+              "text"
+            ],
+            "text": [
+              "Stop",
+              "Survey",
+              "Manage",
+              "Stop",
+              "Survey",
+              "Manage",
+              "Stop",
+              "Survey",
+              "Manage",
+              "Stop",
+              "Survey",
+              "Manage",
+              "Stop",
+              "Survey",
+              "Manage"
+            ],
+            "type": "scatter",
+            "mode": "markers",
+            "marker": {
+              "color": "rgba(190,190,190,1)",
+              "size": 20,
+              "opacity": 0.8,
+              "line": {
+                "color": "rgba(190,190,190,1)"
+              }
+            },
+            "showlegend": false,
+            "name": "Off",
+            "textfont": {
+              "color": "rgba(190,190,190,1)"
+            },
+            "error_y": {
+              "color": "rgba(190,190,190,1)"
+            },
+            "error_x": {
+              "color": "rgba(190,190,190,1)"
+            },
+            "line": {
+              "color": "rgba(190,190,190,1)"
+            },
+            "xaxis": "x",
+            "yaxis": "y",
+            "frame": null
+          }
+        ],
+        "highlight": {
+          "on": "plotly_click",
+          "persistent": false,
+          "dynamic": false,
+          "selectize": false,
+          "opacityDim": 0.2,
+          "selected": {
+            "opacity": 1
+          },
+          "debounce": 0
+        },
+        "shinyEvents": [
+          "plotly_hover",
+          "plotly_click",
+          "plotly_selected",
+          "plotly_relayout",
+          "plotly_brushed",
+          "plotly_brushing",
+          "plotly_clickannotation",
+          "plotly_doubleclick",
+          "plotly_deselect",
+          "plotly_afterplot",
+          "plotly_sunburstclick"
+        ],
+        "base_url": "https://plot.ly"
+      },
+      "evals": [
+
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+        {
+          "name": "setprototypeof",
+          "version": "0.1",
+          "src": {
+            "href": "setprototypeof-0.1"
+          },
+          "meta": null,
+          "script": "setprototypeof.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "typedarray",
+          "version": "0.1",
+          "src": {
+            "href": "typedarray-0.1"
+          },
+          "meta": null,
+          "script": "typedarray.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "jquery",
+          "version": "1.11.3",
+          "src": {
+            "href": "jquery-1.11.3"
+          },
+          "meta": null,
+          "script": "jquery.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "crosstalk",
+          "version": "1.1.0.1",
+          "src": {
+            "href": "crosstalk-1.1.0.1"
+          },
+          "meta": null,
+          "script": "js/crosstalk.min.js",
+          "stylesheet": "css/crosstalk.css",
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "plotly-htmlwidgets-css",
+          "version": "1.52.2",
+          "src": {
+            "href": "plotly-htmlwidgets-css-1.52.2"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": "plotly-htmlwidgets.css",
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "plotly-main",
+          "version": "1.52.2",
+          "src": {
+            "href": "plotly-main-1.52.2"
+          },
+          "meta": null,
+          "script": "plotly-latest.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        }
+      ]
+    },
+    "plot_observations": {
+      "x": {
+        "layout": {
+          "height": 300,
+          "margin": {
+            "b": 40,
+            "l": 100,
+            "t": 25,
+            "r": 100
+          },
+          "xaxis": {
+            "domain": [
+              0,
+              1
+            ],
+            "automargin": true,
+            "title": "Time steps",
+            "autotick": false,
+            "ticks": "outside",
+            "dtick": 1,
+            "range": [
+              -6,
+              12
+            ]
+          },
+          "yaxis": {
+            "domain": [
+              0,
+              1
+            ],
+            "automargin": true,
+            "type": "category",
+            "categoryorder": "array",
+            "categoryarray": [
+              "Not seen",
+              "Seen"
+            ],
+            "title": "Observations"
+          },
+          "yaxis2": {
+            "overlaying": "y",
+            "side": "right",
+            "title": "b(extant)",
+            "range": [
+              -0.3,
+              1.3
+            ]
+          },
+          "legend": {
+            "orientation": "h",
+            "x": 0
+          },
+          "hovermode": "closest",
+          "showlegend": true
+        },
+        "source": "O",
+        "config": {
+          "showSendToCloud": false
+        },
+        "data": [
+          {
+            "x": [
+              -5,
+              -5,
+              -4,
+              -4,
+              -3,
+              -3,
+              -2,
+              -2,
+              -1,
+              -1
+            ],
+            "y": [
+              "Not seen",
+              "Seen",
+              "Not seen",
+              "Seen",
+              "Not seen",
+              "Seen",
+              "Not seen",
+              "Seen",
+              "Not seen",
+              "Seen"
+            ],
+            "hoverinfo": [
+              "text",
+              "text",
+              "text",
+              "text",
+              "text",
+              "text",
+              "text",
+              "text",
+              "text",
+              "text"
+            ],
+            "text": [
+              "Not seen",
+              "Seen",
+              "Not seen",
+              "Seen",
+              "Not seen",
+              "Seen",
+              "Not seen",
+              "Seen",
+              "Not seen",
+              "Seen"
+            ],
+            "type": "scatter",
+            "mode": "markers",
+            "marker": {
+              "color": "rgba(190,190,190,1)",
+              "size": 20,
+              "opacity": 0.8,
+              "line": {
+                "color": "rgba(190,190,190,1)"
+              }
+            },
+            "showlegend": false,
+            "name": "Off",
+            "textfont": {
+              "color": "rgba(190,190,190,1)"
+            },
+            "error_y": {
+              "color": "rgba(190,190,190,1)"
+            },
+            "error_x": {
+              "color": "rgba(190,190,190,1)"
+            },
+            "line": {
+              "color": "rgba(190,190,190,1)"
+            },
+            "xaxis": "x",
+            "yaxis": "y",
+            "frame": null
+          },
+          {
+            "x": -5,
+            "y": 1,
+            "name": "User's current b(extant)",
+            "visible": true,
+            "yaxis": "y2",
+            "type": "scatter",
+            "mode": "lines+markers",
+            "showlegend": true,
+            "line": {
+              "color": "red"
+            },
+            "marker": {
+              "color": "red",
+              "line": {
+                "color": "rgba(255,127,14,1)"
+              }
+            },
+            "error_y": {
+              "color": "rgba(255,127,14,1)"
+            },
+            "error_x": {
+              "color": "rgba(255,127,14,1)"
+            },
+            "xaxis": "x",
+            "frame": null
+          },
+          {
+            "x": [
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "y": [
+              1,
+              0.941287017647007,
+              0.885526912974837,
+              0.797389727820841,
+              0.721759984435464,
+              0.648550655057558,
+              0.586327964774405,
+              0.52564502104427,
+              0.471002618451786,
+              0.421476762932543,
+              0.376987542373629,
+              0.337057079003952,
+              0.308306329273137,
+              0.275938038419994,
+              0.2469152160776,
+              0.220532308924555
+            ],
+            "name": "Optimal trajectory b(extant)",
+            "yaxis": "y2",
+            "type": "scatter",
+            "mode": "lines+markers",
+            "visible": true,
+            "line": {
+              "color": "blue"
+            },
+            "marker": {
+              "color": "blue",
+              "line": {
+                "color": "rgba(44,160,44,1)"
+              }
+            },
+            "error_y": {
+              "color": "rgba(44,160,44,1)"
+            },
+            "error_x": {
+              "color": "rgba(44,160,44,1)"
+            },
+            "xaxis": "x",
+            "frame": null
+          },
+          {
+            "fillcolor": "rgba(0,0,255,0.2)",
+            "x": [
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              10,
+              10,
+              9,
+              8,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1,
+              0,
+              -1,
+              -2,
+              -3,
+              -4,
+              -5
+            ],
+            "type": "scatter",
+            "mode": "lines",
+            "hoveron": "points",
+            "fill": "toself",
+            "name": "Optimal trajectory b(extant) 95%",
+            "line": {
+              "color": "blue",
+              "opacity": 0.4,
+              "width": 0
+            },
+            "yaxis": "y2",
+            "visible": true,
+            "showlegend": false,
+            "y": [
+              1,
+              0.941287017647007,
+              0.885526912974837,
+              0.757276987066179,
+              0.631653531521025,
+              0.553154972153702,
+              0.460289315766013,
+              0.406271276173784,
+              0.357810567506078,
+              0.319470080422771,
+              0.285169137767314,
+              0.254497041614053,
+              0.152578343379973,
+              0.128354508711823,
+              0.107102187748174,
+              0.0947858378313543,
+              0.0947858378313543,
+              0.346278780017756,
+              0.386728244407027,
+              0.423521568128165,
+              0.464034315166302,
+              0.419617116393852,
+              0.468805946979944,
+              0.523483445442315,
+              0.584194669397493,
+              0.645018765914756,
+              0.712366613782797,
+              0.743946337961414,
+              0.811866437349903,
+              0.837502468575503,
+              0.885526912974837,
+              0.941287017647007,
+              1
+            ],
+            "marker": {
+              "color": "rgba(214,39,40,1)",
+              "line": {
+                "color": "rgba(214,39,40,1)"
+              }
+            },
+            "error_y": {
+              "color": "rgba(214,39,40,1)"
+            },
+            "error_x": {
+              "color": "rgba(214,39,40,1)"
+            },
+            "xaxis": "x",
+            "frame": null
+          }
+        ],
+        "highlight": {
+          "on": "plotly_click",
+          "persistent": false,
+          "dynamic": false,
+          "selectize": false,
+          "opacityDim": 0.2,
+          "selected": {
+            "opacity": 1
+          },
+          "debounce": 0
+        },
+        "shinyEvents": [
+          "plotly_hover",
+          "plotly_click",
+          "plotly_selected",
+          "plotly_relayout",
+          "plotly_brushed",
+          "plotly_brushing",
+          "plotly_clickannotation",
+          "plotly_doubleclick",
+          "plotly_deselect",
+          "plotly_afterplot",
+          "plotly_sunburstclick"
+        ],
+        "base_url": "https://plot.ly"
+      },
+      "evals": [
+
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+        {
+          "name": "setprototypeof",
+          "version": "0.1",
+          "src": {
+            "href": "setprototypeof-0.1"
+          },
+          "meta": null,
+          "script": "setprototypeof.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "typedarray",
+          "version": "0.1",
+          "src": {
+            "href": "typedarray-0.1"
+          },
+          "meta": null,
+          "script": "typedarray.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "jquery",
+          "version": "1.11.3",
+          "src": {
+            "href": "jquery-1.11.3"
+          },
+          "meta": null,
+          "script": "jquery.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "crosstalk",
+          "version": "1.1.0.1",
+          "src": {
+            "href": "crosstalk-1.1.0.1"
+          },
+          "meta": null,
+          "script": "js/crosstalk.min.js",
+          "stylesheet": "css/crosstalk.css",
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "plotly-htmlwidgets-css",
+          "version": "1.52.2",
+          "src": {
+            "href": "plotly-htmlwidgets-css-1.52.2"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": "plotly-htmlwidgets.css",
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "plotly-main",
+          "version": "1.52.2",
+          "src": {
+            "href": "plotly-main-1.52.2"
+          },
+          "meta": null,
+          "script": "plotly-latest.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        }
+      ]
+    },
+    "plot_reward": {
+      "x": {
+        "layout": {
+          "height": 300,
+          "margin": {
+            "b": 40,
+            "l": 100,
+            "t": 25,
+            "r": 100
+          },
+          "xaxis": {
+            "domain": [
+              0,
+              1
+            ],
+            "automargin": true,
+            "autotick": false,
+            "title": "Time steps",
+            "ticks": "outside",
+            "dtick": 1,
+            "range": [
+              -6,
+              12
+            ]
+          },
+          "yaxis": {
+            "domain": [
+              0,
+              1
+            ],
+            "automargin": true,
+            "title": "Expected reward"
+          },
+          "showlegend": true,
+          "legend": {
+            "orientation": "h"
+          },
+          "hovermode": "closest"
+        },
+        "source": "R",
+        "config": {
+          "showSendToCloud": false
+        },
+        "data": [
+          {
+            "x": [
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "y": [
+              150,
+              133,
+              164.255,
+              143.6103125,
+              122.583190625,
+              102.9128646875,
+              87.8434809296875,
+              69.4845609613281,
+              61.0346796785937,
+              52.9409504168672,
+              46.7014812605935,
+              40.9536066439051,
+              33.2321453912522,
+              26.4371172888945,
+              23.4083989975454,
+              21.3113965873486
+            ],
+            "type": "scatter",
+            "mode": "lines+markers",
+            "name": "Optimal expected reward",
+            "line": {
+              "color": "blue"
+            },
+            "marker": {
+              "color": "blue",
+              "line": {
+                "color": "rgba(31,119,180,1)"
+              }
+            },
+            "error_y": {
+              "color": "rgba(31,119,180,1)"
+            },
+            "error_x": {
+              "color": "rgba(31,119,180,1)"
+            },
+            "xaxis": "x",
+            "yaxis": "y",
+            "frame": null
+          },
+          {
+            "fillcolor": "rgba(0,0,255,0.2)",
+            "x": [
+              -5,
+              -4,
+              -3,
+              -2,
+              -1,
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              10,
+              10,
+              9,
+              8,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1,
+              0,
+              -1,
+              -2,
+              -3,
+              -4,
+              -5
+            ],
+            "type": "scatter",
+            "mode": "lines",
+            "hoveron": "points",
+            "fill": "toself",
+            "name": "Ref reward 95%",
+            "line": {
+              "color": "blue",
+              "opacity": 0.4,
+              "width": 0
+            },
+            "visible": true,
+            "showlegend": false,
+            "y": [
+              150,
+              51.4284189911534,
+              62.4995612603881,
+              19.8601207586305,
+              -15.6695702207421,
+              -41.3766388640389,
+              -53.6258777061672,
+              -67.560534911149,
+              -69.2319292349953,
+              -69.6108114581694,
+              -68.3525244501925,
+              -66.6109930398496,
+              -64.5734502422055,
+              -61.5607511946797,
+              -58.6477933924449,
+              -55.5010909291637,
+              -55.5010909291637,
+              98.123884103861,
+              105.464591387536,
+              114.434985772469,
+              131.03774102471,
+              148.51820632766,
+              161.75548697138,
+              175.492712291904,
+              191.301288592183,
+              206.529656833805,
+              229.312839565542,
+              247.202368239039,
+              260.835951470742,
+              267.360504241369,
+              266.010438739612,
+              214.571581008847,
+              150
+            ],
+            "marker": {
+              "color": "rgba(255,127,14,1)",
+              "line": {
+                "color": "rgba(255,127,14,1)"
+              }
+            },
+            "error_y": {
+              "color": "rgba(255,127,14,1)"
+            },
+            "error_x": {
+              "color": "rgba(255,127,14,1)"
+            },
+            "xaxis": "x",
+            "yaxis": "y",
+            "frame": null
+          }
+        ],
+        "highlight": {
+          "on": "plotly_click",
+          "persistent": false,
+          "dynamic": false,
+          "selectize": false,
+          "opacityDim": 0.2,
+          "selected": {
+            "opacity": 1
+          },
+          "debounce": 0
+        },
+        "shinyEvents": [
+          "plotly_hover",
+          "plotly_click",
+          "plotly_selected",
+          "plotly_relayout",
+          "plotly_brushed",
+          "plotly_brushing",
+          "plotly_clickannotation",
+          "plotly_doubleclick",
+          "plotly_deselect",
+          "plotly_afterplot",
+          "plotly_sunburstclick"
+        ],
+        "base_url": "https://plot.ly"
+      },
+      "evals": [
+
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+        {
+          "name": "setprototypeof",
+          "version": "0.1",
+          "src": {
+            "href": "setprototypeof-0.1"
+          },
+          "meta": null,
+          "script": "setprototypeof.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "typedarray",
+          "version": "0.1",
+          "src": {
+            "href": "typedarray-0.1"
+          },
+          "meta": null,
+          "script": "typedarray.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "jquery",
+          "version": "1.11.3",
+          "src": {
+            "href": "jquery-1.11.3"
+          },
+          "meta": null,
+          "script": "jquery.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "crosstalk",
+          "version": "1.1.0.1",
+          "src": {
+            "href": "crosstalk-1.1.0.1"
+          },
+          "meta": null,
+          "script": "js/crosstalk.min.js",
+          "stylesheet": "css/crosstalk.css",
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "plotly-htmlwidgets-css",
+          "version": "1.52.2",
+          "src": {
+            "href": "plotly-htmlwidgets-css-1.52.2"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": "plotly-htmlwidgets.css",
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "plotly-main",
+          "version": "1.52.2",
+          "src": {
+            "href": "plotly-main-1.52.2"
+          },
+          "meta": null,
+          "script": "plotly-latest.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        }
+      ]
+    }
+  },
+  "export": {
+
+  }
+}
