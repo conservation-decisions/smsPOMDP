@@ -7,7 +7,21 @@ Description: This package provides a set of functions helping to solve the ecolo
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: shiny, imager, digest, graphics, stats, sarsop, stringr, readr,purrr, shinydashboard, htmlwidgets, plotly, bsplus
+Imports: 
+    shiny,
+    imager,
+    digest,
+    graphics,
+    stats,
+    sarsop,
+    stringr,
+    readr,
+    purrr,
+    shinydashboard,
+    htmlwidgets,
+    plotly,
+    bsplus,
+    magrittr
 Suggests: testthat (>= 2.1.0), vdiffr, shinytest, covr
 Remotes: boettiger-lab/sarsop
 URL: https://github.com/conservation-decisions/smsPOMDP

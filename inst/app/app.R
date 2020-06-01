@@ -1,13 +1,4 @@
-library(shiny)
-library(shinydashboard)
-library(htmlwidgets)
-library(sarsop)
-library(smsPOMDP)
-library(plotly)
-library("bsplus")
-
 ## MODALS OF PARAMETERS#####
-
 modal_p0 <-
   bsplus::bs_modal(
     id = "modal_p0",
@@ -110,7 +101,7 @@ ui <- shinydashboard::dashboardPage(
   # HEADER #############################
   shinydashboard::dashboardHeader(
     title = "smsPOMDP", 
-    tags$li(
+    shiny::tags$li(
       a(
         strong("ABOUT smsPOMDP"),
         height = 40,
@@ -128,80 +119,147 @@ ui <- shinydashboard::dashboardPage(
   
   # BODY ############################## 
   shinydashboard::dashboardBody(
-    tags$head(tags$style(shiny::HTML(".shiny-output-error-validation 
+    shiny::tags$head(shiny::tags$style(shiny::HTML(".shiny-output-error-validation 
                               {color: red; font-size: large; font-weight: bold;}"))),
     
     shiny::fluidRow(
       #POMDP PARAMETERS ####
-      tags$div(class = "another-box", id = "primariy2",
+      shiny::tags$div(class = "another-box", id = "primariy2",
                shinydashboard::box(       
                  title = "POMDP parameters", width = 3, solidHeader = TRUE, status = "primary",
                  # Probabilities ####
                  shiny::h3("Probabilities"),
-                 shiny::numericInput('p0', 'Local probability of persistence (if survey or stop)',
-                                     min = 0, max = 1, value = 0.9) %>%
-                   bsplus::shinyInput_label_embed(
-                     bsplus::shiny_iconlink() %>%
-                       bsplus::bs_attach_modal(id_modal = "modal_p0")
+                 # shiny::numericInput('p0', 'Local probability of persistence (if survey or stop)',
+                 #                     min = 0, max = 1, value = 0.9) %>%
+                 #   bsplus::shinyInput_label_embed(
+                 #     bsplus::shiny_iconlink() %>%
+                 #       bsplus::bs_attach_modal(id_modal = "modal_p0")
+                 #   ),
+                 bsplus::shinyInput_label_embed(
+                   shiny::numericInput('p0', 'Local probability of persistence (if survey or stop)',
+                                     min = 0, max = 1, value = 0.9),
+                       bsplus::bs_attach_modal(bsplus::shiny_iconlink(),id_modal = "modal_p0")
                    ),
-                 shiny::numericInput('pm', 'Local probability of persistence (if manage)', 
-                                     min = 0, max = 1, value = 0.94184) %>%
-                   bsplus::shinyInput_label_embed(
-                     bsplus::shiny_iconlink() %>%
-                       bsplus::bs_attach_modal(id_modal = "modal_pm")
+                 # shiny::numericInput('pm', 'Local probability of persistence (if manage)', 
+                 #                     min = 0, max = 1, value = 0.94184) %>%
+                 #   bsplus::shinyInput_label_embed(
+                 #     bsplus::shiny_iconlink() %>%
+                 #       bsplus::bs_attach_modal(id_modal = "modal_pm")
+                 #   ),
+                 bsplus::shinyInput_label_embed(
+                   shiny::numericInput('pm', 'Local probability of persistence (if manage)', 
+                                     min = 0, max = 1, value = 0.94184),
+                   bsplus::bs_attach_modal(bsplus::shiny_iconlink(),
+                       id_modal = "modal_pm")
                    ),
-                 shiny::numericInput('d0', 'Local probability of detection (if stop)',
-                                     min = 0, max = 1, value = 0.01) %>%
-                   bsplus::shinyInput_label_embed(
-                     bsplus::shiny_iconlink() %>%
-                       bsplus::bs_attach_modal(id_modal = "modal_d0")
+                 
+                 # shiny::numericInput('d0', 'Local probability of detection (if stop)',
+                 #                     min = 0, max = 1, value = 0.01) %>%
+                 #   bsplus::shinyInput_label_embed(
+                 #     bsplus::shiny_iconlink() %>%
+                 #       bsplus::bs_attach_modal(id_modal = "modal_d0")
+                 #   ),
+                 bsplus::shinyInput_label_embed(
+                     shiny::numericInput('d0', 'Local probability of detection (if stop)',
+                                     min = 0, max = 1, value = 0.01),
+                     bsplus::bs_attach_modal(
+                          bsplus::shiny_iconlink(),
+                          id_modal = "modal_d0")
                    ),
-                 shiny::numericInput('dm', 'Local probability of detection (if manage)', 
-                                     min = 0, max = 1, value = 0.01) %>%
-                   bsplus::shinyInput_label_embed(
-                     bsplus::shiny_iconlink() %>%
-                       bsplus::bs_attach_modal(id_modal = "modal_dm")
+                 
+                 # shiny::numericInput('dm', 'Local probability of detection (if manage)', 
+                 #                     min = 0, max = 1, value = 0.01) %>%
+                 #   bsplus::shinyInput_label_embed(
+                 #     bsplus::shiny_iconlink() %>%
+                 #       bsplus::bs_attach_modal(id_modal = "modal_dm")
+                 #   ),
+                 bsplus::shinyInput_label_embed(
+                     shiny::numericInput('dm', 'Local probability of detection (if manage)', 
+                                     min = 0, max = 1, value = 0.01),
+                     bsplus::bs_attach_modal(bsplus::shiny_iconlink(),
+                       id_modal = "modal_dm")
                    ),
-                 shiny::numericInput('ds', 'Local probability of detection (if survey)', 
-                                     min = 0, max = 1, value = 0.78193) %>%
-                   bsplus::shinyInput_label_embed(
-                     bsplus::shiny_iconlink() %>%
-                       bsplus::bs_attach_modal(id_modal = "modal_ds")
+                 
+                 # shiny::numericInput('ds', 'Local probability of detection (if survey)', 
+                 #                     min = 0, max = 1, value = 0.78193) %>%
+                 #   bsplus::shinyInput_label_embed(
+                 #     bsplus::shiny_iconlink() %>%
+                 #       bsplus::bs_attach_modal(id_modal = "modal_ds")
+                 #   ),
+                 bsplus::shinyInput_label_embed(
+                     shiny::numericInput('ds', 'Local probability of detection (if survey)', 
+                                     min = 0, max = 1, value = 0.78193),
+                     bsplus::bs_attach_modal(
+                       bsplus::shiny_iconlink(),
+                         id_modal = "modal_ds")
                    ),
+                 
                  # Costs ####
                  shiny::h3("Costs"),
-                 shiny::numericInput('V', 'Estimated economic value of the species ($/yr)',
-                                     value = 175.133) %>%
+                 # shiny::numericInput('V', 'Estimated economic value of the species ($/yr)',
+                 #                     value = 175.133) %>%
+                 #   bsplus::shinyInput_label_embed(
+                 #     bsplus::shiny_iconlink() %>%
+                 #       bsplus::bs_attach_modal(id_modal = "modal_V")
+                 #   ),
                    bsplus::shinyInput_label_embed(
-                     bsplus::shiny_iconlink() %>%
-                       bsplus::bs_attach_modal(id_modal = "modal_V")
+                     shiny::numericInput('V', 'Estimated economic value of the species ($/yr)',
+                                         value = 175.133),
+                     bsplus::bs_attach_modal(bsplus::shiny_iconlink(),
+                        id_modal = "modal_V")
                    ),
-                 shiny::numericInput('Cm', 'Estimated cost of managing ($/yr)',
-                                     value = 18.784) %>%
-                   bsplus::shinyInput_label_embed(
-                     bsplus::shiny_iconlink() %>%
-                       bsplus::bs_attach_modal(id_modal = "modal_Cm")
-                   ),
-                 shiny::numericInput('Cs', 'Estimated cost of surveying ($/yr)',
-                                     min = 0, value = 10.840) %>%
-                   bsplus::shinyInput_label_embed(
-                     bsplus::shiny_iconlink() %>%
-                       bsplus::bs_attach_modal(id_modal = "modal_Cs")
-                   ),
+                 
+                 # shiny::numericInput('Cm', 'Estimated cost of managing ($/yr)',
+                 #                     value = 18.784) %>%
+                 #   bsplus::shinyInput_label_embed(
+                 #     bsplus::shiny_iconlink() %>%
+                 #       bsplus::bs_attach_modal(id_modal = "modal_Cm")
+                 #   ),
+                 bsplus::shinyInput_label_embed(
+                     shiny::numericInput('Cm', 'Estimated cost of managing ($/yr)',
+                                         value = 18.784),
+                     bsplus::bs_attach_modal(
+                       bsplus::shiny_iconlink(),
+                       id_modal = "modal_Cm")
+                  ),
+               
+                 # shiny::numericInput('Cs', 'Estimated cost of surveying ($/yr)',
+                 #                     min = 0, value = 10.840) %>%
+                 #   bsplus::shinyInput_label_embed(
+                 #     bsplus::shiny_iconlink() %>%
+                 #       bsplus::bs_attach_modal(id_modal = "modal_Cs")
+                 #   ),
+                 bsplus::shinyInput_label_embed(
+                     shiny::numericInput('Cs', 'Estimated cost of surveying ($/yr)',
+                                         min = 0, value = 10.840),
+                     bsplus::bs_attach_modal(
+                     bsplus::shiny_iconlink() ,
+                       id_modal = "modal_Cs")
+                  ),
+                 
                  # Case studies ####
                  shiny::h3("Case studies"),
-                 shiny::selectInput("case_study", "Select case study", 
-                                    choices = c("Sumatran tiger", 
-                                                "Expensive management",
-                                                "Detection in management")) %>%
-                   bsplus::shinyInput_label_embed(
-                     bsplus::shiny_iconlink() %>%
-                       bsplus::bs_attach_modal(id_modal = "modal_case_study")
-                   ),
+                 # shiny::selectInput("case_study", "Select case study", 
+                 #                    choices = c("Sumatran tiger", 
+                 #                                "Expensive management",
+                 #                                "Detection in management")),
+                 #   bsplus::shinyInput_label_embed(
+                 #     bsplus::shiny_iconlink() %>%
+                 #       bsplus::bs_attach_modal(id_modal = "modal_case_study")
+                 #   ),
+                 bsplus::shinyInput_label_embed(
+                   shiny::selectInput("case_study", "Select case study", 
+                                      choices = c("Sumatran tiger", 
+                                                  "Expensive management",
+                                                  "Detection in management")),
+                   bsplus::bs_attach_modal(
+                     bsplus::shiny_iconlink(),
+                     id_modal = "modal_case_study")
+                 ),
                  shiny::actionButton("reload", "Reload parameters")
                  
                ),
-               tags$style(shiny::HTML("
+               shiny::tags$style(shiny::HTML("
                         #primariy2 .box.box-solid.box-primary>.box-header {
                         color:#fff;
                         background:#666666
@@ -219,30 +277,51 @@ ui <- shinydashboard::dashboardPage(
       
       # Plot parameters ####
       shinydashboard::box(width = 3,
-                          shiny::numericInput("initial_belief", "Initial belief state", 
-                                              value = 1, min = 0, max = 1) %>%
-                            bsplus::shinyInput_label_embed(
-                              bsplus::shiny_iconlink() %>%
-                                bsplus::bs_attach_modal(id_modal = "modal_initial_belief")
+                          # shiny::numericInput("initial_belief", "Initial belief state", 
+                          #                     value = 1, min = 0, max = 1) %>%
+                          #   bsplus::shinyInput_label_embed(
+                          #     bsplus::shiny_iconlink() %>%
+                          #       bsplus::bs_attach_modal(id_modal = "modal_initial_belief")
+                          #   )
+                          bsplus::shinyInput_label_embed(
+                            shiny::numericInput("initial_belief", "Initial belief state", 
+                                                value = 1, min = 0, max = 1),
+                            bsplus::bs_attach_modal(
+                                bsplus::shiny_iconlink(),
+                                  id_modal = "modal_initial_belief")
                             )
       ),
       
       shinydashboard::box(width = 3,
-                          shiny::numericInput('Tmanage', "Duration of past data (time steps)", 
-                                              value = 5, min = 0) %>%
-                            bsplus::shinyInput_label_embed(
-                              bsplus::shiny_iconlink() %>%
-                                bsplus::bs_attach_modal(id_modal = "modal_Tmanage")
-                            )
+                          # shiny::numericInput('Tmanage', "Duration of past data (time steps)", 
+                          #                     value = 5, min = 0) %>%
+                          #   bsplus::shinyInput_label_embed(
+                          #     bsplus::shiny_iconlink() %>%
+                          #       bsplus::bs_attach_modal(id_modal = "modal_Tmanage")
+                          #   )
+                          bsplus::shinyInput_label_embed(
+                            shiny::numericInput('Tmanage', "Duration of past data (time steps)", 
+                                                value = 5, min = 0),
+                            bsplus::bs_attach_modal(
+                              bsplus::shiny_iconlink(),
+                              id_modal = "modal_Tmanage")
+                          )
       ),
       
       shinydashboard::box(width = 3,
-                          shiny::numericInput('Tsim', "Duration of simulation (time steps)", 
-                                              value = 10, min = 0, max = 20) %>%
-                            bsplus::shinyInput_label_embed(
-                              bsplus::shiny_iconlink() %>%
-                                bsplus::bs_attach_modal(id_modal = "modal_Tsim")
-                            )
+                          # shiny::numericInput('Tsim', "Duration of simulation (time steps)", 
+                          #                     value = 10, min = 0, max = 20) %>%
+                          #   bsplus::shinyInput_label_embed(
+                          #     bsplus::shiny_iconlink() %>%
+                          #       bsplus::bs_attach_modal(id_modal = "modal_Tsim")
+                          #   )
+                          bsplus::shinyInput_label_embed(
+                            shiny::numericInput('Tsim', "Duration of simulation (time steps)", 
+                                                value = 10, min = 0, max = 20),
+                            bsplus::bs_attach_modal(
+                              bsplus::shiny_iconlink(),
+                                  id_modal = "modal_Tsim")
+                              )
       ),
       # plots####
       shinydashboard::box(width = 9, 
@@ -533,7 +612,7 @@ server <- function(input, output, session){
                             showlegend = FALSE) %>%
           plotly::layout( xaxis = xaxis,yaxis=yaxis, showlegend = TRUE
                           , images = list(
-                            source = raster2uri(as.raster(optimal_solution())),
+                            source = plotly::raster2uri(as.raster(optimal_solution())),
                             x = (Tmanage()+1)/(Tmanage()+Tplot()), y = 0.5,
                             sizex = (Tplot()-1)/(Tmanage()+Tplot()), sizey = 0.9,
                             xref = "paper", yref = "paper",
@@ -571,7 +650,7 @@ server <- function(input, output, session){
         height = 350, source = "A") %>% 
         plotly::layout( xaxis = xaxis,yaxis=yaxis, showlegend = TRUE
                         , images = list(
-                          source = raster2uri(as.raster(optimal_solution())),
+                          source = plotly::raster2uri(as.raster(optimal_solution())),
                           x = (Tmanage()+1)/(Tmanage()+Tplot()), y = 0.5,
                           sizex = (Tplot()-1)/(Tmanage()+Tplot()), sizey = 0.9,
                           xref = "paper", yref = "paper",
@@ -901,4 +980,4 @@ server <- function(input, output, session){
   
 }
 
-shiny::shinyApp(ui, server)
+shiny::shinyApp(ui, server, options = list(test.mode = TRUE))
