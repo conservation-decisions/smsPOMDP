@@ -92,12 +92,12 @@ simulations_tab<-function(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior, Tmax,
     } 
   }
   mean_belief <- apply(datasimu, 1, mean)
-  sd_belief <- apply(datasimu, 1, sd)
+  sd_belief <- apply(datasimu, 1, stats::sd)
   up_belief <- pmin(mean_belief + 1.96 * sd_belief, rep(1, length(mean_belief)))
   low_belief <- pmax(mean_belief - 1.96 * sd_belief, rep(0, length(mean_belief)))
   
   mean_reward <- apply(rewardsim, 1, mean)
-  sd_reward <-  apply(rewardsim, 1, sd)
+  sd_reward <-  apply(rewardsim, 1, stats::sd)
   up_reward <- mean_reward + 1.96 * sd_reward
   low_reward <- mean_reward - 1.96 * sd_reward
   
