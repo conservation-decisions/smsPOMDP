@@ -82,3 +82,9 @@ This package provides a function which lanches an app, which eases the resolutio
 run_application()
 ```
 ![](README-interface.png)<!-- -->
+
+
+# Developer Notes
+
+Unfortunately the appl source code of sarsop (https://github.com/boettiger-lab/sarsop) is a bit dated and not suitable for using as a shared library. It builds with lot of warnings and on Windows it only builds with MS Visual Studio. This package tries to make things as easy as possible for the user by bunding the appl executables and wrap them with `system` calls in R.  This package also provides higher-level functions for POMDP analysis.
+
