@@ -1,9 +1,9 @@
 ^smsPOMDP\.Rproj$
 ^\.Rproj\.user$
-^README-decision-graph.png
-^README-decision-graph2.png
-^README-simulation.png
-^README-interface.png
+^README-decision-graph\.png
+^README-decision-graph2\.png
+^README-simulation\.png
+^README-interface\.png
 ^\.travis\.yml$
 ^appveyor\.yml$
 ^tic\.R$
