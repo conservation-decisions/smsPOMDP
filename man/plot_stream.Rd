@@ -78,6 +78,7 @@ ds <- 0.78193
 state_prior <- c(1,0)
 actions <- c('Manage', 'Manage', 'Survey','Stop')
 observations <- c('Not_seen','Not_seen','Not_seen','Seen')
-plot_stream(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior, actions, observations, disc = 0.95, size = 1)
+plot_stream(p0, pm, d0, dm, ds, V, Cm, Cs, state_prior,
+actions, observations, disc = 0.95, size = 1)
 }
 }

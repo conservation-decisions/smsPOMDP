@@ -10,6 +10,6 @@ LazyData: true
 Imports: shiny, imager, digest, graphics, stats, sarsop, stringr, readr, purrr, shinydashboard, htmlwidgets, plotly, bsplus, magrittr
 Suggests: testthat (>= 2.1.0), vdiffr, shinytest, covr
 Remotes: boettiger-lab/sarsop
-URL: https://github.com/conservation-decisions/smsPOMDP
+URL: https://github.com/conservation-decisions/smsPOMDP, https://conservation-decisions.shinyapps.io/smsPOMDP/
 BugReports: https://github.com/conservation-decisions/smsPOMDP/issues
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
