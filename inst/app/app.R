@@ -230,6 +230,8 @@ ui <- shinydashboard::dashboardPage(
       ),
       # plots####
       shinydashboard::box(width = 9, 
+                          bsplus::bs_attach_modal(bsplus::shiny_iconlink(),
+                                                  id_modal = "modal_gif"),
                           "Choose actions performed in the past",
                           plotly::plotlyOutput("plot_actions", height = "350px")),
       shinydashboard::box(width = 9, 
@@ -251,6 +253,7 @@ ui <- shinydashboard::dashboardPage(
       , modal_Tmanage
       , modal_Tsim
       , modal_case_study
+      , modal_gif
       # activate tooltips, popovers, and MathJax ####
       , bsplus::use_bs_tooltip()
       , bsplus::use_bs_popover()

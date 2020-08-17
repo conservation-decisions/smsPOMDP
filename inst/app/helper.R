@@ -95,3 +95,11 @@ modal_case_study <-
     body = shiny::includeMarkdown(system.file("markdown", "modal_case_study.md", package = "smsPOMDP")),
     size = "medium"
   )
+
+modal_gif <-
+  bsplus::bs_modal(
+    id = "modal_gif",
+    title = "Help to select actions and observations",
+    body = shiny::includeMarkdown(system.file("markdown", "modal_gif.md", package = "smsPOMDP")),
+    size = "medium"
+  )
