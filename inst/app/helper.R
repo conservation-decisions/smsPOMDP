@@ -101,5 +101,5 @@ modal_gif <-
     id = "modal_gif",
     title = "Help to select actions and observations",
     body = shiny::includeMarkdown(system.file("markdown", "modal_gif.md", package = "smsPOMDP")),
-    size = "medium"
+    size = "large"
   )
