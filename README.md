@@ -22,6 +22,8 @@ library(smsPOMDP)
 The main application of the package is also available:
 https://conservation-decisions.shinyapps.io/smsPOMDP/
 
+We present our main application in the following article: https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.13501
+
 ## Problem definition
 
 Our problem is defined by a state space, `states`, representing the 
